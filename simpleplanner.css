@@ -1,4 +1,53 @@
 body {
-	background-color:powderblue;
-	border:5px solid tomato;
+	background-color: azure;
+	border:5px solid red;
+}
+
+h1 {
+	color: seagreen;
+	font-family: 'Baloo Paaji', cursive;
+	margin: 6px 0;
+	font-size: 25px;
+}
+
+#bar1{
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+    position: fixed;
+    top: 20px;
+    left: 630px;
+}
+
+#bar2{
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+    position: fixed;
+    top: 30px;
+    left: 630px;
+}
+
+#bar3{
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+    position: fixed;
+    top: 40px;
+    left: 630px;
+}
+
+#accountIcon {
+	width: 28px;
+	height: 25px;
+	border-radius: 25px;
+	border: 2px solid black;
+	background-color: slategrey;
+	margin: 6px 0;
+	position: fixed;
+    top: 20px;
+    left: 580px;
 }
