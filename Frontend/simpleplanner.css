@@ -16,8 +16,8 @@ h1 {
     background-color: black;
     margin: 6px 0;
     position: fixed;
-    top: 20px;
-    left: 630px;
+    top: 15px;
+    left: 1320px;
 }
 
 #bar2{
@@ -26,8 +26,8 @@ h1 {
     background-color: black;
     margin: 6px 0;
     position: fixed;
-    top: 30px;
-    left: 630px;
+    top: 25px;
+    left: 1320px;
 }
 
 #bar3{
@@ -36,8 +36,8 @@ h1 {
     background-color: black;
     margin: 6px 0;
     position: fixed;
-    top: 40px;
-    left: 630px;
+    top: 35px;
+    left: 1320px;
 }
 
 #accountIcon {
@@ -49,7 +49,7 @@ h1 {
 	margin: 6px 0;
 	position: fixed;
     top: 20px;
-    left: 580px;
+    right: 580px;
 }
 
 div {
