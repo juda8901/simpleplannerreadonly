@@ -1,0 +1,32 @@
+body {
+	background-color:powderblue;
+	border:5px solid tomato;
+}
+
+div {
+	background-color:slateblue;
+	border:0px solid black;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	background-color: slateblue;
+}
+
+li a {
+	display: inline;
+	float: left;
+	font-size: 150%;
+	color: gainsboro;
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+	font-family: "Arial";
+}
+
+li a:hover {
+    background-color: lightgray;
+    color: black;
+}
