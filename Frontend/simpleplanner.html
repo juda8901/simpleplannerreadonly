@@ -3,22 +3,39 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="simpleplanner.css">
 		<link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Baloo+Paaji|Rock+Salt|Sedgwick+Ave+Display" rel="stylesheet">
-		<title>SimplePlanner</title>
-		<h1 align="center">SimplePlanner</h1>
-		<div id="bar1"></div>
-		<div id="bar2"></div>
-		<div id="bar3"></div>
-		<div id="accountIcon"></div>
+		<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="show-hide.js"></script>
 	</head>
 	
-	<body id="nav_bar" style="margin: 0px;padding: 0px;border: unset;">
-		<div style="margin: 0px;padding: 0px;">
+	<body>
+		<title>SimplePlanner</title>
+		<h1 align="center">SimplePlanner</h1>
+		<!-- <div id="bar1"></div>
+		<div id="bar2"></div>
+		<div id="bar3"></div> -->
+		<a id="home" href="simpleplanner.html">Home</a>
+		<div id="accountMenu">
+			<!-- drop down -->
+		<h3>Account <img class="arrow" src="images/arrowDown.png" style="width:8px;"></h3>
+		<div class="accountMenuItem">
+			<a href="">Settings</a>
+			<a href="">Log in/Sign up</a>
+		</div>
+		</div>
+		<div id="accountIcon"></div>
 			<ul>
-				<li><a href="simpleplanner.html">Home</a></li>
 				<li style="text-align: center;"><input type="text" name="search" id="search_bar" placeholder="  Search for events..." style="background-color: gainsboro;width: 50%;border: 1px solid black;border-radius: 15px;font-size: 125%;">
-			</input></li>
-			<li><a href="login_sign_up.html" style="font-size: 100%">Login/Sign Up</a></li>
-		</ul>
-	</div>
+				</input></li>
+			</ul>
+			<ul>
+				<!-- insert event objects -->
+			</ul>
+		
+
+
+    		
 </body>
 </html>
