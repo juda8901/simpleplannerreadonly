@@ -1,3 +1,13 @@
+/* For first time setup run the following in terminal */
+/* sudo mysqladmin create simple_planner -p */
+/* Once you have created the database at least one time before run in terminal */
+/* sudo mysql simple_planner -p < simple_planner.sql */
+
+/* When you are done modifying the database use the following command in terminal */
+/* sudo mysqldump --databases simple_planner -p > simple_planner.sql */
+/* and then commit the changed file */
+
+
 -- MySQL dump 10.13  Distrib 5.7.19, for Linux (x86_64)
 --
 -- Host: localhost    Database: simple_planner
