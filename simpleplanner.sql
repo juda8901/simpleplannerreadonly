@@ -1,7 +1,7 @@
 /* For first time setup run the following in terminal */
-/* sudo mysqladmin create simple_planner -p */
+/* sudo mysqladmin create simpleplanner -p */
 /* Once you have created the database at least one time before run in terminal */
-/* sudo mysql simple_planner < simple_planner.sql -p */
+/* sudo mysql simpleplanner -p < simpleplanner.sql */
 
 /* When you are done modifying the database use the following command in terminal */
 /* sudo mysqldump --databases simple_planner -p > simple_planner.sql */
