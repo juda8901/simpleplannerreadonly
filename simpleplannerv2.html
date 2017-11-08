@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Simpler planner</title>
+<title>Simpleplanner</title>
 <meta charset="UTF-8" lang="en" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,7 +19,7 @@
   <a href="#" class="w3-button w3-hover-white" style="color:#f13a59;">Home</a>
   <a href="" class=" w3-right w3-button" >Log in</a>
   <a onclick="document.getElementById('id01').style.display='block'" class=" w3-right w3-button" >Sign up</a>
-  <a href="" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
+  <a onclick="document.getElementById('id02').style.display='block'" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create an Event</a>
 </div>
 
 <!-- Header -->
@@ -32,7 +32,53 @@
 
 <hr>
 
-<!-- Modal -->
+<!-- Modal for Create Event -->
+<div id="id02" class="w3-modal">
+    <div class="w3-modal-content w3-card-1 w3-animate-right">
+      <header class="w3-container w3-card w3-round w3-theme-l1"> 
+        <span onclick="document.getElementById('id02').style.display='none'"
+        class="w3-button w3-display-topright">×</span>
+  <div class="w3-center">
+  <form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="create_event_handler.php">
+  <?php
+	// Obtain a connection object by connecting to the db
+	$connection = @mysqli_connect (localhost,root,arbhcojdmn,simple_planner);
+	if(mysqli_connect_errno()){
+		echo "<h4>Failed to connect to Database:</h4>".mysqli_connect_error();
+	}
+	?>
+    <h2>Create an Event!</h2>
+    <div class="w3-section"> 
+      <input class="w3-input" type="text" required>
+      <label>Event Name&nbsp </label>
+    </div>
+    <div class="w3-section">      
+      <input class="w3-input" type="text" required>
+      <label>Time&nbsp </label>
+    </div>
+    <div class="w3-section">      
+      <input class="w3-input" type="text" required>
+      <label>Location&nbsp </label>
+    </div>
+	<div class="w3-section">      
+      <input class="w3-input" type="text" required>
+      <label>Host&nbsp </label>
+    </div>
+	<div class="w3-section">      
+      <input class="w3-input" type="text" required>
+      <label>Description&nbsp </label>
+    </div>
+	<div class="w3-section">      
+      <input class="w3-input" type="text" required>
+      <label>Attendees&nbsp </label>
+    </div>
+	<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Event" /> &nbsp
+      </header>
+    </div>
+  </form>
+</div>
+
+<!-- Modal for Signup -->
 <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-1 w3-animate-right">
       <header class="w3-container w3-card w3-round w3-theme-l1"> 
