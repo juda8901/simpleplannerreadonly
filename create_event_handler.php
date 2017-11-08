@@ -1,6 +1,6 @@
 <?php
 //Connect to the database
-$connection = @mysqli_connect (localhost,root,arbhcojdmn,simple_planner);
+$connection = @mysqli_connect ("sql3.freemysqlhosting.net","sql3203668","663hN84yLR","sql3203668");
 if(mysqli_connect_errno()){
 		echo "<h4>Failed to connect to MySQL:</h4>".mysqli_connect_error();
 	}
