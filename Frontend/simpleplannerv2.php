@@ -34,7 +34,7 @@
 			<a href="#" class="w3-button w3-hover-white" style="color:#f13a59;">Home</a>
 			<a href="" class=" w3-right w3-button" >Log in</a>
 			<a onclick="document.getElementById('id01').style.display='block'" class=" w3-right w3-button" >Sign up</a>
-			<a href="" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
+			<a onclick="document.getElementById('id02').style.display='block'" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
 		</div>
 		<!-- Header -->
 		<header class="w3-row-padding w3-container w3-theme" id="Header">
@@ -140,6 +140,46 @@
 			</header>
 			</div>
 			</form>
+		</div>
+		</div>
+		<!-- Modal for Create Event -->
+		<div id="id02" class="w3-modal">
+			<div class="w3-modal-content w3-card-1 w3-animate-right">
+			<header class="w3-container w3-card w3-round w3-theme-l1"> 
+			<span onclick="document.getElementById('id02').style.display='none'"
+			class="w3-button w3-display-topright">×</span>
+			<div class="w3-center">
+			<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Goup_Management_Project/create_event_handler.php">
+			<h2>Create an Event!</h2>
+			<div class="w3-section"> 
+				<input class="w3-input" name="EventTitle" type="text" required>
+				<label>Event Title&nbsp </label>
+			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="StartTime" type="text" required>
+				<label>Start Time&nbsp </label>
+			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="EndTime" type="text" required>
+				<label>End Time&nbsp </label>
+			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="Location" type="text" required>
+				<label>Location&nbsp </label>
+			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="Host" type="text" required>
+				<label>Host&nbsp </label>
+			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="Description" type="text" required>
+				<label>Description&nbsp </label>
+			</div>
+			<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Event" /> &nbsp
+			</header>
+		</div>
+		</form>
+		</div>
 		</div>
 		<!-- Event Cards -->
 		<div id="cards">
