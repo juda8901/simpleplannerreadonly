@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html>
 	<title>Simpleplanner</title>
@@ -270,7 +270,7 @@
 		</script>
 	</body>
 </html>
-=======
+
 ﻿<!DOCTYPE html>
 <html>
 <title>Simpler planner Home Page</title>
@@ -479,4 +479,4 @@ var TxtType = function(el, toRotate, period) {
 </body>
 
 </html>
->>>>>>> mNicolaou
+
