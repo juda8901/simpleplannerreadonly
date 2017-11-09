@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
-<title>Simpler planner</title>
+<title>Simpler planner Home Page</title>
 <meta charset="UTF-8" lang="en" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -16,25 +16,34 @@
 
 <!-- Top Buttons -->
 <div id="LogInButtons" >
-  <a href="#" class="w3-button w3-hover-white" style="color:#f13a59;">Home</a>
-  <a href="" class=" w3-right w3-button" >Log in</a>
-  <a onclick="document.getElementById('id01').style.display='block'" class=" w3-right w3-button" >Sign up</a>
+  <a href="#" style="margin: 15px 15px 15px 15px;">
+  	<img src="treeLogo.png" style="width:40px;height:40px;"></a>
+  <a href="login.html" class=" w3-right w3-button w3-hover-white" >Log in</a>
+  <a onclick="document.getElementById('id01').style.display='block'" class=" w3-right w3-button w3-hover-white" >Sign up</a>
   <a href="" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
 </div>
+
+<br>
+<br>
 
 <!-- Header -->
 <header class="w3-row-padding w3-container w3-theme" id="Header">
   <h1 >Simpleplanner</h1>
-  <h2 class="quotes" style="display:none;">Planning made simple</h2>
-  <h2 class="quotes" style="display:none;">Explore groups</h2>​​
+	<h2>
+	  <a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#2e3e48; "data data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
+	    <span class="wrap"></span>
+	  </a>
+	</h2>
 
 </header>
 
-<hr>
+<br>
+<hr style=" margin-bottom: 0em;">
+
 
 <!-- Modal -->
 <div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-card-1 w3-animate-right">
+    <div class="w3-modal-content w3-card-1 w3-animate-top">
       <header class="w3-container w3-card w3-round w3-theme-l1"> 
         <span onclick="document.getElementById('id01').style.display='none'"
         class="w3-button w3-display-topright">×</span>
@@ -60,47 +69,26 @@
 </div>
 
 <!-- Event Cards -->
-<div id="cards">
-<div class="card" style="float:left; width: 300px; margin: 10px 10px 20px 20px">
-  <img src="img.jpg" alt="pic">
-  <h1>Name of Event</h1>
-  <p class="title">short descrption</p>
-  <p>Event</p>
-  <a href="#"><i class="fa fa-twitter"></i></a> 
-  <a href="#"><i class="fa fa-linkedin"></i></a> 
-  <a href="#"><i class="fa fa-facebook"></i></a> 
-  <p><button>Contact</button></p>
+
+<div id="cards" style="background:#f2f2f2;">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </div>
 
-<div class="card" style="float:left; width: 300px; margin: 10px 10px 10px 20px">
-  <img src="img.jpg" alt="pic">
-  <h1>Name of Event</h1>
-  <p class="title">short descrption</p>
-  <p>Event</p>
-  <a href="#"><i class="fa fa-twitter"></i></a> 
-  <a href="#"><i class="fa fa-linkedin"></i></a> 
-  <a href="#"><i class="fa fa-facebook"></i></a> 
-  <p ><button>Contact</button></p>
-</div>
-
-</div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<hr>
+<hr style="margin-top: 0em;">
 
 <!-- Google Map -->
 <h3 style="padding-left: 20px ">Groups organizing near you</h3>
@@ -125,7 +113,7 @@
 
 <!-- Footer -->
 <footer class="w3-center w3-padding-64">
-  <div class="w3-xlarge w3-section" style="color: #f13a59;">
+  <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
     <i class="fa fa-snapchat w3-hover-opacity"></i>
@@ -156,6 +144,63 @@
     showNextQuote();
 
 })();
+
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 3000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
 </script>
 
 </body>
