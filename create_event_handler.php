@@ -9,7 +9,7 @@
 
 	$hostname='sql3.freemysqlhosting.net';
 	$username='sql3203668';
-	$password='663hN84yLR';
+	$password='arbhcojdmnFA17';
 	$db='sql3203668';
 	$conn=@mysqli_connect($hostname,$username,$password,$db);
 	if(mysqli_connect_errno()){
