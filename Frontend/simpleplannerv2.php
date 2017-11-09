@@ -49,7 +49,7 @@
 			<header class="w3-container w3-card w3-round w3-theme-l1">
 				<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">×</span>
 				<div class="w3-center">
-					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Goup_Management_Project/create_account_handler.php">
+					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Group_Management_Project/Backend/create_account_handler.php">
 						<h2>Join Simpleplanner Today</h2>
 						<p>Full Name: <input class="w3-input" name="Name" type="text" required/></p>
 						<p>Email: <input class="w3-input" name="Email" type="text" required/></p>
@@ -149,7 +149,7 @@
 			<span onclick="document.getElementById('id02').style.display='none'"
 			class="w3-button w3-display-topright">×</span>
 			<div class="w3-center">
-			<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Goup_Management_Project/create_event_handler.php">
+			<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Group_Management_Project/Backend/create_event_handler.php">
 			<h2>Create an Event!</h2>
 			<div class="w3-section"> 
 				<input class="w3-input" name="EventTitle" type="text" required>
