@@ -1,5 +1,5 @@
 <?php
-	//Get entries to form from simpleplannerv2.html
+	//Get entries to form from simpleplannerv2.php
 	$EventTitle = $_REQUEST['Event Title'];
 	$StartTime = $_REQUEST['Start Time'];
 	$EndTime = $_REQUEST['End Time'];
@@ -15,9 +15,7 @@
 	if(mysqli_connect_errno()){
 		echo "<h4>Failed to connect to MySQL: </h4>".mysqli_connect_error();
 	}
-	$insert="INSERT INTO events (event_id,event_title,event_start_date_time,event_end_date_time,event_location,event_host_account_id,
-	event_description,event_is_hidden) VALUES ( ((select max(id) from events)+1),'$EventTitle','$StartTime','$EndTime',
-	'$Location','$Host','$Description',0);";
+	$insert="INSERT INTO events (event_id,event_title,event_start_date_time,event_end_date_time,event_location,event_host_account_id,event_description,event_is_hidden) VALUES ( ((SELECT MAX(id) FROM events)+1),'$EventTitle','$StartTime','$EndTime','$Location',(SELECT account_id FROM accounts WHERE account_name='$Host'),'$Description',0);";
 	if($conn->query($insert)==TRUE){
 		echo "Event created successfully";
 		include 'simpleplannerv2.php';
