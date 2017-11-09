@@ -34,11 +34,7 @@
 			<a href="#" class="w3-button w3-hover-white" style="color:#f13a59;">Home</a>
 			<a href="" class=" w3-right w3-button" >Log in</a>
 			<a onclick="document.getElementById('id01').style.display='block'" class=" w3-right w3-button" >Sign up</a>
-<<<<<<< HEAD
 			<a onclick="document.getElementById('id02').style.display='block'" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
-=======
-			<a href="" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
->>>>>>> master
 		</div>
 		<!-- Header -->
 		<header class="w3-row-padding w3-container w3-theme" id="Header">
@@ -145,7 +141,6 @@
 			</div>
 			</form>
 		</div>
-<<<<<<< HEAD
 		</div>
 		<!-- Modal for Create Event -->
 		<div id="id02" class="w3-modal">
@@ -186,8 +181,6 @@
 		</form>
 		</div>
 		</div>
-=======
->>>>>>> master
 		<!-- Event Cards -->
 		<div id="cards">
 			<div class="card" style="float:left; width: 300px; margin: 10px 10px 20px 20px">
