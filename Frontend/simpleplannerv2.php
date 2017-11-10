@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="simpleplannerv2.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 		<!-- Styles for password validation box -->
 		<style>
 			.valid {
@@ -38,6 +39,7 @@
 		</div>
 		<br>
 		<br>
+
 		<!-- Header -->
 		<header class="w3-row-padding w3-container w3-theme" id="Header">
 			<h1>Simpleplanner</h1>
@@ -155,6 +157,30 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Modal for Create Event -->
+		<div id="create_event" class="w3-modal">
+			<div class="w3-modal-content w3-card-1 w3-animate-right">
+				<header class="w3-container w3-card w3-round w3-theme-l1"></header>
+				<span onclick="document.getElementById('create_event').style.display='none'" class="w3-button w3-display-topright">×</span>
+				<div class="w3-center">
+					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Group_Management_Project/Backend/create_event_handler.php">
+						<h2>Create an Event!</h2>
+						<p>Event Title <input class="w3-input" name="EventTitle" type="text" required/></p>      
+						<p>Start Time <input class="w3-input" name="StartTime" type="text" required/></p>      
+						<p>End Time <input class="w3-input" name="EndTime" type="text" required/></p>      
+						<p>Location <input class="w3-input" name="Location" type="text" required/></p>      
+						<p>Host <input class="w3-input" name="Host" type="text" required/></p>      
+						<p>Description <input class="w3-input" name="Description" type="text" required/></p>
+						<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Event"/>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Create Event Button -->
+		<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-green" onclick="document.getElementById('create_event').style.display='block'" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button>
+
 		<!-- Event Cards -->
 		<div id="cards" style="background:#f2f2f2;">
 			<br>
@@ -174,6 +200,7 @@
 			<br>
 		</div>
 		<hr style="margin-top: 0em;">
+
 		<!-- Google Map -->
 		<h3 style="padding-left: 20px ">Groups organizing near you</h3>
 		<div id="map"></div>
@@ -192,6 +219,7 @@
 		</script>
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
 		<hr>
+
 		<!-- Footer -->
 		<footer class="w3-center w3-padding-64">
 			<div class="w3-xlarge w3-section">
@@ -204,6 +232,7 @@
 			</div>
 			<p> footer stuff </p>
 		</footer>
+
 		<!-- Scripts -->
 		<script type="text/javascript">
 			// Rotating text

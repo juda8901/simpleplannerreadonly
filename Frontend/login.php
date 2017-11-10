@@ -80,8 +80,7 @@
 						<input type="text" placeholder="Email" name="uname" required>
 						<input type="password" placeholder="Password" name="psw" required>
 						<button type="submit">Login</button>
-						<input type="checkbox" checked="checked" style="float:left">
-						<p style="font-size:12px; float:left; margin"> Remember me </p>
+						<input id="remember" type="checkbox" checked="checked" style="float:left"><span><a onclick="document.getElementById('remember').checked=!document.getElementById('remember').checked" class="w3-left w3-hover-light-grey"> Remember me </a></span>
 					</div>
 					<div class="container" style="background-color:#f1f1f1">
 						<span class="psw"><a href="#">Forgot password?</a></span>
