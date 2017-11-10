@@ -3,20 +3,18 @@
        width: 100%;
        }
 body {
-  background-color: white;
-  color: #2e3e48;
-  font-family: "Graphik Meetup",helvetica,arial,sans-serif;
+	position: relative;
+    background-color: white;
+    color: #2e3e48;
  }
 
 #LogInButtons {
-  font-size:13px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 	color: #2e3e48;
 	position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0%;
-  background-color: white;
-  padding: 3px;
+    position: sticky;
+    top: 0%;
+    background-color: white;
+  	padding: 7px;
 }
 
 #Header {
@@ -29,11 +27,40 @@ body {
  	font-size: 50px;
 	font-style: bold;
 	font-variant: ;
-	color: #f13a59; 
+	color: #2e3e48; 
 }
 
-#id01 {
-  
+#Header h2{
+	color: #f13a59;
+	font-style: italic;
+}
+#cards {
+
+}
+
+#cards h1{
+	color:#f13a59;
+}
+
+#cards button{
+	margin: 20px 20px 20px 20px;
+	opacity: 0.7;
+}
+#cards a{
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
 }
 
 footer{

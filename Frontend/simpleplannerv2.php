@@ -159,6 +159,7 @@
 		</form>
 		</div>
 		</div>
+<<<<<<< HEAD
 
 <!-- Event Cards -->
 
@@ -299,3 +300,93 @@ var TxtType = function(el, toRotate, period) {
 
 </html>
 >>>>>>> mNicolaou
+=======
+		<!-- Event Cards -->
+		<div id="cards">
+			<div class="card" style="float:left; width: 300px; margin: 10px 10px 20px 20px">
+				<img src="img.jpg" alt="pic">
+				<h1>Name of Event</h1>
+				<p class="title">short descrption</p>
+				<p>Event</p>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<p><button>Contact</button></p>
+			</div>
+			<div class="card" style="float:left; width: 300px; margin: 10px 10px 10px 20px">
+				<img src="img.jpg" alt="pic">
+				<h1>Name of Event</h1>
+				<p class="title">short descrption</p>
+				<p>Event</p>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<p ><button>Contact</button></p>
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<hr>
+		<!-- Google Map -->
+		<h3 style="padding-left: 20px ">Groups organizing near you</h3>
+		<div id="map"></div>
+		<script>
+			function initMap() {
+				var Boulder = {lat: 40.027443, lng: -105.25174};
+				var map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 4,
+					center: Boulder
+				});
+				var marker = new google.maps.Marker({
+					position: Boulder,
+					map: map
+				});
+			}
+		</script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
+		<hr>
+		<!-- Footer -->
+		<footer class="w3-center w3-padding-64">
+			<div class="w3-xlarge w3-section" style="color: #f13a59;">
+				<i class="fa fa-facebook-official w3-hover-opacity"></i>
+				<i class="fa fa-instagram w3-hover-opacity"></i>
+				<i class="fa fa-snapchat w3-hover-opacity"></i>
+				<i class="fa fa-pinterest-p w3-hover-opacity"></i>
+				<i class="fa fa-twitter w3-hover-opacity"></i>
+				<i class="fa fa-linkedin w3-hover-opacity"></i>
+			</div>
+			<p> footer stuff </p>
+		</footer>
+		<!-- Scripts -->
+		<script type="text/javascript">
+			// Rotating text
+			(function() {
+				var quotes = $(".quotes");
+				var quoteIndex = -1;
+				function showNextQuote() {
+					++quoteIndex;
+					quotes.eq(quoteIndex % quotes.length)
+					.fadeIn(2000)
+					.delay(2000)
+					.fadeOut(2000, showNextQuote);
+				}
+				showNextQuote();
+			})();
+		</script>
+	</body>
+</html>
+>>>>>>> 4fa9b35c7a1d0be7fd983509bbfe303fc99f6313
