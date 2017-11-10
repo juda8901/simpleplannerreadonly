@@ -150,6 +150,22 @@
 							match.classList.add("invalid");
 							}
 							}
+							<script type="text/javascript">
+	  var em = document.getElementById("email");
+	  em.onkeyup = function(){
+	      var validEmail = /^[A-Z0-9._%+-]+@[A-Z]{2,}$/;
+	      if(em.value.match(validEmail)){
+	              em.classList.remove("invalid");
+	              em.classList.add("valid");
+	      } else {
+	              em.classList.remove("valid");
+	              em.classList.add("invalid");
+	      }
+  }
+</script>
+<?php
+   
+   ?>
 						</script>
 						<!--
 						<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" value="Sign up" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;"/>
