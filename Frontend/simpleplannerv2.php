@@ -183,21 +183,33 @@
 
 		<!-- Event Cards -->
 		<div id="cards" style="background:#f2f2f2;">
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+			 <?php
+				$servername = "sql3.freemysqlhosting.net";
+				$username = "sql3203668";
+				$password = "arbhcojdmnFA17";
+				$dbname = "sql3203668";
+
+				// Create connection
+				$conn = new mysqli($servername, $username, $password, $dbname);
+				// Check connection
+				if ($conn->connect_error) {
+				    die("Connection failed: " . $conn->connect_error);
+				}
+
+				$sql = "SELECT event_title, event_description FROM events";
+				$result = $conn->query($sql);
+
+				if ($result->num_rows > 0) {
+				    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				        echo "<div class='card' style='float:left; width: 300px; margin: 10px 10px 10px 20px;''><h1>" . $row["event_title"]. "</h1><p>" . $row["event_description"]. "</p><p><button>Contact</button></p></div>";
+				    }
+				} else {
+				    echo "0 results";
+				}
+				$conn->close();
+				?> 
+			
 		</div>
 		<hr style="margin-top: 0em;">
 
