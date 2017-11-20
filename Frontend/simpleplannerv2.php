@@ -196,13 +196,13 @@
 				    die("Connection failed: " . $conn->connect_error);
 				}
 
-				$sql = "SELECT event_title, event_description FROM events";
+				$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
 				    // output data of each row
 				    while($row = $result->fetch_assoc()) {
-				        echo "<div class='card' style='float:left; width: 300px; margin: 10px 10px 10px 20px;''><h1>" . $row["event_title"]. "</h1><p>" . $row["event_description"]. "</p><p><button>Contact</button></p></div>";
+				        echo "<div class='card' style='float:left; width: 300px; margin: 10px 10px 10px 20px;''><h1>" . $row["event_title"]. "</h1><p>" . $row["event_location"]. "</p><p>" . $row["event_start_date_time"]. "-" . $row["event_end_date_time"]. "</p><p>" . $row["event_description"]. "</p><p><button>Contact</button></p></div>";
 				    }
 				} else {
 				    echo "0 results";
