@@ -18,7 +18,7 @@
 	$insert="INSERT INTO events (event_title,event_start_date_time,event_end_date_time,event_location,event_host_account_id,event_description) VALUES ('$EventTitle','$StartTime','$EndTime','$Location',(SELECT account_id FROM accounts WHERE account_name='$Host'),'$Description');";
 	if($conn->query($insert)==TRUE){
 		echo "Event created successfully";
-		include 'simpleplannerv2.php';
+		include 'Group_Management_Project/Frontend/simpleplannerv2.php';
 	} else {
 		echo "Error: ".$insert."<br>".$conn->error;
 	}
