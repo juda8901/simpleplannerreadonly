@@ -61,7 +61,10 @@
 					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Group_Management_Project/Backend/create_account_handler.php">
 						<h2>Join Simpleplanner Today</h2>
 						<p>Full Name: <input class="w3-input w3-center" name="Name" type="text" required/></p>
-						<p>Email: <input class="w3-input w3-center" name="Email" type="text" required/></p>
+						<p>Email: <input class="w3-input w3-center" name="Email" id="email" type="text" required/></p>
+                        <div id="eRequirements" class="w3-card-4" style="display: none; margin: 0 auto; width: fit-content; text-align: justify; padding: 25px;">
+                            <p id="eVerify" class="invalid" style="font-size: 12pt;margin: 0px;margin-left: 15px;padding: 0px;">Valid email address</p>
+                        </div>
 						<p>Password: <input class="w3-input w3-center" name="Password" id="Password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and 8 or more characters in length" required/></p>
 						<p>Re-enter Password: <input class="w3-input w3-center" type="password" id="verify_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></p>
 						<div id="requirements" class="w3-card-4" style="display: none; margin: 0 auto; width: fit-content; text-align: justify; padding: 25px;">
@@ -83,6 +86,7 @@
 						var number = document.getElementById("number");
 						var length = document.getElementById("length");
 						var match = document.getElementById("match");
+                        var em = document.getElementById("email");
 							// When the user clicks on the password field, show the message box
 							pw.onfocus = function() {
 								document.getElementById("requirements").style.display = "block";
@@ -142,15 +146,18 @@
 								match.classList.add("invalid");
 							}
 						}
-						var em = document.getElementById("email");
+                        pw.onfocus = function() {
+				            document.getElementById("eRequirements").style.display = "block";
+                        }
+                        //Checks if correct email format
 						em.onkeyup = function(){
 							var validEmail = /^[A-Z0-9._%+-]+@[A-Z]{2,}$/g;
 							if(em.value.match(validEmail)){
-								em.classList.remove("invalid");
-								em.classList.add("valid");
+								eVerify.classList.remove("invalid");
+								eVerify.classList.add("valid");
 							} else {
-								em.classList.remove("valid");
-								em.classList.add("invalid");
+								eVerify.classList.remove("valid");
+								eVerify.classList.add("invalid");
 							}
 						}
 					</script>
