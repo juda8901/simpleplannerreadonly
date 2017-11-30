@@ -86,6 +86,7 @@
 						var number = document.getElementById("number");
 						var length = document.getElementById("length");
 						var match = document.getElementById("match");
+                        var eVerify = document.getElementById("eVerify");
                         var em = document.getElementById("email");
 							// When the user clicks on the password field, show the message box
 							pw.onfocus = function() {
