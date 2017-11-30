@@ -156,11 +156,11 @@
 				<label>Event Title&nbsp </label>
 			</div>
 			<div class="w3-section">      
-				<input class="w3-input" name="StartTime" type="text" required>
+				<input class="w3-input" name="StartTime" type="datetime-local" required>
 				<label>Start Time&nbsp </label>
 			</div>
 			<div class="w3-section">      
-				<input class="w3-input" name="EndTime" type="text" required>
+				<input class="w3-input" name="EndTime" type="datetime-local" required>
 				<label>End Time&nbsp </label>
 			</div>
 			<div class="w3-section">      
@@ -174,6 +174,10 @@
 			<div class="w3-section">      
 				<input class="w3-input" name="Description" type="text" required>
 				<label>Description&nbsp </label>
+			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="Tags" type="text" required>
+				<label>Tags&nbsp </label>
 			</div>
 			<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Event" /> &nbsp
 			</header>
