@@ -1,7 +1,6 @@
 <?php
-	$name=$_REQUEST['Name'];
-	$email=$_REQUEST['Email'];
-	$pass=$_REQUEST['Password'];
+	$uname=$_REQUEST['uname'];
+	$psw=$_REQUEST['psw'];
 
 	$hostname='sql3.freemysqlhosting.net';
 	$username='sql3203668';
@@ -12,12 +11,12 @@
 		echo "<h4>Failed to connect to MySQL: </h4>".mysqli_connect_error();
 	}
 
-	$insert="INSERT INTO accounts (account_name,account_email,account_password) VALUES ('$name','$email','$pass');";
-	if($conn->query($insert)==TRUE){
-		echo "Account created successfully";
+	$query="SELECT * FROM accounts WHERE account_email='$uname' AND account_password='$psw';";
+	if($conn->query($query)==TRUE){
+		echo "Account found";
 		include 'simpleplannerv2.php';
 	} else {
-		echo "Error: ".$insert."<br>".$conn->error;
+		echo "Error: ".$query."<br>".$conn->error;
 	}
 	$conn->close();
 ?>

@@ -67,27 +67,30 @@
 		<div id="LogInButtons" >
 			<a href="simpleplannerv2.php" style="margin: 15px 15px 15px 15px;">
 				<img src="treeLogo.png" style="width:40px;height:40px;"></a>
-				<a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-right w3-button w3-hover-white" >Sign up</a>
+				<a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-right w3-button w3-hover-white">Sign up</a>
 				<a href="" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
 			</div>
 			<br>
 			<center>
-				<form action="/action_page.php">
+				<form action="http://localhost/Group_Management_Project/Backend/login_handler.php">
 					<h1 style="float:left; margin:10px 10px 10px 20px;"> Login </h1>
 					<br>
 					<br>
 					<div class="container">
+						<p style="color: red; display: none;">Incorrect username or password. If you don't have an account click <a onclick="document.getElementById('sign_up').style.display='block'">here</a>.</p>
 						<input type="text" placeholder="Email" name="uname" required>
 						<input type="password" placeholder="Password" name="psw" required>
-						<button type="submit">Login</button>
+						<button type="submit" onclick="check_account()">Login</button>
 						<input id="remember" type="checkbox" checked="checked" style="float:left"><span><a onclick="document.getElementById('remember').checked=!document.getElementById('remember').checked" class="w3-left w3-hover-light-grey"> Remember me </a></span>
-					</div>
-					<div class="container" style="background-color:#f1f1f1">
+						<br>
+						<br>
+						<br>
 						<span class="psw"><a href="#">Forgot password?</a></span>
 					</div>
 				</form>
 			</center>
 			<br>
+
 			<!-- Footer -->
 			<footer class="w3-center w3-padding-64">
 				<div class="w3-xlarge w3-section">
