@@ -45,7 +45,7 @@
 			<h1>Simpleplanner</h1>
 			<h2>
 				<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#2e3e48;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
-					<span class="wrap"/>
+					<span class="wrap"></span>
 				</a>
 			</h2>
 		</header>
@@ -202,7 +202,21 @@
 				if ($result->num_rows > 0) {
 				    // output data of each row
 				    while($row = $result->fetch_assoc()) {
-				        echo "<div class='card' style='float:left; width: 300px; margin: 10px 10px 10px 20px;''><h1>" . $row["event_title"]. "</h1><p>" . $row["event_location"]. "</p><p>" . $row["event_start_date_time"]. "-" . $row["event_end_date_time"]. "</p><p>" . $row["event_description"]. "</p><p><button>Contact</button></p></div>";
+				    	$tempStamp = strtotime($row['event_start_date_time']);
+				    	$startTime = date('g:i A', $tempStamp);
+				    	$startDate = date('m/d',$tempStamp);
+
+
+				    	$tempStamp = strtotime($row['event_end_date_time']);
+				    	$endTime = date('g:i A',$tempStamp);
+				    	$endDate = date('m/d',$tempStamp);
+
+				    	$title = $row["event_title"];
+				    	if (empty($title)){
+				    		$title = "No Title";
+				    	}
+
+				        echo "<div class='card' style='float:left; width: 300px; margin: 10px 10px 10px 20px;'><h1>" . $row["event_title"]. "</h1><p>" . $row["event_location"]. "</p><p>" . $startTime. "-" . $endTime. "</p><p>" . $startDate. "-" . $endDate. "</p><p>" . $row["event_description"]. "</p><p><button>Contact</button></p></div>";
 				    }
 				} else {
 				    echo "0 results";
