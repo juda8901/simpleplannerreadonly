@@ -3,7 +3,11 @@
 	$email=$_REQUEST['Email'];
 	$pass=$_REQUEST['Password'];
 
+<<<<<<< HEAD
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+=======
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));  
+>>>>>>> e2a7d944d5916d137f0a91d7b95e8a0c5f4d71e5
 	$server = $url["host"];
 	$username = $url["user"];
 	$password = $url["pass"];
@@ -16,7 +20,11 @@
 	$insert="INSERT INTO accounts (account_name,account_email,account_password) VALUES ('$name','$email','$pass');";
 	if($conn->query($insert)==TRUE){
 		echo "Account created successfully";
+<<<<<<< HEAD
 		include_once '/Frontend/simpleplannerv2.php';
+=======
+		include '/Frontend/simpleplannerv2.php';
+>>>>>>> e2a7d944d5916d137f0a91d7b95e8a0c5f4d71e5
 	} else {
 		echo "Error: ".$insert."<br>".$conn->error;
 	}

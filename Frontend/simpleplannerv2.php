@@ -4,7 +4,11 @@
 		<meta charset="UTF-8" lang="en">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<<<<<<< HEAD
 		<link rel="stylesheet" type="text/css" href="Frontend/simpleplannerv2.css">
+=======
+		<link rel="stylesheet" type="text/css" href="/Frontend/simpleplannerv2.css">
+>>>>>>> e2a7d944d5916d137f0a91d7b95e8a0c5f4d71e5
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -32,7 +36,11 @@
 		<!-- Top Buttons -->
 		<div id="LogInButtons">
 			<a href="#" style="margin: 15px 15px 15px 15px;"></a>
+<<<<<<< HEAD
 			<img src="Frontend/treeLogo.png" style="width:40px;height:40px;"/>
+=======
+			<img src="/Frontend/treeLogo.png" style="width:40px;height:40px;"/>
+>>>>>>> e2a7d944d5916d137f0a91d7b95e8a0c5f4d71e5
 			<a href="/Backend/login.php" class=" w3-right w3-button w3-hover-white" >Log in</a>
 			<a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-right w3-button w3-hover-white" >Sign up</a>
 			<a href="" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
