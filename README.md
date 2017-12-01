@@ -13,10 +13,8 @@ To access the database type the following command into your terminal and enter t
 
 Your PHP script to connect should look like this  
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));  
-
 $server = $url["host"];  
 $username = $url["user"];  
 $password = $url["pass"];  
 $db = substr($url["path"], 1);  
-
-$conn = new mysqli($server, $username, $password, $db);
+$conn = @mysqli_connect($server, $username, $password, $db);
