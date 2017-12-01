@@ -19,11 +19,7 @@
 	$insert="INSERT INTO events (event_title,event_start_date_time,event_end_date_time,event_location,event_host_account_id,event_description) VALUES ('$EventTitle','$StartTime','$EndTime','$Location',(SELECT account_id FROM accounts WHERE account_name='$Host'),'$Description');";
 	if($conn->query($insert)==TRUE){
 		echo "Event created successfully";
-<<<<<<< HEAD
 		include_once '/Frontend/simpleplannerv2.php';
-=======
-		include '/Frontend/simpleplannerv2.php';
->>>>>>> e2a7d944d5916d137f0a91d7b95e8a0c5f4d71e5
 	} else {
 		echo "Error: ".$insert."<br>".$conn->error;
 	}
