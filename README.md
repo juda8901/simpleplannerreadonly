@@ -1,5 +1,5 @@
-# Group_Management_Project
-Group management application that focus on the needs and tools of a group.
+# Simpleplanner
+## A Web Application to help Boulder residents create, manage, and attend nearby events.
 
 
 ## Database Information:
