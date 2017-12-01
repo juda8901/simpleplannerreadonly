@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" lang="en" >
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
-		<link rel="stylesheet" type="text/css" href="simpleplannerv2.css"/>
+		<link rel="stylesheet" type="text/css" href="/Frontend/simpleplannerv2.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 		<style>
 			body{
@@ -31,4 +31,77 @@
 				padding: 14px 20px;
 				margin: 8px 0;
 				border: none;
-	
+				border-radius: 12px;
+				cursor: pointer;
+				width: 100%;
+			}
+			button:hover {
+				opacity: 0.8;
+			}
+			.cancelbtn {
+				width: auto;
+				padding: 10px 18px;
+				background-color: #f44336;
+			}
+			.container {
+				padding: 16px;
+			}
+			span.psw {
+				float: right;
+				padding-top: 16px;
+			}
+			/* Change styles for span and cancel button on extra small screens */
+			@media screen and (max-width: 300px) {
+				span.psw {
+					display: block;
+					float: none;
+				}
+				.cancelbtn {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Top Buttons -->
+		<div id="LogInButtons" >
+			<a href="/frontend/home.html" style="margin: 15px 15px 15px 15px;">
+				<img src="/frontend/treeLogo.png" style="width:40px;height:40px;"></a>
+				<a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-right w3-button w3-hover-white">Sign up</a>
+				<a href="" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
+			</div>
+			<br>
+			<center>
+				<form action="/backend/login_handler.php">
+					<h1 style="float:left; margin:10px 10px 10px 20px;"> Login </h1>
+					<br>
+					<br>
+					<div class="container">
+						<p style="color: red; display: none;">Incorrect username or password. If you don't have an account click <a onclick="document.getElementById('sign_up').style.display='block'">here</a>.</p>
+						<input type="text" placeholder="Email" name="uname" required>
+						<input type="password" placeholder="Password" name="psw" required>
+						<button type="submit" onclick="check_account()">Login</button>
+						<input id="remember" type="checkbox" checked="checked" style="float:left"><span><a onclick="document.getElementById('remember').checked=!document.getElementById('remember').checked" class="w3-left w3-hover-light-grey"> Remember me </a></span>
+						<br>
+						<br>
+						<br>
+						<span class="psw"><a href="#">Forgot password?</a></span>
+					</div>
+				</form>
+			</center>
+			<br>
+
+			<!-- Footer -->
+			<footer class="w3-center w3-padding-64">
+				<div class="w3-xlarge w3-section">
+					<i class="fa fa-facebook-official w3-hover-opacity"></i>
+					<i class="fa fa-instagram w3-hover-opacity"></i>
+					<i class="fa fa-snapchat w3-hover-opacity"></i>
+					<i class="fa fa-pinterest-p w3-hover-opacity"></i>
+					<i class="fa fa-twitter w3-hover-opacity"></i>
+					<i class="fa fa-linkedin w3-hover-opacity"></i>
+				</div>
+				<p> footer stuff </p>
+			</footer>
+		</body>
+</html>

@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" lang="en">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link rel="stylesheet" type="text/css" href="simpleplannerv2.css">
+		<link rel="stylesheet" type="text/css" href="/Frontend/simpleplannerv2.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -32,8 +32,8 @@
 		<!-- Top Buttons -->
 		<div id="LogInButtons">
 			<a href="#" style="margin: 15px 15px 15px 15px;"></a>
-			<img src="treeLogo.png" style="width:40px;height:40px;"/>
-			<a href="login.php" class=" w3-right w3-button w3-hover-white" >Log in</a>
+			<img src="/Frontend/treeLogo.png" style="width:40px;height:40px;"/>
+			<a href="/Backend/login.php" class=" w3-right w3-button w3-hover-white" >Log in</a>
 			<a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-right w3-button w3-hover-white" >Sign up</a>
 			<a href="" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
 		</div>
@@ -58,7 +58,7 @@
 				<header class="w3-container w3-card w3-round w3-theme-l1"></header>
 				<span onclick="document.getElementById('sign_up').style.display='none'" class="w3-button w3-display-topright">×</span>
 				<div class="w3-center">
-					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Group_Management_Project/Backend/create_account_handler.php">
+					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="/Backend/create_account_handler.php">
 						<h2>Join Simpleplanner Today</h2>
 						<p>Full Name: <input class="w3-input w3-center" name="Name" type="text" required/></p>
 						<p>Email: <input class="w3-input w3-center" name="Email" id="email" type="text" required/></p>
@@ -108,7 +108,7 @@
 							} else {
 								letter.classList.remove("valid");
 								letter.classList.add("invalid");
-							}        
+							}
 							// Validate capital letters
 							var upperCaseLetters = /[A-Z]/g;
 							if(pw.value.match(upperCaseLetters)) {
@@ -171,13 +171,13 @@
 				<header class="w3-container w3-card w3-round w3-theme-l1"></header>
 				<span onclick="document.getElementById('create_event').style.display='none'" class="w3-button w3-display-topright">×</span>
 				<div class="w3-center">
-					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Group_Management_Project/Backend/create_event_handler.php">
+					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="/Backend/create_event_handler.php">
 						<h2>Create an Event!</h2>
-						<p>Event Title <input class="w3-input" name="EventTitle" type="text" required/></p>      
-						<p>Start Time <input class="w3-input" name="StartTime" type="text" required/></p>      
-						<p>End Time <input class="w3-input" name="EndTime" type="text" required/></p>      
-						<p>Location <input class="w3-input" name="Location" type="text" required/></p>      
-						<p>Host <input class="w3-input" name="Host" type="text" required/></p>      
+						<p>Event Title <input class="w3-input" name="EventTitle" type="text" required/></p>
+						<p>Start Time <input class="w3-input" name="StartTime" type="text" required/></p>
+						<p>End Time <input class="w3-input" name="EndTime" type="text" required/></p>
+						<p>Location <input class="w3-input" name="Location" type="text" required/></p>
+						<p>Host <input class="w3-input" name="Host" type="text" required/></p>
 						<p>Description <input class="w3-input" name="Description" type="text" required/></p>
 						<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Event"/>
 					</form>
@@ -229,8 +229,8 @@
 				    echo "0 results";
 				}
 				$conn->close();
-				?> 
-			
+				?>
+
 		</div>
 		<hr style="margin-top: 0em;">
 
