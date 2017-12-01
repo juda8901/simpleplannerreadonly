@@ -33,7 +33,11 @@
 		<div id="LogInButtons">
 			<a href="#" style="margin: 15px 15px 15px 15px;"></a>
 			<img src="Frontend/treeLogo.png" style="width:40px;height:40px;"/>
+<<<<<<< HEAD
 			<a href="Frontend/login.php" class=" w3-right w3-button w3-hover-white" >Log in</a>
+=======
+			<a href="/Backend/login.php" class=" w3-right w3-button w3-hover-white" >Log in</a>
+>>>>>>> 2d311093af10e4df0ad7dd7eb27d51aacf0e063c
 			<a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-right w3-button w3-hover-white" >Sign up</a>
 			<a href="" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
 		</div>
