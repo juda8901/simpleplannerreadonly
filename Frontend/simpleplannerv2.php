@@ -191,44 +191,43 @@
 		<!-- Event Cards -->
 		<div id="cards" style="background:#f2f2f2;">
 			 <?php
-				$servername = "sql3.freemysqlhosting.net";
-				$username = "sql3203668";
-				$password = "arbhcojdmnFA17";
-				$dbname = "sql3203668";
+				 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+				 $server = $url["host"];
+				 $username = $url["user"];
+				 $password = $url["pass"];
+				 $db = substr($url["path"], 1);
+					// Create connection
+					$conn = new mysqli($servername, $username, $password, $dbname);
+					// Check connection
+					if ($conn->connect_error) {
+					    die("Connection failed: " . $conn->connect_error);
+					}
 
-				// Create connection
-				$conn = new mysqli($servername, $username, $password, $dbname);
-				// Check connection
-				if ($conn->connect_error) {
-				    die("Connection failed: " . $conn->connect_error);
-				}
+					$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
+					$result = $conn->query($sql);
 
-				$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
-				$result = $conn->query($sql);
-
-				if ($result->num_rows > 0) {
-				    // output data of each row
-				    while($row = $result->fetch_assoc()) {
-				    	$tempStamp = strtotime($row['event_start_date_time']);
-				    	$startTime = date('g:i A', $tempStamp);
-				    	$startDate = date('m/d',$tempStamp);
+					if ($result->num_rows > 0) {
+					    // output data of each row
+					    while($row = $result->fetch_assoc()) {
+					    	$tempStamp = strtotime($row['event_start_date_time']);
+					    	$startTime = date('g:i A', $tempStamp);
+					    	$startDate = date('m/d',$tempStamp);
 
 
-				    	$tempStamp = strtotime($row['event_end_date_time']);
-				    	$endTime = date('g:i A',$tempStamp);
-				    	$endDate = date('m/d',$tempStamp);
+					    	$tempStamp = strtotime($row['event_end_date_time']);
+					    	$endTime = date('g:i A',$tempStamp);
+					    	$endDate = date('m/d',$tempStamp);
 
-				    	$title = $row["event_title"];
-				    	if (empty($title)){
-				    		$title = "No Title";
-				    	}
-
-				        echo "<div class='card' style='float:left; width: 300px; margin: 10px 10px 10px 20px;'><h1>" . $row["event_title"]. "</h1><p>" . $row["event_location"]. "</p><p>" . $startTime. "-" . $endTime. "</p><p>" . $startDate. "-" . $endDate. "</p><p>" . $row["event_description"]. "</p><p><button>Contact</button></p></div>";
-				    }
-				} else {
-				    echo "0 results";
-				}
-				$conn->close();
+					    	$title = $row["event_title"];
+					    	if (empty($title)){
+					    		$title = "No Title";
+					    	}
+					        echo "<div class='card' style='float:left; width: 300px; margin: 10px 10px 10px 20px;'><h1>" . $row["event_title"]. "</h1><p>" . $row["event_location"]. "</p><p>" . $startTime. "-" . $endTime. "</p><p>" . $startDate. "-" . $endDate. "</p><p>" . $row["event_description"]. "</p><p><button>Contact</button></p></div>";
+					    }
+					} else {
+					    echo "0 results";
+					}
+					$conn->close();
 				?>
 
 		</div>
