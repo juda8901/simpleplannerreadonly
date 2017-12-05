@@ -164,27 +164,113 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Modal for Create Event -->
 		<div id="create_event" class="w3-modal">
 			<div class="w3-modal-content w3-card-1 w3-animate-right">
-				<header class="w3-container w3-card w3-round w3-theme-l1"></header>
-				<span onclick="document.getElementById('create_event').style.display='none'" class="w3-button w3-display-topright">×</span>
-				<div class="w3-center">
-					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="/Backend/create_event_handler.php">
-						<h2>Create an Event!</h2>
-						<p>Event Title <input class="w3-input" name="EventTitle" type="text" required/></p>
-						<p>Start Time <input class="w3-input" name="StartTime" type="text" required/></p>
-						<p>End Time <input class="w3-input" name="EndTime" type="text" required/></p>
-						<p>Location <input class="w3-input" name="Location" type="text" required/></p>
-						<p>Host <input class="w3-input" name="Host" type="text" required/></p>
-						<p>Description <input class="w3-input" name="Description" type="text" required/></p>
-						<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Event"/>
-					</form>
-				</div>
+			<header class="w3-container w3-card w3-round w3-theme-l1"> 
+			<span onclick="document.getElementById('create_event').style.display='none'"
+			class="w3-button w3-display-topright">×</span>
+			<div class="w3-center">
+			<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Group_Management_Project/Backend/create_event_handler.php">
+			<h2>Create an Event!</h2>
+			<div class="w3-section"> 
+				<input class="w3-input" name="EventTitle" type="text" required>
+				<label>Event Title&nbsp </label>
 			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="StartTime" type="datetime-local" required>
+				<label>Start Time&nbsp </label>
+			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="EndTime" type="datetime-local" required>
+				<label>End Time&nbsp </label>
+			</div>
+			<div class="w3-section" id="locationField">      
+				<input class="w3-input" name="Location" id="autocomplete" placeholder="Enter the address" onFocus="geolocate()" type="text" required>
+				<label>Location&nbsp </label>
+			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="Host" type="text" required>
+				<label>Host&nbsp </label>
+			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="Description" type="text" required>
+				<label>Description&nbsp </label>
+			</div>
+			<div class="w3-section">      
+				<input class="w3-input" name="Tags" type="text" required>
+				<label>Tags&nbsp </label>
+			</div>
+			<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Event" /> &nbsp
+			</header>
 		</div>
+		</form>
+		</div>
+		</div>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&libraries=places&callback=initAutocomplete"
+        async defer></script>
+		<script>
+			var placeSearch, autocomplete;
+			var componentForm = {
+				street_number: 'short_name',
+				route: 'long_name',
+				locality: 'long_name',
+				administrative_area_level_1: 'short_name',
+				country: 'long_name',
+				postal_code: 'short_name'
+			};
 
+			function initAutocomplete() {
+				// Create the autocomplete object, restricting the search to geographical
+				// location types.
+				autocomplete = new google.maps.places.Autocomplete(
+				/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+				{types: ['geocode']});
+
+				// When the user selects an address from the dropdown, populate the address
+				// fields in the form.
+				autocomplete.addListener('place_changed', fillInAddress);
+			}
+
+			function fillInAddress() {
+				// Get the place details from the autocomplete object.
+				var place = autocomplete.getPlace();
+
+				for (var component in componentForm) {
+					document.getElementById(component).value = '';
+					document.getElementById(component).disabled = false;
+				}
+
+				// Get each component of the address from the place details
+				// and fill the corresponding field on the form.
+				for (var i = 0; i < place.address_components.length; i++) {
+					var addressType = place.address_components[i].types[0];
+					if (componentForm[addressType]) {
+						var val = place.address_components[i][componentForm[addressType]];
+						document.getElementById(addressType).value = val;
+					}
+				}
+			}
+
+			// Bias the autocomplete object to the user's geographical location,
+			// as supplied by the browser's 'navigator.geolocation' object.
+			function geolocate() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function(position) {
+						var geolocation = {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude
+						};
+						var circle = new google.maps.Circle({
+							center: geolocation,
+							radius: position.coords.accuracy
+						});
+						autocomplete.setBounds(circle.getBounds());
+					});
+				}
+			}
+			//from Google: https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+		</script>
 		<!-- Create Event Button -->
 		<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-green" onclick="document.getElementById('create_event').style.display='block'" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button>
 
