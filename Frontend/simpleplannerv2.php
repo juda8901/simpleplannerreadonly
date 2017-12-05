@@ -190,10 +190,6 @@
 				<label>Location&nbsp </label>
 			</div>
 			<div class="w3-section">      
-				<input class="w3-input" name="Host" type="text" required>
-				<label>Host&nbsp </label>
-			</div>
-			<div class="w3-section">      
 				<input class="w3-input" name="Description" type="text" required>
 				<label>Description&nbsp </label>
 			</div>
@@ -207,7 +203,7 @@
 		</form>
 		</div>
 		</div>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&libraries=places&callback=initAutocomplete"
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&libraries=places&callback=initAutocomplete"
         async defer></script>
 		<script>
 			var placeSearch, autocomplete;
