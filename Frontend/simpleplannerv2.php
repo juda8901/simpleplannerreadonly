@@ -62,7 +62,7 @@
 						<h2>Join Simpleplanner Today</h2>
 						<p>Full Name: <input class="w3-input w3-center" name="Name" type="text" required/></p>
 						<p>Email: <input class="w3-input w3-center" name="Email" id="email" type="text" required/></p>
-                        <div id="eRequirements" class="w3-card-4" style="display: none; margin: 0 auto; width: fit-content; text-align: justify; padding: 25px;">
+                        <div id="eRequirement" class="w3-card-4" style="display: none; margin: 0 auto; width: fit-content; text-align: justify; padding: 25px;">
                             <p id="eVerify" class="invalid" style="font-size: 12pt;margin: 0px;margin-left: 15px;padding: 0px;">Valid email address</p>
                         </div>
 						<p>Password: <input class="w3-input w3-center" name="Password" id="Password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and 8 or more characters in length" required/></p>
@@ -147,12 +147,17 @@
 								match.classList.add("invalid");
 							}
 						}
-                        pw.onfocus = function() {
-				            document.getElementById("eRequirements").style.display = "block";
+                        //display message box when user clicks on email field
+                        em.onfocus = function() {
+				            document.getElementById("eRequirement").style.display = "block";
+                        }
+                        //hide message box when user clicks away
+                        em.onblur = function() {
+                            document.getElementById("eRequirement").style.display = "none";
                         }
                         //Checks if correct email format
 						em.onkeyup = function(){
-							var validEmail = /^[A-Z0-9._%+-]+@[A-Z]{2,}$/g;
+							var validEmail = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/g;
 							if(em.value.match(validEmail)){
 								eVerify.classList.remove("invalid");
 								eVerify.classList.add("valid");
