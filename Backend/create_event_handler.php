@@ -13,7 +13,7 @@
 	$password = $url["pass"];
 	$db = substr($url["path"], 1);
 	$conn = @mysqli_connect($server, $username, $password, $db);
-	
+
 	if(mysqli_connect_errno()){
 		echo "<h4>Failed to connect to MySQL: </h4>".mysqli_connect_error();
 	}
@@ -21,7 +21,7 @@
 	$insert="INSERT INTO events (event_title,event_start_date_time,event_end_date_time,event_location,event_description) VALUES ('$EventTitle','$StartTime','$EndTime','$Location','$Description');";
 	if($conn->query($insert)==TRUE){
 		echo "Event created successfully";
-		include 'Group_Management_Project/Frontend/simpleplannerv2.php';
+		include_once '/Frontend/simpleplannerv2.php';
 	} else {
 		echo "Error: ".$insert."<br>".$conn->error;
 	}

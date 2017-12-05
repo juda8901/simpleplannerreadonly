@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" lang="en">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link rel="stylesheet" type="text/css" href="simpleplannerv2.css">
+		<link rel="stylesheet" type="text/css" href="Frontend/simpleplannerv2.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -32,8 +32,8 @@
 		<!-- Top Buttons -->
 		<div id="LogInButtons">
 			<a href="#" style="margin: 15px 15px 15px 15px;"></a>
-			<img src="treeLogo.png" style="width:40px;height:40px;"/>
-			<a href="login.php" class=" w3-right w3-button w3-hover-white" >Log in</a>
+			<img src="Frontend/treeLogo.png" style="width:40px;height:40px;"/>
+			<a href="Frontend/login.php" class=" w3-right w3-button w3-hover-white" >Log in</a>
 			<a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-right w3-button w3-hover-white" >Sign up</a>
 			<a href="" class=" w3-right w3-button w3-hover-white" style="color:#f13a59;">Create a group</a>
 		</div>
@@ -45,7 +45,7 @@
 			<h1>Simpleplanner</h1>
 			<h2>
 				<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#2e3e48;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
-					<span class="wrap"/>
+					<span class="wrap"></span>
 				</a>
 			</h2>
 		</header>
@@ -58,10 +58,13 @@
 				<header class="w3-container w3-card w3-round w3-theme-l1"></header>
 				<span onclick="document.getElementById('sign_up').style.display='none'" class="w3-button w3-display-topright">×</span>
 				<div class="w3-center">
-					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Group_Management_Project/Backend/create_account_handler.php">
+					<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="/Backend/create_account_handler.php">
 						<h2>Join Simpleplanner Today</h2>
 						<p>Full Name: <input class="w3-input w3-center" name="Name" type="text" required/></p>
-						<p>Email: <input class="w3-input w3-center" name="Email" type="text" required/></p>
+						<p>Email: <input class="w3-input w3-center" name="Email" id="email" type="text" required/></p>
+                        <div id="eRequirements" class="w3-card-4" style="display: none; margin: 0 auto; width: fit-content; text-align: justify; padding: 25px;">
+                            <p id="eVerify" class="invalid" style="font-size: 12pt;margin: 0px;margin-left: 15px;padding: 0px;">Valid email address</p>
+                        </div>
 						<p>Password: <input class="w3-input w3-center" name="Password" id="Password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and 8 or more characters in length" required/></p>
 						<p>Re-enter Password: <input class="w3-input w3-center" type="password" id="verify_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></p>
 						<div id="requirements" class="w3-card-4" style="display: none; margin: 0 auto; width: fit-content; text-align: justify; padding: 25px;">
@@ -83,6 +86,7 @@
 						var number = document.getElementById("number");
 						var length = document.getElementById("length");
 						var match = document.getElementById("match");
+                        var em = document.getElementById("email");
 							// When the user clicks on the password field, show the message box
 							pw.onfocus = function() {
 								document.getElementById("requirements").style.display = "block";
@@ -104,7 +108,7 @@
 							} else {
 								letter.classList.remove("valid");
 								letter.classList.add("invalid");
-							}        
+							}
 							// Validate capital letters
 							var upperCaseLetters = /[A-Z]/g;
 							if(pw.value.match(upperCaseLetters)) {
@@ -142,15 +146,18 @@
 								match.classList.add("invalid");
 							}
 						}
-						var em = document.getElementById("email");
+                        pw.onfocus = function() {
+				            document.getElementById("eRequirements").style.display = "block";
+                        }
+                        //Checks if correct email format
 						em.onkeyup = function(){
 							var validEmail = /^[A-Z0-9._%+-]+@[A-Z]{2,}$/g;
 							if(em.value.match(validEmail)){
-								em.classList.remove("invalid");
-								em.classList.add("valid");
+								eVerify.classList.remove("invalid");
+								eVerify.classList.add("valid");
 							} else {
-								em.classList.remove("valid");
-								em.classList.add("invalid");
+								eVerify.classList.remove("valid");
+								eVerify.classList.add("invalid");
 							}
 						}
 					</script>
@@ -269,7 +276,46 @@
 
 		<!-- Event Cards -->
 		<div id="cards" style="background:#f2f2f2;">
-			<br>
+			 <?php
+				 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+				 $server = $url["host"];
+				 $username = $url["user"];
+				 $password = $url["pass"];
+				 $db = substr($url["path"], 1);
+					// Create connection
+					$conn = new mysqli($server, $username, $password, $db);
+					// Check connection
+					if ($conn->connect_error) {
+					    die("Connection failed: " . $conn->connect_error);
+					}
+
+					$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
+					$result = $conn->query($sql);
+
+					if ($result->num_rows > 0) {
+					    // output data of each row
+					    while($row = $result->fetch_assoc()) {
+					    	$tempStamp = strtotime($row['event_start_date_time']);
+					    	$startTime = date('g:i A', $tempStamp);
+					    	$startDate = date('m/d',$tempStamp);
+
+
+					    	$tempStamp = strtotime($row['event_end_date_time']);
+					    	$endTime = date('g:i A',$tempStamp);
+					    	$endDate = date('m/d',$tempStamp);
+
+					    	$title = $row["event_title"];
+					    	if (empty($title)){
+					    		$title = "No Title";
+					    	}
+					        echo "<div class='card' style='float:left; width: 300px; margin: 10px 10px 10px 20px;'><h1>" . $row["event_title"]. "</h1><p>" . $row["event_location"]. "</p><p>" . $startTime. "-" . $endTime. "</p><p>" . $startDate. "-" . $endDate. "</p><p>" . $row["event_description"]. "</p><p><button>Contact</button></p></div>";
+					    }
+					} else {
+					    echo "0 results";
+					}
+					$conn->close();
+				?>
+
 		</div>
 		<hr style="margin-top: 0em;">
 
