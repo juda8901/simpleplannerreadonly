@@ -185,8 +185,8 @@
 			</div>
 			<div class="w3-section">
 				<select class="w3-input" name="PrivPub">
-					<option value=1>Private</option>
-					<option value=0>Public</option>
+					<option value="1">Private</option>
+					<option value="0">Public</option>
 				</select>
 			</div>
 			<div class="w3-section">      
