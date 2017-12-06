@@ -12,6 +12,8 @@
 	else{
 		$priv = 0;
 	}
+	$start = strtotime($StartTime);
+	$end = strtotime($EndTime);
 	
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 	$server = $url["host"];
@@ -23,11 +25,11 @@
 	if(mysqli_connect_errno()){
 		echo "<h4>Failed to connect to MySQL: </h4>".mysqli_connect_error();
 	}
-	
-	$insert="INSERT INTO events (event_title,event_start_date_time,event_end_date_time,event_location,event_description,event_is_hidden) VALUES ('$EventTitle',STR_TO_DATE('$StartTime','%m/%d/%Y %h:%i %p'),STR_TO_DATE('$EndTime','%m/%d/%Y %h:%i %p'),'$Location','$Description',$priv);";
+	//STR_TO_DATE('$StartTime','%m/%d/%Y %h:%i %p'),STR_TO_DATE('$EndTime','%m/%d/%Y %h:%i %p')
+	$insert="INSERT INTO events (event_title,event_start_date_time,event_end_date_time,event_location,event_description,event_is_hidden) VALUES ('$EventTitle',$start,$end,'$Location','$Description',$priv);";
 	if($conn->query($insert)==TRUE){
 		echo "Event created successfully";
-		include_once '/Frontend/simpleplannerv2.php';
+		include '/Frontend/simpleplannerv2.php';
 	} else {
 		echo "Error: ".$insert."<br>".$conn->error;
 	}
