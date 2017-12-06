@@ -177,6 +177,12 @@
 				<input class="w3-input" name="EventTitle" type="text" required>
 				<label>Event Title&nbsp </label>
 			</div>
+			<div class="w3-section">
+				<select class="w3-input" name="PrivPub">
+					<option value=1>Private</option>
+					<option value=0>Public</option>
+				</select>
+			</div>
 			<div class="w3-section">      
 				<input class="w3-input" name="StartTime" type="datetime-local" required>
 				<label>Start Time&nbsp </label>
