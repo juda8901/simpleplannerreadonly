@@ -15,7 +15,7 @@
 	$query="SELECT * FROM accounts WHERE account_email='$uname' AND account_password='$psw';";
 	if($conn->query($query)==TRUE){
 		echo "Account found";
-		include_once '/Frontend/simpleplannerv2';
+		include_once '/Frontend/simpleplannerv2.php';
 	} else {
 		echo "Error: ".$query."<br>".$conn->error;
 	}
