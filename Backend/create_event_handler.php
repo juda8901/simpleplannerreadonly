@@ -12,8 +12,8 @@
 	else{
 		$priv = 0;
 	}
-	$start = date(DATE_ISO8601,$StartTime);
-	$end = date(DATE_ISO8601,$EndTime);
+	$start = date(Y-m-d h:i:s,$StartTime);
+	$end = date(Y-m-d h:i:s,$EndTime);
 	
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 	$server = $url["host"];
