@@ -15,7 +15,7 @@
 	$query="SELECT * FROM accounts WHERE account_email='$uname' AND account_password='$psw';";
 	if($conn->query($query)==TRUE){
 		echo "Account found";
-		header('Location: https://simpleplanner.herokuapp.com/Frontend/simpleplannerv2.php');
+		header('Location: https://simpleplanner.herokuapp.com');
 	} else {
 		echo "Error: ".$query."<br>".$conn->error;
 	}
