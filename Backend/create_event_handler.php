@@ -29,7 +29,7 @@
 	$insert="INSERT INTO events (event_title,event_start_date_time,event_end_date_time,event_location,event_description,event_is_hidden) VALUES ('$EventTitle',$start,$end,'$Location','$Description',$priv);";
 	if($conn->query($insert)==TRUE){
 		echo "Event created successfully";
-		include '/Frontend/simpleplannerv2.php';
+		include_once '/Frontend/simpleplannerv2.php';
 	} else {
 		echo "Error: ".$insert."<br>".$conn->error;
 	}
