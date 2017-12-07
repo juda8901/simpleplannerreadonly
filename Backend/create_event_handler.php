@@ -4,9 +4,17 @@
 	$StartTime = $_REQUEST['Start Time'];
 	$EndTime = $_REQUEST['End Time'];
 	$Location = $_REQUEST['Location'];
-	//$Host = $_REQUEST['Host'];
 	$Description = $_REQUEST['Description'];
-
+	$PrivPub = $_REQUEST['PrivPub'];
+	if($PrivPub == '1'){
+		$priv = 1;
+	}
+	else{
+		$priv = 0;
+	}
+	$start = date(Y-m-d h:i:s,$StartTime);
+	$end = date(Y-m-d h:i:s,$EndTime);
+	
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 	$server = $url["host"];
 	$username = $url["user"];
@@ -17,11 +25,11 @@
 	if(mysqli_connect_errno()){
 		echo "<h4>Failed to connect to MySQL: </h4>".mysqli_connect_error();
 	}
-	//,event_host_account_id //(SELECT account_id FROM accounts WHERE account_name='$Host'),
-	$insert="INSERT INTO events (event_title,event_start_date_time,event_end_date_time,event_location,event_description) VALUES ('$EventTitle','$StartTime','$EndTime','$Location','$Description');";
+	//STR_TO_DATE('$StartTime','%m/%d/%Y %h:%i %p'),STR_TO_DATE('$EndTime','%m/%d/%Y %h:%i %p')
+	$insert="INSERT INTO events (event_title,event_start_date_time,event_end_date_time,event_location,event_description,event_is_hidden) VALUES ('$EventTitle',$start,$end,'$Location','$Description',$priv);";
 	if($conn->query($insert)==TRUE){
 		echo "Event created successfully";
-		include_once '/Frontend/simpleplannerv2.php';
+		include '/Frontend/simpleplannerv2.php';
 	} else {
 		echo "Error: ".$insert."<br>".$conn->error;
 	}

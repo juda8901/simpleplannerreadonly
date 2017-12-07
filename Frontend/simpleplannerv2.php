@@ -177,11 +177,17 @@
 			<span onclick="document.getElementById('create_event').style.display='none'"
 			class="w3-button w3-display-topright">×</span>
 			<div class="w3-center">
-			<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="http://localhost/Group_Management_Project/Backend/create_event_handler.php">
+			<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="/Backend/create_event_handler.php">
 			<h2>Create an Event!</h2>
 			<div class="w3-section"> 
 				<input class="w3-input" name="EventTitle" type="text" required>
 				<label>Event Title&nbsp </label>
+			</div>
+			<div class="w3-section">
+				<select class="w3-input" name="PrivPub">
+					<option value="1">Private</option>
+					<option value="0">Public</option>
+				</select>
 			</div>
 			<div class="w3-section">      
 				<input class="w3-input" name="StartTime" type="datetime-local" required>
