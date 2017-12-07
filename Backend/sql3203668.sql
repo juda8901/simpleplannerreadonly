@@ -85,7 +85,7 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `event_host_account_id`, `event_title`, `event_start_date_time`, `event_end_date_time`, `event_location`, `event_description`, `event_is_hidden`) VALUES
-(1, 0, 'Initial Test Event', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Nowhere', 'This is a test event', 0),
+(1, 0, 'Initial Test Event', '2017-08-16 1:00:00', '2017-12-11 5:30:00', 'Nowhere', 'This is a test event', 0),
 (2, 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Boulder', 'insert from website', 0),
 (3, 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Somewhere', 'new test', 0),
 (4, 0, 'Testttt', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'yourhouse', 'other test', 0),
