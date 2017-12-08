@@ -1,0 +1,112 @@
+<div id="sign_up" class="w3-modal">
+  <div class="w3-modal-content w3-card-1 w3-animate-right">
+    <header class="w3-container w3-card w3-round w3-theme-l1"></header>
+    <span onclick="document.getElementById('sign_up').style.display='none'" class="w3-button w3-display-topright">×</span>
+    <div class="w3-center">
+      <form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="/Backend/create_account_handler.php">
+        <h2>Join Simpleplanner Today</h2>
+        <p>Full Name: <input class="w3-input w3-center" name="Name" type="text" required/></p>
+        <p>Email: <input class="w3-input w3-center" name="Email" id="email" type="text" required/></p>
+        <div id="eRequirements" class="w3-card-4" style="display: none; margin: 0 auto; width: fit-content; text-align: justify; padding: 25px;">
+          <p id="eVerify" class="invalid" style="font-size: 12pt;margin: 0px;margin-left: 15px;padding: 0px;">Valid email address</p>
+        </div>
+        <p>Password: <input class="w3-input w3-center" name="Password" id="Password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and 8 or more characters in length" required/></p>
+        <p>Re-enter Password: <input class="w3-input w3-center" type="password" id="verify_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></p>
+        <div id="requirements" class="w3-card-4" style="display: none; margin: 0 auto; width: fit-content; text-align: justify; padding: 25px;">
+          <label>Password must contain the following:</label>
+          <p id="letter" class="invalid" style="font-size: 12pt;margin: 0px;margin-left: 15px;padding: 0px;">At least one lowercase letter</p>
+          <p id="capital" class="invalid" style="font-size: 12pt;margin: 0px;margin-left: 15px;padding: 0px;">At least one uppercase letter</p>
+          <p id="number" class="invalid" style="font-size: 12pt;margin: 0px;margin-left: 15px;padding: 0px;">At least one number</p>
+          <p id="length" class="invalid" style="font-size: 12pt;margin: 0px;margin-left: 15px;padding: 0px;">Must be 8 or more characters</p>
+          <p id="match" class="invalid" style="font-size: 12pt;m;margin: 0px;margin-left: 14px;padding: 0px;">Passwords must match</p>
+        </div>
+        <input type="submit" class="w3-center w3-btn w3-xlarge w3-hover-white w3-blue-grey" value="Sign up" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;"/>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Script for password validation -->
+<script>
+var pw = document.getElementById("Password");
+var v_pw = document.getElementById("verify_password");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+var match = document.getElementById("match");
+var em = document.getElementById("email");
+// When the user clicks on the password field, show the message box
+pw.onfocus = function() {
+  document.getElementById("requirements").style.display = "block";
+}
+v_pw.onfocus = function() {
+  document.getElementById("requirements").style.display = "block";
+}
+// When the user clicks outside of the password field, hide the message box
+pw.onblur = function() {
+  document.getElementById("requirements").style.display = "none";
+}
+// When the user starts to type something inside the password field
+pw.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(pw.value.match(lowerCaseLetters)) {
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(pw.value.match(upperCaseLetters)) {
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(pw.value.match(numbers)) {
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  // Validate length
+  if(pw.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+v_pw.onkeyup = function(){
+  //Check that passwords match
+  if(v_pw.value==pw.value){
+    match.classList.remove("invalid");
+    match.classList.add("valid");
+  } else {
+    match.classList.remove("valid");
+    match.classList.add("invalid");
+  }
+}
+pw.onfocus = function() {
+  document.getElementById("eRequirements").style.display = "block";
+}
+// Checks if correct email format
+em.onkeyup = function(){
+  var validEmail = /^[A-Z0-9._%+-]+@[A-Z]{2,}$/g;
+  if(em.value.match(validEmail)){
+    eVerify.classList.remove("invalid");
+    eVerify.classList.add("valid");
+  } else {
+    eVerify.classList.remove("valid");
+    eVerify.classList.add("invalid");
+  }
+}
+</script>
