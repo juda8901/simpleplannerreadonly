@@ -15,10 +15,13 @@
 	//$start = date(Y-m-d h:i:s,$StartTime);
 	//$end = date(Y-m-d h:i:s,$EndTime);
 	//$format = "%m/%d/%Y %h:%i %p"
-	$format = "%Y-%m-%d %h:%i:%s"
-	$start = strftime($format,$StartTime);
-	$end = strftime($format,$EndTime);
-	
+	//$format = "%Y-%m-%d %h:%i:%s"
+	//$start = strftime($format,$StartTime);
+	//$end = strftime($format,$EndTime);
+	$startformat = date_create_from_format("m/d/Y h:i p",$StartTime)
+	$start = date_format($startformat,"Y-m-d h:i:s")
+	$endformat = date_create_from_format("m/d/Y h:i p",$EndTime)
+	$end = date_format($startformat,"Y-m-d h:i:s")
 	
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 	$server = $url["host"];
