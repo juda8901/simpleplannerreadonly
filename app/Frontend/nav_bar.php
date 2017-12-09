@@ -18,4 +18,5 @@ if($_SESSION['user_id'] != NULL){
 }
 
 require 'sign_up.html';
+require 'create_group.html';
 ?>
