@@ -1,0 +1,28 @@
+<div id="create_group" class="w3-modal">
+	<div class="w3-modal-content w3-card-1 w3-animate-right">
+		<header class="w3-container w3-card w3-round w3-theme-l1">
+			<span onclick="document.getElementById('create_group').style.display='none'"
+			class="w3-button w3-display-topright">×</span>
+			<div class="w3-center">
+				<form class="w3-center w3-container w3-card-1" enctype="multipart/form-data" action="/Backend/create_group_handler.php">
+					<h2>Create a Group!</h2>
+					<div class="w3-section">
+						<input class="w3-input" name="GroupName" type="text" required>
+						<label>Group Name</label>
+					</div>
+					<div class="w3-section">
+						<select class="w3-input" name="PrivatePub">
+							<option value="1">Private</option>
+							<option value="0">Public</option>
+						</select>
+					</div>
+					<div class="w3-section">
+						<input class="w3-input" name="Descrip" type="text" required>
+						<label>Description </label>
+					</div>
+					<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Group" />
+				</header>
+			</div>
+		</form>
+	</div>
+</div>

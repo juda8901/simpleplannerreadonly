@@ -7,7 +7,7 @@
   <a href="Frontend/login.php" class="w3-bar-item w3-right w3-button w3-hover-white" id="login">Log In</a>
   <a href="<?php session_unset();session_destroy(); ?>" class="w3-bar-item w3-right w3-button w3-hover-white" id="logout">Log Out</a>
   <a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-bar-item w3-right w3-button w3-hover-white" id="reg">Sign Up</a>
-  <a href="" class=" w3-bar-item w3-right w3-button w3-hover-white" style="color: red;" id="group">Create a Group</a>
+  <a onclick="document.getElementById('create_group').style.display='block'" class=" w3-bar-item w3-right w3-button w3-hover-white" style="color: red;" id="group">Create a Group</a>
 </div>
 
 <?php
