@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 //Get entries to form from simpleplannerv2.php
 $EventTitle = $_REQUEST['EventTitle'];
 $StartTime = $_REQUEST['Start Time'];
