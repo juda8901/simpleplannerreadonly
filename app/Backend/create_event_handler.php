@@ -23,7 +23,7 @@ else{
 $startformat = date_create_from_format("m/d/Y h:i p",$StartTime)
 $start = date_format($startformat,"Y-m-d h:i:s")
 $endformat = date_create_from_format("m/d/Y h:i p",$EndTime)
-$end = date_format($startformat,"Y-m-d h:i:s")
+$end = date_format($endformat,"Y-m-d h:i:s")
 
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $server = $url["host"];
