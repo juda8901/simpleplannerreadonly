@@ -102,7 +102,7 @@
 
 	<!-- Modal for Create Event -->
 	<div id="create_event" class="w3-modal">
-		<div class="w3-modal-content w3-card-1">
+		<div class="w3-modal-content w3-card-1 w3-animate-top">
 			<header class="w3-container w3-card w3-round w3-theme-l1">
 				<span onclick="document.getElementById('create_event').style.display='none'"
 				class="w3-button w3-display-topright">×</span>
