@@ -63,7 +63,6 @@
 	</center>
 	<br>
 
-	<script>
 	<?php
 	function login(){
 		$uname=$_REQUEST['uname'];
@@ -85,7 +84,6 @@
 			echo "<p>Error: ".$query."<br>".$conn->error."</p>";
 		} elseif ($result->num_rows <= 0) {
 			echo "document.getElementById('error').style.display='block';";
-			exit(0);
 		} else {
 			while($row=$result->fetch_assoc()) {
 				$_SESSION['user_id']=(int)$row['account_id'];
@@ -96,7 +94,6 @@
 		$conn->close();
 	}
 	?>
-	</script>
 
 
 	<?php require 'footer.html'; ?>
