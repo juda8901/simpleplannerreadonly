@@ -35,14 +35,11 @@
 <body>
 	<!-- Top Buttons -->
 	<?php require 'nav_bar.php'; ?>
-	<!--
-	<script>document.getElementById('login').style.display='none';</script>
--->
 	<br>
 	<br>
-
 
 	<?php
+	$pg="login.php";
 	$uname=$_POST['uname'];
 	$psw=$_POST['psw'];
 
@@ -68,14 +65,14 @@
 				$_SESSION['user_id']=(int)$row['account_id'];
 				echo "<p>Session User ID: ".$_SESSION['user_id']."</p>";
 			}
-			header('Location: https://simpleplanner.herokuapp.com');
+			$pg="https://simpleplanner.herokuapp.com";
 		}
 		$conn->close();
 	}
 	?>
 
 	<center style="margin-top: 7.5%;">
-		<form action="login.php" method="post" style="margin: 20px 0px 20px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 20em; height: 25em;">
+		<form action="<?php echo $pg; ?>" method="post" style="margin: 20px 0px 20px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 20em; height: 25em;">
 			<h1 style="float:left; margin:10px 10px 10px 20px;"> Login </h1>
 			<br>
 			<br>
