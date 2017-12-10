@@ -40,7 +40,7 @@
 	<br>
 	<br>
 	<center style="margin-top: 7.5%;">
-		<form action="<?php echo login(); ?>" style="margin: 20px 0px 20px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 20em; height: 25em;">
+		<form action="login();" style="margin: 20px 0px 20px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 20em; height: 25em;">
 			<h1 style="float:left; margin:10px 10px 10px 20px;"> Login </h1>
 			<br>
 			<br>
@@ -64,8 +64,8 @@
 	<br>
 
 	<script>
-	<?php
 	function login(){
+		<?php
 		$uname=$_REQUEST['uname'];
 		$psw=$_REQUEST['psw'];
 
@@ -94,8 +94,8 @@
 			// header('Location: https://simpleplanner.herokuapp.com');
 		}
 		$conn->close();
+		?>
 	}
-	?>
 	</script>
 
 
