@@ -230,7 +230,7 @@
           die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM (SELECT event_guests.event_id, event_guests.account_id,event_guests.event_title, event_guests.event_description, event_guests.event_location, event_guests.event_start_date_time, event_guests.event_end_date_time  FROM event_guests, events WHERE event_guests.account_id=$_SESSION['user_id']) as myEvents"
+        $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM event WHERE event_id IN (SELECT event_id FROM event_guests WHERE account_id=$_SESSION['user_id']) as my_events";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
