@@ -229,10 +229,12 @@
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
-        if( isset($_SESSION['user_id'])){
-          $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM event WHERE event_id IN (SELECT event_id FROM event_guests WHERE account_id=$_SESSION['user_id']) as my_events";
+        if(isset($_SESSION['user_id'])){
+          $sessionID=$_SESSION['user_id'];
+          $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
         }
         else{
+          $sql = "";
             echo '<script type="text/javascript"> 
             alert("You must log in first");
             window.location = "login.php";
