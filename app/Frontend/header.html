@@ -4,11 +4,25 @@
 <link rel="stylesheet" type="text/css" href="Frontend/main.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-  <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
-  </script>
+<link rel="styleshee" type="text/css" href="jquery.timepicker.css" />
+<link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css" />
+<script type="text/javascript" src="bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="jquery.timepicker.js"></script>
+
+<script type="text/javascript" src="datepair.js"></script>
+<script>
+    // initialize input widgets first
+    $('#datepick .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+
+    $('#datepick .date').datepicker({
+        'format': 'm/d/yyyy',
+        'autoclose': true
+    });
+
+    // initialize datepair
+    var datepickEl = document.getElementById('datepick');
+    var datepair = new Datepair(datepickEl);
+</script>
