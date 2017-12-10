@@ -7,7 +7,7 @@
        }
 body {
 	position: relative;
-    background-color: white;
+    background-color: #fafafa;
     color: #2e3e48;
  }
 
@@ -23,6 +23,7 @@ body {
 #Header {
 	margin: auto;
 	width: 60%;
+  background-color: white;
 }
 
 #Header h1{
