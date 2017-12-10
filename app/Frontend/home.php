@@ -102,7 +102,7 @@
 
 	<!-- Modal for Create Event -->
 	<div id="create_event" class="w3-modal">
-		<div class="w3-modal-content w3-card-1">
+		<div class="w3-modal-content w3-card-1 w3-animate-top">
 			<header class="w3-container w3-card w3-round w3-theme-l1">
 				<span onclick="document.getElementById('create_event').style.display='none'"
 				class="w3-button w3-display-topright">×</span>
@@ -140,9 +140,9 @@
 							<label>Tags </label>
 						</div>
 						<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Event" />
-					</header>
+					</form>
 				</div>
-			</form>
+           </header>
 		</div>
 	</div>
 
