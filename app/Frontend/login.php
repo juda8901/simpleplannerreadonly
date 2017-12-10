@@ -63,6 +63,7 @@
 	</center>
 	<br>
 
+	<script>
 	<?php
 	function login(){
 		$uname=$_REQUEST['uname'];
@@ -83,7 +84,7 @@
 		if(!$result){
 			echo "<p>Error: ".$query."<br>".$conn->error."</p>";
 		} elseif ($result->num_rows <= 0) {
-			echo "<script?document.getElementById('error').style.display='block';</script>";
+			echo "document.getElementById('error').style.display='block';";
 			exit(0);
 		} else {
 			while($row=$result->fetch_assoc()) {
@@ -95,6 +96,7 @@
 		$conn->close();
 	}
 	?>
+	</script>
 
 
 	<?php require 'footer.html'; ?>
