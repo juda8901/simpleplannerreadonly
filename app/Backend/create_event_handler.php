@@ -16,7 +16,7 @@ else{
 }
 //$start = date(Y-m-d h:i:s,$StartTime);
 //$end = date(Y-m-d h:i:s,$EndTime);
-//$format = "%m/%d/%Y %h:%i %p"
+$format = "%m/%d/%Y %h:%i %p"
 //$format = "%Y-%m-%d %h:%i:%s"
 //$start = strftime($format,$StartTime);
 //$end = strftime($format,$EndTime);
@@ -24,8 +24,10 @@ else{
 //$start = date_format($startformat,"Y-m-d h:i:s")
 //$endformat = date_create_from_format("m/d/Y h:i p",$EndTime)
 //$end = date_format($endformat,"Y-m-d h:i:s")
-$start = date("Y-m-d h:i:s",$StartTime);
-$end = date("Y-m-d h:i:s",$EndTime);
+//$start = date("Y-m-d h:i:s",strtotime($StartTime));
+//$end = date("Y-m-d h:i:s",strtotime($EndTime));
+$start = date("Y-m-d h:i:s",strptime(strftime($format,$StartTime),$format));
+$end = date("Y-m-d h:i:s",strptime(strftime($format,$EndTime),$format));
 
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $server = $url["host"];
