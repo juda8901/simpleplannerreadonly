@@ -42,37 +42,7 @@
 
 
 	<center style="margin-top: 7.5%;">
-		<form action=`
-		<?php
-			$uname=$_REQUEST['uname'];
-			$psw=$_REQUEST['psw'];
-
-			$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-			$server = $url["host"];
-			$username = $url["user"];
-			$password = $url["pass"];
-			$db = substr($url["path"], 1);
-			$conn = new mysqli($server, $username, $password, $db);
-			if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-			}
-
-			$query="SELECT * FROM accounts WHERE account_email='$uname' AND account_password='$psw';";
-			$result=$conn->query($query);
-			if(!$result){
-				echo "<p>Error: ".$query."<br>".$conn->error."</p>";
-			} elseif ($result->num_rows <= 0) {
-				echo "<script>document.getElementById('error').style.display='block';</script>";
-				exit(0);
-			} else {
-				while($row=$result->fetch_assoc()) {
-					$_SESSION['user_id']=(int)$row['account_id'];
-					echo "<p>Session User ID: ".$_SESSION['user_id']."</p>";
-				}
-				// header('Location: https://simpleplanner.herokuapp.com');
-			}
-			$conn->close();
-			?>` style="margin: 20px 0px 20px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 20em; height: 25em;">
+		<form action="/Backend/login_handler.php?func_name=login" style="margin: 20px 0px 20px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 20em; height: 25em;">
 			<h1 style="float:left; margin:10px 10px 10px 20px;"> Login </h1>
 			<br>
 			<br>
