@@ -24,8 +24,8 @@ else{
 //$start = date_format($startformat,"Y-m-d H:i:s")
 //$endformat = date_create_from_format("m/d/Y h:i p",$EndTime)
 //$end = date_format($endformat,"Y-m-d H:i:s")
-$start = date("Y-m-d H:i:s",strtotime($StartTime));
-$end = date("Y-m-d H:i:s",strtotime($EndTime));
+$start = date("Y-m-d H:i:s",$StartTime); //strtotime($StartTime)
+$end = date("Y-m-d H:i:s",$EndTime);
 //$start = date("Y-m-d H:i:s",strptime(strftime($format,$StartTime),$format));
 //$end = date("Y-m-d H:i:s",strptime(strftime($format,$EndTime),$format));
 
