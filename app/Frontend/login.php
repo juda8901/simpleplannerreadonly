@@ -35,8 +35,9 @@
 <body>
 	<!-- Top Buttons -->
 	<?php require 'nav_bar.php'; ?>
-
+	<!--
 	<script>document.getElementById('login').style.display='none';</script>
+-->
 	<br>
 	<br>
 
