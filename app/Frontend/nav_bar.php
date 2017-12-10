@@ -1,5 +1,5 @@
 <div class="w3-bar w3-blue-grey w3-top">
-  <a href="https://simpleplanner.herokuapp.com" class="w3-bar-item w3-left w3-button w3-hover-blue-grey"><img src="https://simpleplanner.herokuapp.com/Frontend/images/treeLogo.png" style="width: 20px; height: 20px;">   Simpleplanner</a>
+  <a href="https://simpleplanner.herokuapp.com" class="w3-bar-item w3-left w3-button w3-hover-blue-grey"><img src="https://simpleplanner.herokuapp.com/Frontend/images/treeLogo.png" style="width: 20px; height: 20px;"></a>
   <!--
   <div id="search_bar" class="w3-bar-item" style="padding: 5px; margin-left: 25%; text-align: center;">
 =======
