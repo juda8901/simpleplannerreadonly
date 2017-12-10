@@ -120,11 +120,11 @@
 							</select>
 						</div>
 						<div class="w3-section">
-							<input class="w3-input" name="StartTime" type="datetime-local" required>
+							<input id="datepicker" class="w3-input" name="StartTime" type="text" required>
 							<label>Start Time </label>
 						</div>
 						<div class="w3-section">
-							<input class="w3-input" name="EndTime" type="datetime-local" required>
+							<input id="datepicker" class="w3-input" name="EndTime" type="text" required>
 							<label>End Time </label>
 						</div>
 						<div class="w3-section" id="locationField">
