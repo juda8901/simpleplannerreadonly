@@ -23,6 +23,7 @@ body {
 #Header {
 	margin: auto;
 	width: 60%;
+  background-color: white;
 }
 
 #Header h1{
