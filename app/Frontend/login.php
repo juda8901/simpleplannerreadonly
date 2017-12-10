@@ -83,7 +83,7 @@
 		if(!$result){
 			echo "<p>Error: ".$query."<br>".$conn->error."</p>";
 		} elseif ($result->num_rows <= 0) {
-			echo "<script>document.getElementById('error').style.display='block'</script>";
+			echo "document.getElementById('error').style.display='block';";
 		} else {
 			while($row=$result->fetch_assoc()) {
 				$_SESSION['user_id']=(int)$row['account_id'];
