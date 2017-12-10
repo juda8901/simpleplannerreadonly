@@ -218,13 +218,14 @@
 		<div class="w3-container" style="width: 85%; margin: auto;">
 			<div class='w3-row' style=' margin: auto;'>
 				<?php
+				//$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 				$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 				$server = $url["host"];
 				$username = $url["user"];
 				$password = $url["pass"];
 				$db = substr($url["path"], 1);
 				// Create connection
-				$conn = new mysqli($server, $username, $password, $db);
+				 $conn = new mysqli($server, $username, $password, $db);
 				// Check connection
 				if ($conn->connect_error) {
 					die("Connection failed: " . $conn->connect_error);
@@ -271,6 +272,7 @@
 				$conn->close();
 				?>
 			</div>
+			
 			<hr>
 
 
