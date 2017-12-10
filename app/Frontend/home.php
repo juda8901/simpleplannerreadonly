@@ -99,6 +99,21 @@
 
 	<!-- Create Event Button -->
 	<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="document.getElementById('create_event').style.display='block'" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button>
+	 <div id="search_bar" class="w3-bar-item" style="padding: 5px; margin-left: 23%; margin-right: 15%;">
+    <input type="text" placeholder="  Search..." name="search-criteria" id="search-criteria" style="width: 500px; border-radius: 15px;">
+    <!-- search script -->
+    <script type="text/javascript">
+    $('.w3-row').hide();
+    $('#search').click(function(){
+        $('.w3-row').hide();
+        var s = $('#search-criteria').val();
+        $('.w3-row').each(function(){
+        if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
+            $(this).show();
+        }
+        });
+    });
+</script>
 
 
 	<!-- Modal for Create Event -->
