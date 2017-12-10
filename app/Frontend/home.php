@@ -20,6 +20,7 @@
 			</a>
 		</h2>
 	</header>
+	
 	<!-- Scripts for Header -->
 	<script type="text/javascript">
 	// Rotating text
@@ -272,7 +273,7 @@
 				$conn->close();
 				?>
 			</div>
-			
+
 			<hr>
 
 
