@@ -20,6 +20,7 @@
 			</a>
 		</h2>
 	</header>
+	
 	<!-- Scripts for Header -->
 	<script type="text/javascript">
 	// Rotating text
@@ -215,7 +216,7 @@
 
 
 		<!-- Event Cards -->
-		<div class="w3-container" style="width: 85%; margin: auto;">
+		<div class="w3-container" style="color: rgba(0,0,0,.87); width: 85%; margin: auto;">
 			<div class='w3-row' style=' margin: auto;'>
 				<?php
 				//$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
@@ -272,7 +273,7 @@
 				$conn->close();
 				?>
 			</div>
-			
+
 			<hr>
 
 
