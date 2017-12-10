@@ -62,3 +62,7 @@ body {
   right: 15px;
   content: "✖";
 }
+
+#search_bar {
+    text-align: center;
+}
