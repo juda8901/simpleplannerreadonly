@@ -1,8 +1,7 @@
 <div class="w3-bar w3-blue-grey w3-top">
-  <a href="https://simpleplanner.herokuapp.com" class="w3-bar-item w3-left w3-button w3-hover-blue-grey"><img src="https://simpleplanner.herokuapp.com/Frontend/images/treeLogo.png" style="width: 30px; height: 30px;">    Simpleplanner</a>
+  <a href="https://simpleplanner.herokuapp.com" class="w3-bar-item w3-left w3-button w3-hover-blue-grey"><img src="https://simpleplanner.herokuapp.com/Frontend/images/treeLogo.png" style="width: 30px; height: 30px;"></a>
 
-  <div id="search_bar" class="w3-bar-item" style="padding: 5px; margin-left: 23%; margin-right: 15%;">
-    <input type="text" placeholder="  Search..." name="search-criteria" id="search-criteria" style="width: 500px; border-radius: 15px;">
+
     <button type="submit" class="w3-button w3-hover-blue-grey" style="width:25px;padding:0px;margin:0px;" id="search" value="search"><i class="fa fa-search"></i></button>
   </div>
   <a href="Frontend/login.php" class="w3-bar-item w3-right w3-button w3-hover-white" id="login">Log In</a>
@@ -11,18 +10,6 @@
   <a onclick="document.getElementById('create_group').style.display='block'" class=" w3-bar-item w3-right w3-button w3-hover-red" style="color: red;" id="group">Create a Group</a>
 </div>
 
-<script type="text/javascript">
-    $('.w3-row').hide();
-    $('#search').click(function(){
-        $('.w3-row').hide();
-        var s = $('#search-criteria').val();
-        $('.w3-row').each(function(){
-        if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
-            $(this).show();
-        }
-        });
-    });
-</script>
 
 <?php
 if($_SESSION['user_id'] != NULL){
