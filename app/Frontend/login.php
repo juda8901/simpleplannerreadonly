@@ -89,7 +89,7 @@
 				$_SESSION['user_id']=(int)$row['account_id'];
 				echo "<p>Session User ID: ".$_SESSION['user_id']."</p>";
 			}
-			// header('Location: https://simpleplanner.herokuapp.com');
+			header('Location: https://simpleplanner.herokuapp.com');
 		}
 		$conn->close();
 	}
