@@ -1,5 +1,4 @@
 <?php
-function login() {
 	// session_start();
 	$uname=$_REQUEST['uname'];
 	$psw=$_REQUEST['psw'];
@@ -29,5 +28,4 @@ function login() {
 		// header('Location: https://simpleplanner.herokuapp.com');
 	}
 	$conn->close();
-}
 ?>
