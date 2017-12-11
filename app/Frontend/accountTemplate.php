@@ -15,6 +15,10 @@ $query="SELECT * FROM accounts WHERE account_email='$_SESSION['username']' AND a
 $result=$conn->query($query);
 if($result->num_rows==1){
   $logged_in=true;
+} else {
+  $conn->close();
+  header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
+  die();
 }
 $conn->close();
 ?>
@@ -247,15 +251,8 @@ $conn->close();
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
-        if($logged_in){
-          $sessionID=$_SESSION['user_id'];
-          $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
-        } else {
-          echo '<script type="text/javascript">
-          alert("You must log in first");
-          window.location = "login.php";
-          </script>';die();
-        }
+        $sessionID=$_SESSION['user_id'];
+        $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
