@@ -1,5 +1,5 @@
 <div class="w3-bar w3-blue-grey w3-top">
-  <a href="https://simpleplanner.herokuapp.com" class="w3-bar-item w3-left w3-button w3-hover-blue-grey"><img src="https://simpleplanner.herokuapp.com/Frontend/images/treeLogo.png" style="width: 30px; height: 30px;"><span id="nav_title" style="display: none;">  Simpleplanner</span></a>
+  <a href="https://simpleplanner.herokuapp.com" class="w3-bar-item w3-left w3-button w3-hover-blue-grey"><img src="https://simpleplanner.herokuapp.com/Frontend/images/treeLogo.png" style="width: 20px; height: 20px;"><span id="nav_title" style="display: none;">  Simpleplanner</span></a>
   <a href="Frontend/login.php" class="w3-bar-item w3-right w3-button w3-hover-white" id="login">Log In</a>
   <a href="<?php session_unset();session_destroy(); ?>" class="w3-bar-item w3-right w3-button w3-hover-white" id="logout">Log Out</a>
   <a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-bar-item w3-right w3-button w3-hover-white" id="reg">Sign Up</a>

@@ -15,8 +15,8 @@ if(isset($_POST['submit'])){
 	}
 	$uname=$_POST['uname'];
 	$psw=$_POST['psw'];
-	$_SESSION['username']=$uname;
-	$_SESSION['password']=$psw;
+	$_SESSION['username']=(string)$uname;
+	$_SESSION['password']=(string)$psw;
 	$query="SELECT * FROM accounts WHERE account_email='$uname' AND account_password='$psw';";
 	$result=$conn->query($query);
 	if(!$result){
@@ -75,7 +75,7 @@ if($logged_in){
 <body>
 	<!-- Top Buttons -->
 	<?php require 'nav_bar.php'; ?>
-	<script>document.getElementById('nav_title').style.display='block';</script>
+	<script>document.getElementById('nav_title').style.display='unset';</script>
 	<br>
 	<br>
 
