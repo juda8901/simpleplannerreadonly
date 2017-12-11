@@ -30,12 +30,11 @@ if(isset($_POST['submit'])){
 }
 
 if(($conn->query("SELECT * FROM accounts WHERE account_id='$_SESSION['user_id']';"))->num_rows==1){
+	$conn->close();
 	header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
-} else {
-	header('Location: https://simpleplanner.herokuapp.com/Frontend/login.php');
+	die();
 }
 $conn->close();
-die();
 ?>
 
 <html>
