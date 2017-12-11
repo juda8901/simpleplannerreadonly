@@ -122,10 +122,19 @@ width: 100%;
 
 
 			<!-- Event Cards -->
+			<header><h1>
+				<?php
+				if($logged_in){
+					echo "Your Events";
+				} else {
+					echo "All Events";
+				}
+				?>
+			</h1></header>
+			<br>
 			<div class="w3-container" style="width: 85%; margin: auto;">
-				<div class='w3-row' style=' margin: auto;'>
+				<div class='w3-row' style='margin: auto;'>
 					<?php
-					//$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 					$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 					$server = $url["host"];
 					$username = $url["user"];
@@ -139,10 +148,10 @@ width: 100%;
 					}
 
 					$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
-					// if($logged_in){
-					// 	$sessionID=$_SESSION['id'];
-					// 	$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
-					// }
+					if($logged_in){
+						$sessionID=$_SESSION['id'];
+						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
+					}
 					$result = $conn->query($sql);
 
 					if ($result->num_rows > 0) {
