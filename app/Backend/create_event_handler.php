@@ -26,7 +26,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$insert="INSERT INTO events (event_host_account_id,event_title,event_start_date_time,event_end_date_time,event_location,event_description,event_is_hidden,event_start_date,event_end_date,event_tags) VALUES ('$Host','$EventTitle','$StartTime','$EndTime','$Location','$Description',$priv,'$StartDate','$EndDate','$Tags');";
+$insert="INSERT INTO events (event_host_account_id,event_title,event_start_date_time,event_end_date_time,event_location,event_description,event_is_hidden,event_start_time,event_end_time,event_tags) VALUES ('$Host','$EventTitle','$StartDate','$EndDate','$Location','$Description',$priv,'$StartTime','$EndTime','$Tags');";
 if($conn->query($insert)==TRUE){
 	echo "Event created successfully";
 	header('Location: https://simpleplanner.herokuapp.com');
