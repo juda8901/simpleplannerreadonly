@@ -11,13 +11,16 @@ $conn=new mysqli($server, $username, $password, $db);
 if ($conn->connect_error) {
   die("<p>Connection failed: " . $conn->connect_error."</p>");
 }
-$query="SELECT * FROM accounts WHERE account_email='$_SESSION['username']' AND account_password='$_SESSION['password']' AND account_id='$_SESSION['id']';";
+$name=$_SESSION['username'];
+$pass=$_SESSION['password'];
+$id=$_SESSION['id'];
+$query="SELECT * FROM accounts WHERE account_email='$name' AND account_password='$pass' AND account_id='$id';";
 $result=$conn->query($query);
 if($result->num_rows==1){
   $logged_in=true;
 } else {
   $conn->close();
-  header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
+  header('Location: https://simpleplanner.herokuapp.com/Frontend/login.php');
   die();
 }
 $conn->close();
