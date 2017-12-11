@@ -20,7 +20,6 @@ if(isset($_POST['submit'])){
 	if(!$result){
 		$error="<p>Error: ".$query."<br>".$conn->error."</p>";
 	} elseif ($result->num_rows <= 0) {
-		$valid=false;
 		$error="<script>document.getElementById('error').style.display='block';</script>";
 	} else {
 		while($row=$result->fetch_assoc()) {
@@ -31,7 +30,7 @@ if(isset($_POST['submit'])){
 	}
 	$conn->close();
 }
-if($valid){
+if($_SESSION['logged_in']){
 	header('Location: https://simpleplanner.herokuapp.com');
 	die();
 }
