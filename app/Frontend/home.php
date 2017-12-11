@@ -96,22 +96,19 @@
 	</script>
 	<hr>
 
-<<<<<<< HEAD
 	 <button type="submit" class="w3-button w3-hover-blue-grey" style="width:25px;padding:0px;margin:0px;" id="search" value="search"><i class="fa fa-search"></i></button>
-=======
     <!-- search bar -->
->>>>>>> 916d9f991885641b52c5e6bca2e419af4c205855
 	<div id="search_bar" class="w3-bar-item" style="padding: 5px; width: 100%; text-align: center;">
         <input type="text" placeholder="  Search..." name="search-criteria" id="search-criteria" style="width: 500px; border-radius: 15px;">  
     </div>
     
     <!-- search script -->
     <script type="text/javascript">
-        $('.w3-row').hide();
+        $('.w3-center w3-col w3-card w3-blue-grey').hide();
         $('#search').click(function(){
-            $('.w3-row').hide();
+            $('.w3-center w3-col w3-card w3-blue-grey').hide();
             var s = $('#search-criteria').val();
-            $('.w3-row').each(function(){
+            $('.w3-center w3-col w3-card w3-blue-grey').each(function(){
             if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
                 $(this).show();
             }
