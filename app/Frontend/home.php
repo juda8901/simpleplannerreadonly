@@ -210,7 +210,7 @@ width: 100%;
 									<input class="w3-input" name="Tags" type="text" required>
 									<label>Tags </label>
 								</div>
-								<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Event" />
+								<input type="submit" class="w3-center w3-btn w3-xlarge w3-hover-white w3-blue-grey" value="Create Event" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;"/>
 							</form>
 						</div>
 					</header>
@@ -313,6 +313,7 @@ width: 100%;
 						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events";
 						if($logged_in){
 							$sessionID=$_SESSION['id'];
+							echo "<p>".$sessionID."<br>".$_SESSION['id']."<br>".$_SESSION['username']."<br>".$_SESSION['password']."</p>";
 							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
 						}
 						$result = $conn->query($sql);
