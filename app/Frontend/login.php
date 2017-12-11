@@ -1,7 +1,38 @@
 <?php
 session_start();
-if(!empty($_SESSION['user_id'])){
-	header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
+
+$error="";
+$logged_in=$_SESSION['logged_in']===true;
+if(isset($_POST['submit'])){
+	$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$server=$url["host"];
+	$username=$url["user"];
+	$password=$url["pass"];
+	$db=substr($url["path"], 1);
+	$conn=new mysqli($server, $username, $password, $db);
+	if ($conn->connect_error) {
+		$error=die("<p>Connection failed: " . $conn->connect_error."</p>");
+	}
+
+	$uname=$_POST['uname'];
+	$psw=$_POST['psw'];
+	$query="SELECT * FROM accounts WHERE account_email='$uname' AND account_password='$psw';";
+	$result=$conn->query($query);
+	if(!$result){
+		$error="<p>Error: ".$query."<br>".$conn->error."</p>";
+	} elseif ($result->num_rows <= 0) {
+		$error="<script>document.getElementById('error').style.display='block';</script>";
+		$_SESSION['logged_in']=false;
+	} else {
+		while($row=$result->fetch_assoc()) {
+			$_SESSION['user_id']=(int)$row['account_id'];
+			$_SESSION['logged_in']=true;
+			$error="<p>Session User ID: ".$_SESSION['user_id']."</p>";
+		}
+		$conn->close();
+		header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
+		die();
+	}
 }
 ?>
 
@@ -9,6 +40,7 @@ if(!empty($_SESSION['user_id'])){
 <head>
 	<title>Simpleplanner - Login</title>
 	<?php require 'header.html'; ?>
+
 	<style>
 	button:hover {
 		opacity: 0.8;
@@ -45,6 +77,7 @@ if(!empty($_SESSION['user_id'])){
 
 
 	<center style="margin-top: 7.5%;">
+		<?php echo $error; ?>
 		<form action="login.php" method="post" style="margin: 20px 0px 20px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 20em; height: 25em;">
 			<h1 style="float:left; margin:10px 10px 10px 20px;"> Login </h1>
 			<br>
@@ -56,7 +89,7 @@ if(!empty($_SESSION['user_id'])){
 
 				<input type="password" placeholder="Password" name="psw" style="width: 100%; padding: 8px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; box-sizing: border-box; border-radius: 12px;" required>
 
-				<input type="submit" class="w3-center w3-btn w3-xlarge w3-hover-white w3-blue-grey" value="Submit" style="color: #f13a59; margin: 20px 20px 20px 20px; font-weight:650;"/>
+				<input type="submit" name="submit" class="w3-center w3-btn w3-xlarge w3-hover-white w3-blue-grey" value="Submit" style="color: #f13a59; margin: 20px 20px 20px 20px; font-weight:650;"/>
 
 				<div style="display: none;"><input id="remember" type="checkbox" checked="checked" style="float: left;"><span><a onclick="document.getElementById('remember').checked=!document.getElementById('remember').checked" class="w3-left w3-hover-light-grey"> Remember me </a></span></div>
 				<br>
@@ -66,36 +99,6 @@ if(!empty($_SESSION['user_id'])){
 			</div>
 		</form>
 	</center>
-
-	<?php
-	$uname=$_POST['uname'];
-	$psw=$_POST['psw'];
-
-	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-	$server = $url["host"];
-	$username = $url["user"];
-	$password = $url["pass"];
-	$db = substr($url["path"], 1);
-	$conn = new mysqli($server, $username, $password, $db);
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-
-	$query="SELECT * FROM accounts WHERE account_email='$uname' AND account_password='$psw';";
-	$result=$conn->query($query);
-	if(!$result){
-		echo "<p>Error: ".$query."<br>".$conn->error."</p>";
-	} elseif ($result->num_rows <= 0) {
-		echo "<script>document.getElementById('error').style.display='block';</script>";
-	} else {
-		while($row=$result->fetch_assoc()) {
-			$_SESSION['user_id']=(int)$row['account_id'];
-			echo "<p>Session User ID: ".$_SESSION['user_id']."</p>";
-		}
-		header('Location: https://simpleplanner.herokuapp.com');
-	}
-	$conn->close();
-	?>
 	<br>
 
 
