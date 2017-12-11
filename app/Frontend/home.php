@@ -182,13 +182,29 @@ width: 100%;
 										<option value="0">Public</option>
 									</select>
 								</div>
-								<div id="datetimepicker1" class="input-append date">
-									<input type="text">
-									<span class="add-on">
-										<i data-time-icon="icon-time" data-date-icon="icon-calendar">
-										</i>
-									</span>
-								</div>
+								<div id="datetimepicker" class="input-append date">
+      <input type="text"></input>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
+    </div>
+    <script type="text/javascript"
+     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script> 
+    <script type="text/javascript"
+     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+    </script>
+    <script type="text/javascript">
+      $('#datetimepicker').datetimepicker({
+        format: 'MM/dd/yyyy hh:mm:ss'
+      });
+    </script>
 								<div class="w3-section">
 									<input class="w3-input" name="StartTime" type="text" required>
 									<label>Start Time </label>
@@ -221,24 +237,6 @@ width: 100%;
 			</div>
 
 			<!-- Scripts for Create Event -->
-			<script type="text/javascript"
-				src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-			</script> 
-			<script type="text/javascript"
-				src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-			</script>
-			<script type="text/javascript"
-				src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-			</script>
-			<script type="text/javascript"
-				src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-			</script>
-			<script type="text/javascript">
-				$('#datetimepicker').datetimepicker({
-					format: 'dd/MM/yyyy hh:mm:ss',
-					language: 'pt-BR'
-				});
-			</script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&libraries=places&callback=initAutocomplete"
 			async defer></script>
 			<script>
