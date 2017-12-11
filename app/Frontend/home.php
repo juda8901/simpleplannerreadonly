@@ -184,19 +184,19 @@ width: 100%;
 								</div>
 								<div class="w3-section">
 									<input class="w3-input" name="StartDate" type="text" required>
-									<label>Start Date </label>
+									<label>Start Date (MM/DD/YYYY) </label>
 								</div>
 								<div class="w3-section">
 									<input class="w3-input" name="StartTime" type="text" required>
-									<label>Start Time </label>
+									<label>Start Time (HH:MM AM/PM) </label>
 								</div>
 								<div class="w3-section">
 									<input class="w3-input" name="EndDate" type="text" required>
-									<label>End Date </label>
+									<label>End Date (MM/DD/YYYY) </label>
 								</div>
 								<div class="w3-section">
 									<input class="w3-input" name="EndTime" type="text" required>
-									<label>End Time </label>
+									<label>End Time (HH:MM AM/PM) </label>
 								</div>
 								<div class="w3-section" id="locationField">
 									<input class="w3-input" name="Location" id="autocomplete" placeholder="Enter the address" onFocus="geolocate()" type="text" required>
@@ -313,7 +313,7 @@ width: 100%;
 						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
 						if($logged_in){
 							$sessionID=$_SESSION['id'];
-							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
+							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
 						}
 						$result = $conn->query($sql);
 
@@ -321,14 +321,17 @@ width: 100%;
 							// output data of each row
 							$i=0;
 							while($row = $result->fetch_assoc()) {
-								$tempStamp = strtotime($row['event_start_date_time']);
-								$startTime = date('g:i A', $tempStamp);
-								$startDate = date('m/d',$tempStamp);
-
-
-								$tempStamp = strtotime($row['event_end_date_time']);
-								$endTime = date('g:i A',$tempStamp);
-								$endDate = date('m/d',$tempStamp);
+								//$tempStamp = strtotime($row['event_start_date_time']);
+								//$startTime = date('g:i A', $tempStamp);
+								//$startDate = date('m/d',$tempStamp);
+								$startDate = $row['event_start_date_time'];
+								$startTime = $row['event_start_time'];
+								$endDate = $row['event_end_date_time'];
+								$endTime = $row['event_end_time'];
+								
+								//$tempStamp = strtotime($row['event_end_date_time']);
+								//$endTime = date('g:i A',$tempStamp);
+								//$endDate = date('m/d',$tempStamp);
 
 								$title = $row["event_title"];
 								if (empty($title) || $title==""){
@@ -345,6 +348,7 @@ width: 100%;
 								if($startDate!=$endDate){
 									echo "-" . $endDate;
 								}
+								//echo "</p><p>" . $row["event_tags"];
 								echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
 								$i++;
 							}
