@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if(!empty($_SESSION['user_id'])){
+	header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
+}
+?>
 
 <html>
 <head>
