@@ -310,7 +310,7 @@ width: 100%;
 							die("Connection failed: " . $conn->connect_error);
 						}
 
-						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
+						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events";
 						if($logged_in){
 							$sessionID=$_SESSION['id'];
 							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
@@ -321,18 +321,11 @@ width: 100%;
 							// output data of each row
 							$i=0;
 							while($row = $result->fetch_assoc()) {
-								//$tempStamp = strtotime($row['event_start_date_time']);
-								//$startTime = date('g:i A', $tempStamp);
-								//$startDate = date('m/d',$tempStamp);
 								$startDate = $row['event_start_date_time'];
 								$startTime = $row['event_start_time'];
 								$endDate = $row['event_end_date_time'];
 								$endTime = $row['event_end_time'];
 								
-								//$tempStamp = strtotime($row['event_end_date_time']);
-								//$endTime = date('g:i A',$tempStamp);
-								//$endDate = date('m/d',$tempStamp);
-
 								$title = $row["event_title"];
 								if (empty($title) || $title==""){
 									$title = "No Title";
@@ -348,7 +341,7 @@ width: 100%;
 								if($startDate!=$endDate){
 									echo "-" . $endDate;
 								}
-								//echo "</p><p>" . $row["event_tags"];
+								echo "</p><p>" . $row["event_tags"];
 								echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
 								$i++;
 							}
