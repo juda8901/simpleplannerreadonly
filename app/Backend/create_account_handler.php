@@ -23,5 +23,20 @@ if($conn->query($insert)==TRUE){
 } else {
 	echo "Error: ".$insert."<br>".$conn->error;
 }
+
+$query="SELECT * FROM accounts WHERE account_email='$name' AND account_password='$pass';";
+$result=$conn->query($query);
+if(!$result || $result->num_rows <= 0){
+	$error="<p>Error: ".$query."<br>".$conn->error."</p>";
+} else {
+	while($row=$result->fetch_assoc()) {
+		$_SESSION['id']=(int)$row['account_id'];
+		$_SESSION['logged_in']=true;
+	}
+}
 $conn->close();
+if($_SESSION['logged_in']){
+	header('Location: https://simpleplanner.herokuapp.com');
+	die();
+}
 ?>
