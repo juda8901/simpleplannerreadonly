@@ -15,6 +15,8 @@ if(isset($_POST['submit'])){
 	}
 	$uname=$_POST['uname'];
 	$psw=$_POST['psw'];
+	$_SESSION['username']=$uname;
+	$_SESSION['password']=$psw;
 	$query="SELECT * FROM accounts WHERE account_email='$uname' AND account_password='$psw';";
 	$result=$conn->query($query);
 	if(!$result){
@@ -23,9 +25,9 @@ if(isset($_POST['submit'])){
 		$error="<script>document.getElementById('error').style.display='block';</script>";
 	} else {
 		while($row=$result->fetch_assoc()) {
-			$_SESSION['user_id']=(int)$row['account_id'];
+			$_SESSION['id']=(int)$row['account_id'];
 			$logged_in=true;
-			$error="<p>Session User ID: ".$_SESSION['user_id']."</p>";
+			$error="<p>Session User ID: ".$_SESSION['id']."</p>";
 		}
 	}
 	$conn->close();

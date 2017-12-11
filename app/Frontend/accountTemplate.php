@@ -1,5 +1,22 @@
 <?php
 session_start();
+
+$logged_in=false;
+$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+$server=$url["host"];
+$username=$url["user"];
+$password=$url["pass"];
+$db=substr($url["path"], 1);
+$conn=new mysqli($server, $username, $password, $db);
+if ($conn->connect_error) {
+  die("<p>Connection failed: " . $conn->connect_error."</p>");
+}
+$query="SELECT * FROM accounts WHERE account_email='$_SESSION['username']' AND account_password='$_SESSION['password']' AND account_id='$_SESSION['id']';";
+$result=$conn->query($query);
+if($result->num_rows==1){
+  $logged_in=true;
+}
+$conn->close();
 ?>
 
 <html>
@@ -230,17 +247,14 @@ session_start();
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
-        if(isset($_SESSION['user_id'])){
+        if($logged_in){
           $sessionID=$_SESSION['user_id'];
           $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
-        }
-        else{
-          $sql = "";
+        } else {
           echo '<script type="text/javascript">
           alert("You must log in first");
           window.location = "login.php";
-          </script>';
-
+          </script>';die();
         }
         $result = $conn->query($sql);
 
