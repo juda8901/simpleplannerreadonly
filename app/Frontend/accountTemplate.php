@@ -9,7 +9,7 @@
   <!-- Navigation Bar -->
   <?php require 'nav_bar.php'; ?>
   <br><br>
-
+  
 
   <!-- Header -->
   <header class="w3-theme" id="Header">
@@ -235,11 +235,11 @@
         }
         else{
           $sql = "";
-            echo '<script type="text/javascript"> 
-            alert("You must log in first");
-            window.location = "login.php";
-            </script>';
-            
+          echo '<script type="text/javascript">
+          alert("You must log in first");
+          window.location = "login.php";
+          </script>';
+
         }
         $result = $conn->query($sql);
 

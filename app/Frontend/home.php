@@ -4,25 +4,25 @@
 <head>
 	<title>Simpleplanner - Home</title>
 	<?php require 'header.html'; ?>
-	<style> 
-input[type=text] {
-    width: 130px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('searchicon.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
+	<style>
+	input[type=text] {
+		width: 130px;
+		box-sizing: border-box;
+		border: 2px solid #ccc;
+		border-radius: 4px;
+		font-size: 16px;
+		background-color: white;
+		background-image: url('searchicon.png');
+		background-position: 10px 10px;
+		background-repeat: no-repeat;
+		padding: 12px 20px 12px 40px;
+		-webkit-transition: width 0.4s ease-in-out;
+		transition: width 0.4s ease-in-out;
+	}
 
-input[type=text]:focus {
-    width: 100%;
-}
+	input[type=text]:focus {
+		width: 100%;
+	}
 </style>
 </head>
 <body>
@@ -42,7 +42,7 @@ input[type=text]:focus {
 			</a>
 		</h2>
 	</header>
-	
+
 	<!-- Scripts for Header -->
 	<script type="text/javascript">
 	// Rotating text
@@ -118,29 +118,29 @@ input[type=text]:focus {
 	</script>
 	<hr>
 
-    <!-- search bar -->
+	<!-- search bar -->
 	<div id="search_bar" class="w3-bar-item" style="padding: 5px; width: 100%; text-align: center;">
-        <input type="text" placeholder="  Search..." name="search-criteria" id="search-criteria" style="width: 500px; border-radius: 15px;">
-        <button type="submit" class="w3-button w3-hover-blue-grey" style="width:25px;padding:0px;margin:0px;" id="search" value="search"><i class="fa fa-search"></i></button>
-    </div>
-    <form>
-  <input type="text" name="search" placeholder="Search..">
+		<input type="text" placeholder="  Search..." name="search-criteria" id="search-criteria" style="width: 500px; border-radius: 15px;">
+		<button type="submit" class="w3-button w3-hover-blue-grey" style="width:25px;padding:0px;margin:0px;" id="search" value="search"><i class="fa fa-search"></i></button>
+	</div>
+	<form>
+		<input type="text" name="search" placeholder="Search..">
 	</form>
-    
-    <!-- search script -->
-    <script type="text/javascript">
-        $('.w3-row').hide();
-        $('#search').click(function(){
-            $('.w3-row').hide();
-            var s = $('#search-criteria').val();
-            $('.w3-row').each(function(){
-            if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
-                $(this).show();
-            }
-            });
-        });
-    </script>
-<hr>
+
+	<!-- search script -->
+	<script type="text/javascript">
+	$('.w3-row').hide();
+	$('#search').click(function(){
+		$('.w3-row').hide();
+		var s = $('#search-criteria').val();
+		$('.w3-row').each(function(){
+			if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
+				$(this).show();
+			}
+		});
+	});
+	</script>
+	<hr>
 
 	<!-- Create Event Button -->
 
@@ -173,7 +173,7 @@ input[type=text]:focus {
 							<input class="date end" name="EndDate" type="text" required>
 							<input class="time end" name="EndTime" type="text" required>
 						</div>
-						
+
 						<div class="w3-section" id="locationField">
 							<input class="w3-input" name="Location" id="autocomplete" placeholder="Enter the address" onFocus="geolocate()" type="text" required>
 							<label>Location </label>
@@ -189,7 +189,7 @@ input[type=text]:focus {
 						<input class="w3-center w3-btn w3-xlarge w3-hover-light-grey" style="color: #f13a59; margin: 20px 20px 20px 20px; width:40%; font-weight:650;" type="submit" value="Create Event" />
 					</form>
 				</div>
-           </header>
+			</header>
 		</div>
 	</div>
 	<link rel="stylesheet" type="text/css" href="jquery.timepicker.css" />
@@ -199,20 +199,20 @@ input[type=text]:focus {
 
 	<script type="text/javascript" src="datepair.js"></script>
 	<script>
-    // initialize input widgets first
-    $('#datepick .time').timepicker({
-        'showDuration': true,
-        'timeFormat': 'g:ia'
-    });
+	// initialize input widgets first
+	$('#datepick .time').timepicker({
+		'showDuration': true,
+		'timeFormat': 'g:ia'
+	});
 
-    $('#datepick .date').datepicker({
-        'format': 'm/d/yyyy',
-        'autoclose': true
-    });
+	$('#datepick .date').datepicker({
+		'format': 'm/d/yyyy',
+		'autoclose': true
+	});
 
-    // initialize datepair
-    var datepickEl = document.getElementById('datepick');
-    var datepair = new Datepair(datepickEl);
+	// initialize datepair
+	var datepickEl = document.getElementById('datepick');
+	var datepair = new Datepair(datepickEl);
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&libraries=places&callback=initAutocomplete"
 	async defer></script>
@@ -293,7 +293,7 @@ input[type=text]:focus {
 				$password = $url["pass"];
 				$db = substr($url["path"], 1);
 				// Create connection
-				 $conn = new mysqli($server, $username, $password, $db);
+				$conn = new mysqli($server, $username, $password, $db);
 				// Check connection
 				if ($conn->connect_error) {
 					die("Connection failed: " . $conn->connect_error);
