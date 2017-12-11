@@ -96,10 +96,10 @@
 	</script>
 	<hr>
 
-	 <button type="submit" class="w3-button w3-hover-blue-grey" style="width:25px;padding:0px;margin:0px;" id="search" value="search"><i class="fa fa-search"></i></button>
     <!-- search bar -->
 	<div id="search_bar" class="w3-bar-item" style="padding: 5px; width: 100%; text-align: center;">
-        <input type="text" placeholder="  Search..." name="search-criteria" id="search-criteria" style="width: 500px; border-radius: 15px;">  
+        <input type="text" placeholder="  Search..." name="search-criteria" id="search-criteria" style="width: 500px; border-radius: 15px;">
+        <button type="submit" class="w3-button w3-hover-blue-grey" style="width:25px;padding:0px;margin:0px;" id="search" value="search"><i class="fa fa-search"></i></button>
     </div>
     
     <!-- search script -->
