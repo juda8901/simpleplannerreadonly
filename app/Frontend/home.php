@@ -167,7 +167,28 @@
            </header>
 		</div>
 	</div>
+	<link rel="stylesheet" type="text/css" href="jquery.timepicker.css" />
+	<link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css" />
+	<script type="text/javascript" src="bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="jquery.timepicker.js"></script>
 
+	<script type="text/javascript" src="datepair.js"></script>
+	<script>
+    // initialize input widgets first
+    $('#datepick .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+
+    $('#datepick .date').datepicker({
+        'format': 'm/d/yyyy',
+        'autoclose': true
+    });
+
+    // initialize datepair
+    var datepickEl = document.getElementById('datepick');
+    var datepair = new Datepair(datepickEl);
+	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&libraries=places&callback=initAutocomplete"
 	async defer></script>
 	<script>
