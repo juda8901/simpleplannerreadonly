@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
 		while($row=$result->fetch_assoc()) {
 			$_SESSION['id']=(int)$row['account_id'];
 			$_SESSION['logged_in']=true;
-			$error="<p>".session_id()."<br".ini_get('session.cookie_domain')."</p>";
+			$error="<p>".session_save_path()."</p>";
 		}
 	}
 	$conn->close();
