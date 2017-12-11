@@ -1,8 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION)) session_start();
 
 $error="";
-$logged_in=false;
+$valid=$_SESSION['logged_in']===true;
 if(isset($_POST['submit'])){
 	$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 	$server=$url["host"];
@@ -15,8 +15,6 @@ if(isset($_POST['submit'])){
 	}
 	$uname=$_POST['uname'];
 	$psw=$_POST['psw'];
-	$_SESSION['username']=(string)$uname;
-	$_SESSION['password']=(string)$psw;
 	$query="SELECT * FROM accounts WHERE account_email='$uname' AND account_password='$psw';";
 	$result=$conn->query($query);
 	if(!$result){
@@ -26,14 +24,13 @@ if(isset($_POST['submit'])){
 	} else {
 		while($row=$result->fetch_assoc()) {
 			$_SESSION['id']=(int)$row['account_id'];
-			$logged_in=true;
+			$_SESSION['logged_in']=true;
 			$error="<p>Session User ID: ".$_SESSION['id']."</p>";
 		}
 	}
 	$conn->close();
 }
-
-if($logged_in){
+if($_SESSION['logged_in']){
 	header('Location: https://simpleplanner.herokuapp.com');
 	die();
 }

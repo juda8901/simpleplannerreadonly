@@ -1,5 +1,5 @@
 <?php
-session_start();
+if(!isset($_SESSION)) session_start();
 $EventTitle = $_REQUEST['EventTitle'];
 $StartDate = $_REQUEST['StartDate'];
 $StartTime = $_REQUEST['StartTime'];

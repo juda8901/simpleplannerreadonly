@@ -1,4 +1,5 @@
 <?php
+if(!isset($_SESSION)) session_start();
 $name=$_REQUEST['Name'];
 $email=$_REQUEST['Email'];
 $pass=$_REQUEST['Password'];
@@ -15,8 +16,10 @@ if ($conn->connect_error) {
 
 $insert="INSERT INTO accounts (account_name,account_email,account_password) VALUES ('$name','$email','$pass');";
 if($conn->query($insert)==TRUE){
-	echo "Account created successfully";
-	header('Location: https://simpleplanner.herokuapp.com');
+	$_SESSION['id']=(int)$row['account_id'];
+	$_SESSION['logged_in']=true;
+	$conn->close();
+	header('Location: https://simpleplanner.herokuapp.com');die();
 } else {
 	echo "Error: ".$insert."<br>".$conn->error;
 }

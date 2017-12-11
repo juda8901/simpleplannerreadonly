@@ -1,25 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION)) session_start();
 
-$logged_in=false;
-$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
-$server=$url["host"];
-$username=$url["user"];
-$password=$url["pass"];
-$db=substr($url["path"], 1);
-$conn=new mysqli($server, $username, $password, $db);
-if ($conn->connect_error) {
-	die("<p>Connection failed: " . $conn->connect_error."</p>");
-}
-$name=$_SESSION['username'];
-$pass=$_SESSION['password'];
-$id=$_SESSION['id'];
-$query="SELECT * FROM accounts WHERE account_email='$name' AND account_password='$pass' AND account_id='$id';";
-$result=$conn->query($query);
-if($result->num_rows==1){
-	$logged_in=true;
-}
-$conn->close();
+$valid=$_SESSION['logged_in']===true;
+if($valid) $id=$_SESSION['id'];
 ?>
 
 <html>
@@ -144,7 +127,7 @@ width: 100%;
 		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: auto; height: auto; padding: 0; margin:0px;" id="search" value="search"><i class="fa fa-search" style="zoom: 1.75; padding: 0; margin: 0; margin-bottom: 5;"></i></button>
 		<header><h2>or Create a New Event
 			<!-- Create Event Button -->
-			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($logged_in){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button></h2></header>
+			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button></h2></header>
 			</div>
 
 			<!-- search script -->
@@ -220,7 +203,7 @@ width: 100%;
 				<!-- Event Cards -->
 				<header><h1>
 					<?php
-					if($logged_in){
+					if($valid){
 						echo "Your Events";
 					} else {
 						echo "All Events";
@@ -244,10 +227,9 @@ width: 100%;
 						}
 
 						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events";
-						if($logged_in){
-							$sessionID=$_SESSION['id'];
-							echo "<p>".$sessionID."<br>".$_SESSION['id']."<br>".$_SESSION['username']."<br>".$_SESSION['password']."</p>";
-							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
+						if($valid){
+							echo "<p>".$id."<br>".$_SESSION['id']."<br>".$_SESSION['username']."<br>".$_SESSION['password']."</p>";
+							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$id') as my_events";
 						}
 						$result = $conn->query($sql);
 
