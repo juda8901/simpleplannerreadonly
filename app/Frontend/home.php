@@ -187,7 +187,7 @@ width: 100%;
 									<label>Start Date </label>
 								</div>
 								<div class="w3-section">
-									<input class="w3-input" id="timepicker1" name="StartTime" type="text" required>
+									<input class="w3-input timepicker" name="StartTime" type="text" required>
 									<label>Start Time </label>
 								</div>
 								<div class="w3-section">
@@ -195,7 +195,7 @@ width: 100%;
 									<label>End Date </label>
 								</div>
 								<div class="w3-section">
-									<input class="w3-input" id="timepicker2" name="EndTime" type="text" required>
+									<input class="w3-input" id="timepicker" name="EndTime" type="text" required>
 									<label>End Time </label>
 								</div>
 								<div class="w3-section" id="locationField">
