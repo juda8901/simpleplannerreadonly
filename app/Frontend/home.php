@@ -143,19 +143,19 @@
 							</select>
 						</div>
 						<div class="w3-section" id="datepick">
-							<input class="date start" name="StartDate" type="text" required>
+							<input class="w3-input date start" name="StartDate" type="text" required>
 							<label>Start Date </label>
 						</div>
 						<div class="w3-section" id="datepick">
-							<input class="time start" name="StartTime" type="text" required>
+							<input class="w3-input time start" name="StartTime" type="text" required>
 							<label>Start Time </label>
 						</div>
 						<div class="w3-section" id="datepick">
-							<input class="date end" name="EndDate" type="text" required>
+							<input class="w3-input date end" name="EndDate" type="text" required>
 							<label>End Date </label>
 						</div>
 						<div class="w3-section" id="datepick">
-							<input class="time end" name="EndTime" type="text" required>
+							<input class="w3-input time end" name="EndTime" type="text" required>
 							<label>End Time </label>
 						</div>
 						<div class="w3-section" id="locationField">
