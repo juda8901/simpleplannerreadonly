@@ -178,8 +178,8 @@ width: 100%;
 								</div>
 								<div class="w3-section">
 									<select class="w3-input" name="PrivPub">
-										<option value="1">Private</option>
 										<option value="0">Public</option>
+										<option value="1">Private</option>
 									</select>
 								</div>
 								<div class="w3-section">
@@ -325,7 +325,7 @@ width: 100%;
 								$startTime = $row['event_start_time'];
 								$endDate = $row['event_end_date_time'];
 								$endTime = $row['event_end_time'];
-								
+
 								$title = $row["event_title"];
 								if (empty($title) || $title==""){
 									$title = "No Title";
