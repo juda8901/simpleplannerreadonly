@@ -183,22 +183,22 @@ width: 100%;
 									</select>
 								</div>
 								<div id="datetimepicker1" class="input-append date">
-									<input data-format="dd/MM/yyyy hh:mm:ss" class="w3-input" name="StartDate" type="text" required>
+									<input type="text">
 									<span class="add-on">
 										<i data-time-icon="icon-time" data-date-icon="icon-calendar">
 										</i>
 									</span>
 								</div>
 								<div class="w3-section">
-									<input class="w3-input" id="timepicker1" name="StartTime" type="text" required>
+									<input class="w3-input" name="StartTime" type="text" required>
 									<label>Start Time </label>
 								</div>
 								<div class="w3-section">
-									<input class="w3-input" id="datepicker2" name="EndDate" type="text" required>
+									<input class="w3-input" name="EndDate" type="text" required>
 									<label>End Date </label>
 								</div>
 								<div class="w3-section">
-									<input class="w3-input" id="timepicker2" name="EndTime" type="text" required>
+									<input class="w3-input" name="EndTime" type="text" required>
 									<label>End Time </label>
 								</div>
 								<div class="w3-section" id="locationField">
