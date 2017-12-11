@@ -8,25 +8,31 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+<link rel="stylesheet" media="all" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" media="all" type="text/css" href="jquery-ui-timepicker-addon.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script type="text/javascript" src="jquery-ui-timepicker-addon.js"></script>
 <script>
   $( function() {
-      $( "#datepicker" ).datepicker();
+      $( "#datepicker1" ).datepicker();
   } );
   </script>
   <script>
-  $(document).ready(function(){
-      $('input.timepicker').timepicker({});
-  });
+  $( function() {
+      $( "#datepicker2" ).datepicker();
+  } );
   </script>
-  <script>
-  $("timepicker").timepicker({
-	startTime: "00.00"
-      timeFormat: 'h:mm p',
-      interval: 60,
-      endTime: new Date(0, 0, 0, 15, 30, 0), 
-      separator: ':',
-      step: 15});
-  </script>
+ <script>
+    $(function() {
+        $("#timepicker1").datetimepicker();
+    });
+</script>
+<script>
+    $(function() {
+        $("#timepicker2").datetimepicker();
+    });
+</script>
+
 
