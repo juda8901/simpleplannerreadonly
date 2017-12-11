@@ -29,10 +29,12 @@ if(isset($_POST['submit'])){
 			$_SESSION['logged_in']=true;
 			$error="<p>Session User ID: ".$_SESSION['user_id']."</p>";
 		}
-		$conn->close();
-		header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
-		die();
 	}
+}
+if($logged_in){
+	$conn->close();
+	header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
+	die();
 }
 ?>
 
@@ -77,7 +79,6 @@ if(isset($_POST['submit'])){
 
 
 	<center style="margin-top: 7.5%;">
-		<?php echo $error; ?>
 		<form action="" method="post" style="margin: 20px 0px 20px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 20em; height: 25em;">
 			<h1 style="float:left; margin:10px 10px 10px 20px;"> Login </h1>
 			<br>
@@ -98,6 +99,7 @@ if(isset($_POST['submit'])){
 				<span class="psw" style="display: none;"><a href="#">Forgot password?</a></span>
 			</div>
 		</form>
+			<?php echo $error; ?>
 	</center>
 	<br>
 
