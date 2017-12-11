@@ -142,15 +142,11 @@
 								<option value="0">Public</option>
 							</select>
 						</div>
-						<div class="w3-section" id="datepick">
+						<div id="datepick">
 							<input class="date start" name="StartDate" type="text" required>
-							<label>Start Date </label>
 							<input class="time start" name="StartTime" type="text" required>
-							<label>Start Time </label>
 							<input class="date end" name="EndDate" type="text" required>
-							<label>End Date </label>
 							<input class="time end" name="EndTime" type="text" required>
-							<label>End Time </label>
 						</div>
 						
 						<div class="w3-section" id="locationField">
