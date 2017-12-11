@@ -3,12 +3,12 @@
   <a href="Frontend/login.php" class="w3-bar-item w3-right w3-button w3-hover-white" id="login">Log In</a>
   <a href="<?php session_unset();session_destroy(); ?>" class="w3-bar-item w3-right w3-button w3-hover-white" id="logout">Log Out</a>
   <a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-bar-item w3-right w3-button w3-hover-white" id="reg">Sign Up</a>
-  <a onclick="<?php if($_SESSION['logged_in']){	echo "document.getElementById('create_group').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" class=" w3-bar-item w3-right w3-button w3-hover-red" style="color: red;" id="group">Create a Group</a>
+  <a onclick="<?php if($logged_in){	echo "document.getElementById('create_group').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" class=" w3-bar-item w3-right w3-button w3-hover-red" style="color: red;" id="group">Create a Group</a>
 </div>
 
 
 <?php
-if($_SESSION['logged_in']){
+if($logged_in){
   echo "<script>document.getElementById('login').style.display='none'; document.getElementById('logout').style.display='block'; document.getElementById('reg').style.display='none';</script>";
 } else {
   echo "<script>document.getElementById('login').style.display='block'; document.getElementById('logout').style.display='none'; document.getElementById('reg').style.display='block';</script>";
