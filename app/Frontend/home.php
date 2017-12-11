@@ -122,16 +122,6 @@ width: 100%;
 
 
 			<!-- Event Cards -->
-			<h1>
-				<?php
-				if($logged_in){
-					echo "Your Events";
-				} else {
-					echo "All Events";
-				}
-				?>
-			</h1>
-			<br>
 			<div class="w3-container" style="width: 85%; margin: auto;">
 				<div class='w3-row' style=' margin: auto;'>
 					<?php
