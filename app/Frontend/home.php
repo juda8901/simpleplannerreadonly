@@ -183,16 +183,16 @@ width: 100%;
 									</select>
 								</div>
 								<div class="w3-section">
-									<input class="w3-input" name="StartDate" type="text" required>
-									<label>Start Date (MM/DD/YYYY) </label>
+									<input class="w3-input" id="datepicker1" name="StartDate" type="text" required>
+									<label>Start Date </label>
 								</div>
 								<div class="w3-section">
 									<input class="w3-input" name="StartTime" type="text" required>
 									<label>Start Time (HH:MM AM/PM) </label>
 								</div>
 								<div class="w3-section">
-									<input class="w3-input" name="EndDate" type="text" required>
-									<label>End Date (MM/DD/YYYY) </label>
+									<input class="w3-input" id="datepicker2" name="EndDate" type="text" required>
+									<label>End Date </label>
 								</div>
 								<div class="w3-section">
 									<input class="w3-input" name="EndTime" type="text" required>
