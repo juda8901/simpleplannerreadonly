@@ -1,5 +1,5 @@
 <?php
-session_start();
+if(!isset($_SESSION)) session_start();
 $GroupName = $_REQUEST['GroupName'];
 $Host = $_SESSION['id'];
 $Description = $_REQUEST['Descrip'];
