@@ -66,12 +66,26 @@ width: 100%;
 
 	<!-- search bar -->
 	<div id="search_bar" style="width: 100%; text-align: center;">
-		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: x-large; padding: 0; margin: 0;">
+		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: x-large; padding: 0; margin: 0;"/>
 		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: auto; height: auto; padding: 0; margin:0px;" id="search" value="search"><i class="fa fa-search" style="zoom: 1.75; padding: 0; margin: 0; margin-bottom: 5;"></i></button>
-		<h2>or Create a New Event
+		<header><h2>or Create a New Event
 			<!-- Create Event Button -->
-			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($logged_in){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button></h2>
+			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($logged_in){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button></h2></header>
 			</div>
+			
+			<!-- search script -->
+			<script type="text/javascript">
+			$('.w3-row').hide();
+			$('#search').click(function(){
+				$('.w3-row').hide();
+				var s = $('#search-criteria').val();
+				$('.w3-row').each(function(){
+					if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
+						$(this).show();
+					}
+				});
+			});
+			</script>
 			<hr>
 
 
@@ -133,7 +147,7 @@ width: 100%;
 			</h1></header>
 			<br>
 			<div class="w3-container" style="width: 85%; margin: auto;">
-				<div class='w3-row' style='margin: auto; display: block;'>
+				<div class='w3-row' style='margin: auto;'>
 					<?php
 					$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 					$server = $url["host"];
@@ -172,7 +186,7 @@ width: 100%;
 								$title = "No Title";
 							}
 							if(($i % 4)==0 && $i!=0){
-								echo "</div><div class='w3-row' style='margin: auto; display: block;'>";
+								echo "</div><div class='w3-row' style='margin: auto;'>";
 							}
 							echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
 							if($startTime!=$endTime){
@@ -280,21 +294,6 @@ width: 100%;
 					css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
 					document.body.appendChild(css);
 				};
-				</script>
-
-
-				<!-- search script -->
-				<script type="text/javascript">
-				$('.w3-row').hide();
-				$('#search').click(function(){
-					$('.w3-row').hide();
-					var s = $('#search-criteria').val();
-					$('.w3-row').each(function(){
-						if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
-							$(this).show();
-						}
-					});
-				});
 				</script>
 
 
