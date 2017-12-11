@@ -2,18 +2,17 @@
 session_start();
 
 $error="";
-
-$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
-$server=$url["host"];
-$username=$url["user"];
-$password=$url["pass"];
-$db=substr($url["path"], 1);
-$conn=new mysqli($server, $username, $password, $db);
-if ($conn->connect_error) {
-	$error=die("<p>Connection failed: " . $conn->connect_error."</p>");
-}
-
+$logged_in=$_SESSION['logged_in']===true;
 if(isset($_POST['submit'])){
+	$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$server=$url["host"];
+	$username=$url["user"];
+	$password=$url["pass"];
+	$db=substr($url["path"], 1);
+	$conn=new mysqli($server, $username, $password, $db);
+	if ($conn->connect_error) {
+		$error=die("<p>Connection failed: " . $conn->connect_error."</p>");
+	}
 	$uname=$_POST['uname'];
 	$psw=$_POST['psw'];
 	$query="SELECT * FROM accounts WHERE account_email='$uname' AND account_password='$psw';";
@@ -22,19 +21,20 @@ if(isset($_POST['submit'])){
 		$error="<p>Error: ".$query."<br>".$conn->error."</p>";
 	} elseif ($result->num_rows <= 0) {
 		$error="<script>document.getElementById('error').style.display='block';</script>";
+		$_SESSION['logged_in']=false;
 	} else {
 		while($row=$result->fetch_assoc()) {
 			$_SESSION['user_id']=(int)$row['account_id'];
+			$_SESSION['logged_in']=true;
+			$error="<p>Session User ID: ".$_SESSION['user_id']."</p>";
 		}
 	}
-}
-
-if(($conn->query("SELECT * FROM accounts WHERE account_id='$_SESSION['user_id']';"))->num_rows==1){
 	$conn->close();
+}
+if($logged_in){
 	header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
 	die();
 }
-$conn->close();
 ?>
 
 <html>
