@@ -96,10 +96,15 @@
 	</script>
 	<hr>
 
+<<<<<<< HEAD
 	 <button type="submit" class="w3-button w3-hover-blue-grey" style="width:25px;padding:0px;margin:0px;" id="search" value="search"><i class="fa fa-search"></i></button>
+=======
+    <!-- search bar -->
+>>>>>>> 916d9f991885641b52c5e6bca2e419af4c205855
 	<div id="search_bar" class="w3-bar-item" style="padding: 5px; width: 100%; text-align: center;">
         <input type="text" placeholder="  Search..." name="search-criteria" id="search-criteria" style="width: 500px; border-radius: 15px;">  
     </div>
+    
     <!-- search script -->
     <script type="text/javascript">
         $('.w3-row').hide();
@@ -141,19 +146,19 @@
 							</select>
 						</div>
 						<div class="w3-section" id="datepick">
-							<input class="w3-input date start" name="StartDate" type="text" required>
+							<input class="date start" name="StartDate" type="text" required>
 							<label>Start Date </label>
 						</div>
 						<div class="w3-section" id="datepick">
-							<input class="w3-input time start" name="StartTime" type="text" required>
+							<input class="time start" name="StartTime" type="text" required>
 							<label>Start Time </label>
 						</div>
 						<div class="w3-section" id="datepick">
-							<input class="w3-input date end" name="EndDate" type="text" required>
+							<input class="date end" name="EndDate" type="text" required>
 							<label>End Date </label>
 						</div>
 						<div class="w3-section" id="datepick">
-							<input class="w3-input time end" name="EndTime" type="text" required>
+							<input class="time end" name="EndTime" type="text" required>
 							<label>End Time </label>
 						</div>
 						<div class="w3-section" id="locationField">
