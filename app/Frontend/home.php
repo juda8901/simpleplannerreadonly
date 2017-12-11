@@ -163,9 +163,7 @@ $conn->close();
 	<hr>
 
 	<!-- Create Event Button -->
-
-	<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="document.getElementById('create_event').style.display='block'" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button>
-
+	<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($logged_in){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button>
 
 
 	<!-- Modal for Create Event -->
@@ -212,6 +210,12 @@ $conn->close();
 			</header>
 		</div>
 	</div>
+
+	<link rel="stylesheet" type="text/css" href="jquery.timepicker.css" />
+	<link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css" />
+	<script type="text/javascript" src="bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="jquery.timepicker.js"></script>
+	<script type="text/javascript" src="datepair.js"></script>
 	<script>
 	// initialize input widgets first
 	$('#datepick .time').timepicker({
@@ -228,6 +232,9 @@ $conn->close();
 	var datepickEl = document.getElementById('datepick');
 	var datepair = new Datepair(datepickEl);
 	</script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&libraries=places&callback=initAutocomplete"
+	async defer></script>
 	<script>
 	var placeSearch, autocomplete;
 	var componentForm = {
@@ -290,8 +297,6 @@ $conn->close();
 		}
 		//from Google: https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
 		</script>
-
-
 
 
 		<!-- Event Cards -->
@@ -365,6 +370,7 @@ $conn->close();
 			<h1>Events Happening Nearby</h1>
 			<div id="map"></div>
 			<hr>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
 			<script>
 			function initMap() {
 				var Boulder = {lat: 40.027443, lng: -105.25174};

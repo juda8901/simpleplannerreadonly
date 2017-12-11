@@ -53,7 +53,6 @@ $conn->close();
   (function() {
     var quotes = $(".quotes");
     var quoteIndex = -1;
-
     function showNextQuote() {
       ++quoteIndex;
       quotes.eq(quoteIndex % quotes.length)
@@ -61,10 +60,8 @@ $conn->close();
       .delay(2000)
       .fadeOut(2000, showNextQuote);
     }
-
     showNextQuote();
   })();
-
   var TxtType = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
@@ -74,7 +71,6 @@ $conn->close();
     this.tick();
     this.isDeleting = false;
   };
-
   TxtType.prototype.tick = function() {
     var i = this.loopNum % this.toRotate.length;
     var fullTxt = this.toRotate[i];
@@ -83,13 +79,10 @@ $conn->close();
     } else {
       this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
-
     this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
     var that = this;
     var delta = 200 - Math.random() * 100;
-
     if (this.isDeleting) { delta /= 2; }
-
     if (!this.isDeleting && this.txt === fullTxt) {
       delta = this.period;
       this.isDeleting = true;
@@ -98,12 +91,10 @@ $conn->close();
       this.loopNum++;
       delta = 500;
     }
-
     setTimeout(function() {
       that.tick();
     }, delta);
   };
-
   window.onload = function() {
     var elements = document.getElementsByClassName('typewrite');
     for (var i=0; i<elements.length; i++) {
@@ -173,6 +164,8 @@ $conn->close();
     </div>
   </div>
 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&libraries=places&callback=initAutocomplete"
+  async defer></script>
   <script>
   var placeSearch, autocomplete;
   var componentForm = {
@@ -183,28 +176,23 @@ $conn->close();
     country: 'long_name',
     postal_code: 'short_name'
   };
-
   function initAutocomplete() {
     // Create the autocomplete object, restricting the search to geographical
     // location types.
     autocomplete = new google.maps.places.Autocomplete(
       /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
       {types: ['geocode']});
-
       // When the user selects an address from the dropdown, populate the address
       // fields in the form.
       autocomplete.addListener('place_changed', fillInAddress);
     }
-
     function fillInAddress() {
       // Get the place details from the autocomplete object.
       var place = autocomplete.getPlace();
-
       for (var component in componentForm) {
         document.getElementById(component).value = '';
         document.getElementById(component).disabled = false;
       }
-
       // Get each component of the address from the place details
       // and fill the corresponding field on the form.
       for (var i = 0; i < place.address_components.length; i++) {
@@ -215,7 +203,6 @@ $conn->close();
         }
       }
     }
-
     // Bias the autocomplete object to the user's geographical location,
     // as supplied by the browser's 'navigator.geolocation' object.
     function geolocate() {
@@ -254,10 +241,18 @@ $conn->close();
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
-        $sessionID=$_SESSION['user_id'];
-        $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
+        if(isset($_SESSION['user_id'])){
+          $sessionID=$_SESSION['user_id'];
+          $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
+        }
+        else{
+          $sql = "";
+          echo '<script type="text/javascript">
+          alert("You must log in first");
+          window.location = "login.php";
+          </script>';
+        }
         $result = $conn->query($sql);
-
         if ($result->num_rows > 0) {
           // output data of each row
           $i=0;
@@ -265,12 +260,9 @@ $conn->close();
             $tempStamp = strtotime($row['event_start_date_time']);
             $startTime = date('g:i A', $tempStamp);
             $startDate = date('m/d',$tempStamp);
-
-
             $tempStamp = strtotime($row['event_end_date_time']);
             $endTime = date('g:i A',$tempStamp);
             $endDate = date('m/d',$tempStamp);
-
             $title = $row["event_title"];
             if (empty($title) || $title==""){
               $title = "No Title";
@@ -316,6 +308,7 @@ $conn->close();
         });
       }
       </script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
       <hr>
 
 
