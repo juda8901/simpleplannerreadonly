@@ -2,7 +2,7 @@
 session_start();
 
 $error="";
-$logged_in=$_SESSION['logged_in']===true;
+$logged_in=false;
 if(isset($_POST['submit'])){
 	$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 	$server=$url["host"];
@@ -21,16 +21,16 @@ if(isset($_POST['submit'])){
 		$error="<p>Error: ".$query."<br>".$conn->error."</p>";
 	} elseif ($result->num_rows <= 0) {
 		$error="<script>document.getElementById('error').style.display='block';</script>";
-		$_SESSION['logged_in']=false;
 	} else {
 		while($row=$result->fetch_assoc()) {
 			$_SESSION['user_id']=(int)$row['account_id'];
-			$_SESSION['logged_in']=true;
+			$logged_in=true;
 			$error="<p>Session User ID: ".$_SESSION['user_id']."</p>";
 		}
 	}
 	$conn->close();
 }
+
 if($logged_in){
 	header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
 	die();
