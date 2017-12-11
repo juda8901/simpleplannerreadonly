@@ -62,6 +62,80 @@ width: 100%;
 			</a>
 		</h2>
 	</header>
+
+	<!-- Scripts for Header -->
+	<script type="text/javascript">
+	// Rotating text
+	(function() {
+		var quotes = $(".quotes");
+		var quoteIndex = -1;
+
+		function showNextQuote() {
+			++quoteIndex;
+			quotes.eq(quoteIndex % quotes.length)
+			.fadeIn(2000)
+			.delay(2000)
+			.fadeOut(2000, showNextQuote);
+		}
+
+		showNextQuote();
+	})();
+
+	var TxtType = function(el, toRotate, period) {
+		this.toRotate = toRotate;
+		this.el = el;
+		this.loopNum = 0;
+		this.period = parseInt(period, 10) || 3000;
+		this.txt = '';
+		this.tick();
+		this.isDeleting = false;
+	};
+
+	TxtType.prototype.tick = function() {
+		var i = this.loopNum % this.toRotate.length;
+		var fullTxt = this.toRotate[i];
+		if (this.isDeleting) {
+			this.txt = fullTxt.substring(0, this.txt.length - 1);
+		} else {
+			this.txt = fullTxt.substring(0, this.txt.length + 1);
+		}
+
+		this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+		var that = this;
+		var delta = 200 - Math.random() * 100;
+
+		if (this.isDeleting) { delta /= 2; }
+
+		if (!this.isDeleting && this.txt === fullTxt) {
+			delta = this.period;
+			this.isDeleting = true;
+		} else if (this.isDeleting && this.txt === '') {
+			this.isDeleting = false;
+			this.loopNum++;
+			delta = 500;
+		}
+
+		setTimeout(function() {
+			that.tick();
+		}, delta);
+	};
+
+	window.onload = function() {
+		var elements = document.getElementsByClassName('typewrite');
+		for (var i=0; i<elements.length; i++) {
+			var toRotate = elements[i].getAttribute('data-type');
+			var period = elements[i].getAttribute('data-period');
+			if (toRotate) {
+				new TxtType(elements[i], JSON.parse(toRotate), period);
+			}
+		}
+		// INJECT CSS
+		var css = document.createElement("style");
+		css.type = "text/css";
+		css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+		document.body.appendChild(css);
+	};
+	</script>
 	<hr>
 
 	<!-- search bar -->
@@ -72,7 +146,7 @@ width: 100%;
 			<!-- Create Event Button -->
 			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($logged_in){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button></h2></header>
 			</div>
-			
+
 			<!-- search script -->
 			<script type="text/javascript">
 			$('.w3-row').hide();
@@ -134,257 +208,173 @@ width: 100%;
 				</div>
 			</div>
 
+			<!-- Scripts for Create Event -->
+			<link rel="stylesheet" type="text/css" href="jquery.timepicker.css" />
+			<link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css" />
+			<script type="text/javascript" src="bootstrap-datepicker.js"></script>
+			<script type="text/javascript" src="jquery.timepicker.js"></script>
+			<script type="text/javascript" src="datepair.js"></script>
+			<script>
+			// initialize input widgets first
+			$('#datepick .time').timepicker({
+				'showDuration': true,
+				'timeFormat': 'g:ia'
+			});
 
-			<!-- Event Cards -->
-			<header><h1>
-				<?php
-				if($logged_in){
-					echo "Your Events";
-				} else {
-					echo "All Events";
+			$('#datepick .date').datepicker({
+				'format': 'm/d/yyyy',
+				'autoclose': true
+			});
+
+			// initialize datepair
+			var datepickEl = document.getElementById('datepick');
+			var datepair = new Datepair(datepickEl);
+			</script>
+
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&libraries=places&callback=initAutocomplete"
+			async defer></script>
+			<script>
+			var placeSearch, autocomplete;
+			var componentForm = {
+				street_number: 'short_name',
+				route: 'long_name',
+				locality: 'long_name',
+				administrative_area_level_1: 'short_name',
+				country: 'long_name',
+				postal_code: 'short_name'
+			};
+
+			function initAutocomplete() {
+				// Create the autocomplete object, restricting the search to geographical
+				// location types.
+				autocomplete = new google.maps.places.Autocomplete(
+					/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+					{types: ['geocode']});
+
+					// When the user selects an address from the dropdown, populate the address
+					// fields in the form.
+					autocomplete.addListener('place_changed', fillInAddress);
 				}
-				?>
-			</h1></header>
-			<br>
-			<div class="w3-container" style="width: 85%; margin: auto;">
-				<div class='w3-row' style='margin: auto;'>
-					<?php
-					$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-					$server = $url["host"];
-					$username = $url["user"];
-					$password = $url["pass"];
-					$db = substr($url["path"], 1);
-					// Create connection
-					$conn = new mysqli($server, $username, $password, $db);
-					// Check connection
-					if ($conn->connect_error) {
-						die("Connection failed: " . $conn->connect_error);
+
+				function fillInAddress() {
+					// Get the place details from the autocomplete object.
+					var place = autocomplete.getPlace();
+
+					for (var component in componentForm) {
+						document.getElementById(component).value = '';
+						document.getElementById(component).disabled = false;
 					}
 
-					$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
-					if($logged_in){
-						$sessionID=$_SESSION['id'];
-						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
-					}
-					$result = $conn->query($sql);
-
-					if ($result->num_rows > 0) {
-						// output data of each row
-						$i=0;
-						while($row = $result->fetch_assoc()) {
-							$tempStamp = strtotime($row['event_start_date_time']);
-							$startTime = date('g:i A', $tempStamp);
-							$startDate = date('m/d',$tempStamp);
-
-
-							$tempStamp = strtotime($row['event_end_date_time']);
-							$endTime = date('g:i A',$tempStamp);
-							$endDate = date('m/d',$tempStamp);
-
-							$title = $row["event_title"];
-							if (empty($title) || $title==""){
-								$title = "No Title";
-							}
-							if(($i % 4)==0 && $i!=0){
-								echo "</div><div class='w3-row' style='margin: auto;'>";
-							}
-							echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
-							if($startTime!=$endTime){
-								echo "-" . $endTime;
-							}
-							echo  "</p><p>" . $startDate;
-							if($startDate!=$endDate){
-								echo "-" . $endDate;
-							}
-							echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
-							$i++;
-						}
-					} else {
-						echo "0 results";
-					}
-					echo "</div>";
-					$conn->close();
-					?>
-				</div>
-
-				<hr>
-
-
-				<!-- Google Map -->
-				<h1>Events Happening Nearby</h1>
-				<div id="map"></div>
-				<hr>
-				<hr>
-
-
-				<!-- Footer -->
-				<?php require 'footer.html'; ?>
-
-
-				<!-- ############################################## SCRIPTS ######################################################## -->
-				<!-- Scripts for Header -->
-				<script type="text/javascript">
-				// Rotating text
-				(function() {
-					var quotes = $(".quotes");
-					var quoteIndex = -1;
-
-					function showNextQuote() {
-						++quoteIndex;
-						quotes.eq(quoteIndex % quotes.length)
-						.fadeIn(2000)
-						.delay(2000)
-						.fadeOut(2000, showNextQuote);
-					}
-
-					showNextQuote();
-				})();
-
-				var TxtType = function(el, toRotate, period) {
-					this.toRotate = toRotate;
-					this.el = el;
-					this.loopNum = 0;
-					this.period = parseInt(period, 10) || 3000;
-					this.txt = '';
-					this.tick();
-					this.isDeleting = false;
-				};
-
-				TxtType.prototype.tick = function() {
-					var i = this.loopNum % this.toRotate.length;
-					var fullTxt = this.toRotate[i];
-					if (this.isDeleting) {
-						this.txt = fullTxt.substring(0, this.txt.length - 1);
-					} else {
-						this.txt = fullTxt.substring(0, this.txt.length + 1);
-					}
-
-					this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-					var that = this;
-					var delta = 200 - Math.random() * 100;
-
-					if (this.isDeleting) { delta /= 2; }
-
-					if (!this.isDeleting && this.txt === fullTxt) {
-						delta = this.period;
-						this.isDeleting = true;
-					} else if (this.isDeleting && this.txt === '') {
-						this.isDeleting = false;
-						this.loopNum++;
-						delta = 500;
-					}
-
-					setTimeout(function() {
-						that.tick();
-					}, delta);
-				};
-
-				window.onload = function() {
-					var elements = document.getElementsByClassName('typewrite');
-					for (var i=0; i<elements.length; i++) {
-						var toRotate = elements[i].getAttribute('data-type');
-						var period = elements[i].getAttribute('data-period');
-						if (toRotate) {
-							new TxtType(elements[i], JSON.parse(toRotate), period);
+					// Get each component of the address from the place details
+					// and fill the corresponding field on the form.
+					for (var i = 0; i < place.address_components.length; i++) {
+						var addressType = place.address_components[i].types[0];
+						if (componentForm[addressType]) {
+							var val = place.address_components[i][componentForm[addressType]];
+							document.getElementById(addressType).value = val;
 						}
 					}
-					// INJECT CSS
-					var css = document.createElement("style");
-					css.type = "text/css";
-					css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-					document.body.appendChild(css);
-				};
-				</script>
+				}
 
-
-				<!-- Scripts for Create Event -->
-				<link rel="stylesheet" type="text/css" href="jquery.timepicker.css" />
-				<link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css" />
-				<script type="text/javascript" src="bootstrap-datepicker.js"></script>
-				<script type="text/javascript" src="jquery.timepicker.js"></script>
-				<script type="text/javascript" src="datepair.js"></script>
-				<script>
-				// initialize input widgets first
-				$('#datepick .time').timepicker({
-					'showDuration': true,
-					'timeFormat': 'g:ia'
-				});
-
-				$('#datepick .date').datepicker({
-					'format': 'm/d/yyyy',
-					'autoclose': true
-				});
-
-				// initialize datepair
-				var datepickEl = document.getElementById('datepick');
-				var datepair = new Datepair(datepickEl);
-				</script>
-
-				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&libraries=places&callback=initAutocomplete"
-				async defer></script>
-				<script>
-				var placeSearch, autocomplete;
-				var componentForm = {
-					street_number: 'short_name',
-					route: 'long_name',
-					locality: 'long_name',
-					administrative_area_level_1: 'short_name',
-					country: 'long_name',
-					postal_code: 'short_name'
-				};
-
-				function initAutocomplete() {
-					// Create the autocomplete object, restricting the search to geographical
-					// location types.
-					autocomplete = new google.maps.places.Autocomplete(
-						/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-						{types: ['geocode']});
-
-						// When the user selects an address from the dropdown, populate the address
-						// fields in the form.
-						autocomplete.addListener('place_changed', fillInAddress);
-					}
-
-					function fillInAddress() {
-						// Get the place details from the autocomplete object.
-						var place = autocomplete.getPlace();
-
-						for (var component in componentForm) {
-							document.getElementById(component).value = '';
-							document.getElementById(component).disabled = false;
-						}
-
-						// Get each component of the address from the place details
-						// and fill the corresponding field on the form.
-						for (var i = 0; i < place.address_components.length; i++) {
-							var addressType = place.address_components[i].types[0];
-							if (componentForm[addressType]) {
-								var val = place.address_components[i][componentForm[addressType]];
-								document.getElementById(addressType).value = val;
-							}
-						}
-					}
-
-					// Bias the autocomplete object to the user's geographical location,
-					// as supplied by the browser's 'navigator.geolocation' object.
-					function geolocate() {
-						if (navigator.geolocation) {
-							navigator.geolocation.getCurrentPosition(function(position) {
-								var geolocation = {
-									lat: position.coords.latitude,
-									lng: position.coords.longitude
-								};
-								var circle = new google.maps.Circle({
-									center: geolocation,
-									radius: position.coords.accuracy
-								});
-								autocomplete.setBounds(circle.getBounds());
+				// Bias the autocomplete object to the user's geographical location,
+				// as supplied by the browser's 'navigator.geolocation' object.
+				function geolocate() {
+					if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(function(position) {
+							var geolocation = {
+								lat: position.coords.latitude,
+								lng: position.coords.longitude
+							};
+							var circle = new google.maps.Circle({
+								center: geolocation,
+								radius: position.coords.accuracy
 							});
-						}
+							autocomplete.setBounds(circle.getBounds());
+						});
 					}
-					//from Google: https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-					</script>
+				}
+				//from Google: https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+				</script>
 
+
+				<!-- Event Cards -->
+				<header><h1>
+					<?php
+					if($logged_in){
+						echo "Your Events";
+					} else {
+						echo "All Events";
+					}
+					?>
+				</h1></header>
+				<br>
+				<div class="w3-container" style="width: 85%; margin: auto;">
+					<div class='w3-row' style='margin: auto;'>
+						<?php
+						$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+						$server = $url["host"];
+						$username = $url["user"];
+						$password = $url["pass"];
+						$db = substr($url["path"], 1);
+						// Create connection
+						$conn = new mysqli($server, $username, $password, $db);
+						// Check connection
+						if ($conn->connect_error) {
+							die("Connection failed: " . $conn->connect_error);
+						}
+
+						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
+						if($logged_in){
+							$sessionID=$_SESSION['id'];
+							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
+						}
+						$result = $conn->query($sql);
+
+						if ($result->num_rows > 0) {
+							// output data of each row
+							$i=0;
+							while($row = $result->fetch_assoc()) {
+								$tempStamp = strtotime($row['event_start_date_time']);
+								$startTime = date('g:i A', $tempStamp);
+								$startDate = date('m/d',$tempStamp);
+
+
+								$tempStamp = strtotime($row['event_end_date_time']);
+								$endTime = date('g:i A',$tempStamp);
+								$endDate = date('m/d',$tempStamp);
+
+								$title = $row["event_title"];
+								if (empty($title) || $title==""){
+									$title = "No Title";
+								}
+								if(($i % 4)==0 && $i!=0){
+									echo "</div><div class='w3-row' style='margin: auto;'>";
+								}
+								echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
+								if($startTime!=$endTime){
+									echo "-" . $endTime;
+								}
+								echo  "</p><p>" . $startDate;
+								if($startDate!=$endDate){
+									echo "-" . $endDate;
+								}
+								echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
+								$i++;
+							}
+						} else {
+							echo "0 results";
+						}
+						echo "</div>";
+						$conn->close();
+						?>
+					</div>
+
+					<hr>
+
+
+					<!-- Google Map -->
+					<h1>Events Happening Nearby</h1>
+					<div id="map"></div>
 
 					<!-- Scripts for Google Map -->
 					<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
@@ -401,5 +391,11 @@ width: 100%;
 						});
 					}
 					</script>
+					<hr>
+					<hr>
+
+
+					<!-- Footer -->
+					<?php require 'footer.html'; ?>
 				</body>
 				</html>
