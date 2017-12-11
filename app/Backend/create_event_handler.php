@@ -4,7 +4,7 @@ $EventTitle = $_REQUEST['EventTitle'];
 $StartTime = $_REQUEST['Start Time'];
 $EndTime = $_REQUEST['End Time'];
 $Location = $_REQUEST['Location'];
-$Host = $_SESSION['user_id'];
+$Host = $_SESSION['id'];
 $Description = $_REQUEST['Description'];
 $PrivPub = $_REQUEST['PrivPub'];
 if($PrivPub == '1'){

@@ -1,4 +1,26 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+$logged_in=false;
+$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+$server=$url["host"];
+$username=$url["user"];
+$password=$url["pass"];
+$db=substr($url["path"], 1);
+$conn=new mysqli($server, $username, $password, $db);
+if ($conn->connect_error) {
+	die("<p>Connection failed: " . $conn->connect_error."</p>");
+}
+$name=$_SESSION['username'];
+$pass=$_SESSION['password'];
+$id=$_SESSION['id'];
+$query="SELECT * FROM accounts WHERE account_email='$name' AND account_password='$pass' AND account_id='$id';";
+$result=$conn->query($query);
+if($result->num_rows==1){
+	$logged_in=true;
+}
+$conn->close();
+?>
 
 <html>
 <head>
@@ -29,8 +51,6 @@
 	<!-- Navigation Bar -->
 	<?php require 'nav_bar.php'; ?>
 	<br><br>
-
-
 
 
 	<!-- Header -->
@@ -192,12 +212,6 @@
 			</header>
 		</div>
 	</div>
-	<link rel="stylesheet" type="text/css" href="jquery.timepicker.css" />
-	<link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css" />
-	<script type="text/javascript" src="bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="jquery.timepicker.js"></script>
-
-	<script type="text/javascript" src="datepair.js"></script>
 	<script>
 	// initialize input widgets first
 	$('#datepick .time').timepicker({
@@ -297,7 +311,12 @@
 					die("Connection failed: " . $conn->connect_error);
 				}
 
-				$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
+				if($logged_in){
+					$sessionID=$_SESSION['user_id'];
+					$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
+				} else {
+					$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
+				}
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {

@@ -1,7 +1,7 @@
 <?php
-//session_start();
+session_start();
 $GroupName = $_REQUEST['GroupName'];
-//$Host = $_SESSION['user_id'];
+$Host = $_SESSION['id'];
 $Description = $_REQUEST['Descrip'];
 $PrivPub = $_REQUEST['PrivatePub'];
 if($PrivPub == '1'){

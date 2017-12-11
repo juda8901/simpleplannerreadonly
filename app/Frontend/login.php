@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
 }
 
 if($logged_in){
-	header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
+	header('Location: https://simpleplanner.herokuapp.com');
 	die();
 }
 ?>

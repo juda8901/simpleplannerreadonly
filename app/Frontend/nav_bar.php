@@ -8,7 +8,7 @@
 
 
 <?php
-if($_SESSION['user_id'] != NULL){
+if($logged_in){
   echo "<script>document.getElementById('login').style.display='none'; document.getElementById('logout').style.display='block';document.getElementById('reg').style.display='block';</script>";
 } else {
   echo "<script>document.getElementById('login').style.display='block'; document.getElementById('logout').style.display='none';</script>";
