@@ -40,7 +40,7 @@
 
 
 	<center style="margin-top: 7.5%;">
-		<form action="login2.php" method="post" style="margin: 20px 0px 20px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 20em; height: 25em;">
+		<form action="/Backend/login_handler.php" method="post" style="margin: 20px 0px 20px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 20em; height: 25em;">
 			<h1 style="float:left; margin:10px 10px 10px 20px;"> Login </h1>
 			<br>
 			<br>
