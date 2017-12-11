@@ -73,7 +73,7 @@ if($logged_in){
 <body>
 	<!-- Top Buttons -->
 	<?php require 'nav_bar.php'; ?>
-	<script>document.getElementById('logo').value="  Simpleplanner";</script>
+	<script>document.getElementById('nav_title').style.display='block';</script>
 	<br>
 	<br>
 

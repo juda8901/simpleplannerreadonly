@@ -214,8 +214,6 @@
 	var datepickEl = document.getElementById('datepick');
 	var datepair = new Datepair(datepickEl);
 	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&libraries=places&callback=initAutocomplete"
-	async defer></script>
 	<script>
 	var placeSearch, autocomplete;
 	var componentForm = {
@@ -361,7 +359,6 @@
 				});
 			}
 			</script>
-			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
 			<hr>
 
 
