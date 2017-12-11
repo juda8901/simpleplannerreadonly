@@ -4,11 +4,33 @@
 <head>
 	<title>Simpleplanner - Home</title>
 	<?php require 'header.html'; ?>
+	<style> 
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+</style>
 </head>
 <body>
 	<!-- Navigation Bar -->
 	<?php require 'nav_bar.php'; ?>
 	<br><br>
+
+
 
 
 	<!-- Header -->
@@ -101,6 +123,9 @@
 	<div id="search_bar" class="w3-bar-item" style="padding: 5px; width: 100%; text-align: center;">
         <input type="text" placeholder="  Search..." name="search-criteria" id="search-criteria" style="width: 500px; border-radius: 15px;">  
     </div>
+    <form>
+  <input type="text" name="search" placeholder="Search..">
+	</form>
     
     <!-- search script -->
     <script type="text/javascript">
