@@ -139,10 +139,10 @@ width: 100%;
 					}
 
 					$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events";
-					if($logged_in){
-						$sessionID=$_SESSION['id'];
-						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
-					}
+					// if($logged_in){
+					// 	$sessionID=$_SESSION['id'];
+					// 	$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
+					// }
 					$result = $conn->query($sql);
 
 					if ($result->num_rows > 0) {
