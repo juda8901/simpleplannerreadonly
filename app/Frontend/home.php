@@ -26,7 +26,7 @@ $conn->close();
 <head>
 	<title>Simpleplanner - Home</title>
 	<?php require 'header.html'; ?>
-	<style>
+	<!-- <style>
 	input[type=text] {
 		width: 130px;
 		box-sizing: border-box;
@@ -45,7 +45,7 @@ $conn->close();
 	input[type=text]:focus {
 		width: 100%;
 	}
-</style>
+</style> -->
 </head>
 <body>
 	<!-- Navigation Bar -->
@@ -65,17 +65,14 @@ $conn->close();
 	<hr>
 
 	<!-- search bar -->
-	<div id="search_bar" class="w3-bar-item" style="padding: 5px; width: 100%; text-align: center;">
-		<input type="text" placeholder="  Search..." name="search-criteria" id="search-criteria" style="width: 500px; border-radius: 15px;">
-		<button type="submit" class="w3-button w3-hover-blue-grey" style="width:25px;padding:0px;margin:0px;" id="search" value="search"><i class="fa fa-search"></i></button>
+	<div id="search_bar" style="width: 100%; text-align: center;">
+		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: x-large; padding: 0; margin: 0;">
+		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: auto; height: auto; padding: 0; margin:0px;" id="search" value="search"><i class="fa fa-search" style="zoom: 1.75; padding: 0; margin: 0; margin-bottom: 5;"></i></button>
+		<h2>or Create a New Event
+		<!-- Create Event Button -->
+		<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($logged_in){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button></h2>
 	</div>
-	<form>
-		<input type="text" name="search" placeholder="Search..">
-	</form>
 	<hr>
-
-	<!-- Create Event Button -->
-	<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($logged_in){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button>
 
 
 		<!-- Modal for Create Event -->
