@@ -104,11 +104,11 @@
     
     <!-- search script -->
     <script type="text/javascript">
-        $('.w3-row').hide();
+        $('.w3-center w3-col w3-card w3-blue-grey').hide();
         $('#search').click(function(){
-            $('.w3-row').hide();
+            $('.w3-center w3-col w3-card w3-blue-grey').hide();
             var s = $('#search-criteria').val();
-            $('.w3-row').each(function(){
+            $('.w3-center w3-col w3-card w3-blue-grey').each(function(){
             if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
                 $(this).show();
             }
