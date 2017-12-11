@@ -335,11 +335,11 @@ width: 100%;
 								}
 								echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
 								if($startTime!=$endTime){
-									echo "-" . $endTime;
+									echo " - " . $endTime;
 								}
 								echo  "</p><p>" . $startDate;
 								if($startDate!=$endDate){
-									echo "-" . $endDate;
+									echo " - " . $endDate;
 								}
 								echo "</p><p>" . $row["event_tags"];
 								echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
