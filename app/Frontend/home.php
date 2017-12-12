@@ -239,11 +239,11 @@ window.onload = function() {
 
 <!-- search script -->
 <script type="text/javascript">
-$('.w3-card').hide();
+$('.event_card').hide();
 $('#search').click(function(){
-	$('.w3-card').hide();
+	$('.event_card').hide();
 	var s = $('#search-criteria').val();
-	$('.w3-card').each(function(){
+	$('.event_card').each(function(){
 		if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
 			$(this).show();
 		}
@@ -468,7 +468,7 @@ $('#search').click(function(){
 					if(($i % 4)==0 && $i!=0){
 						echo "</div><div class='w3-row' style='margin: auto;'>";
 					}
-					echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'>
+					echo "<div class='w3-center w3-col w3-card w3-blue-grey event_card' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'>
 					<div style='width: 100%; height: 30%;' class='card_title'><span>".$title."</span></div>
 					<div style='height: 50%; overflow: hidden;'>
 					<p>".$row["event_location"]."</p>
