@@ -50,8 +50,8 @@ if($valid) $id=$_SESSION['id'];
     <div class="video-container">
         <div class="filter"></div>
         <video autoplay loop class="fillWidth">
-            <source src="PATH_TO_MP4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
-            <source src="PATH_TO_WEBM" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="https://simpleplanner.herokuapp.com/Frontend/up" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="https://simpleplanner.herokuapp.com/Frontend/up.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
         </video>
         <div class="poster hidden">
             <img src="PATH_TO_JPEG" alt="">
