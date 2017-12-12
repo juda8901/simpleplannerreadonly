@@ -48,11 +48,10 @@ if($valid) $id=$_SESSION['id'];
 <body>
 	<!-- Navigation Bar -->
 	<?php require 'nav_bar.php'; ?>
-	<br><br>
 
 
 	<!-- Header -->
-	<div class="homepage-hero-module">
+	<div class="homepage-hero-module" style="margin-top: 40px;">
 		<div class="video-container">
 			<div class="title-container" ></div>
 			<div class="filter"></div>
