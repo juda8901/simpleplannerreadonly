@@ -17,13 +17,18 @@ input[type=text] {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 14px;
-    padding: 10px 25px 10px 45px;
     width: 130px;
     box-sizing: border-box;
     background-image: url('searchicon.png');
     background-repeat: no-repeat;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
+    margin: 0 auto;
+    max-width: 800px;
+    padding-top: 10px;
+    position: relative;
+    width: 95%;
+}
 }
 
 input[type=text]:focus {
