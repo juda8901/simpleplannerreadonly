@@ -21,25 +21,15 @@ if($valid) $id=$_SESSION['id'];
 	    box-sizing: border-box;
 	    background-image: url('searchicon.png');
 	    background-repeat: no-repeat;
-	    margin: 0 auto;
+	    margin: auto;
 	    left-margin: 10px;
+
 	    max-width: 800px;
 	    padding-top: 10px;
 	    position: relative;
 	    width: 95%;
 	}
 
-</style>
-<style>
-div.sticky {
-	margin-top: 50px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 50px;
-  padding: 5px;
-  background-color: #blue;
-  border: 2px solid #4CAF50;
-}
 </style>
 </head>
 <body>
