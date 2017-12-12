@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$insert="INSERT INTO groups (group_name,group_description,group_is_private) VALUES ('$GroupName','$Description',$priv);";
+$insert="INSERT INTO groups (group_name,group_description,group_is_private,group_leader_account_id) VALUES ('$GroupName','$Description',$priv,$Host);";
 if($conn->query($insert)==TRUE){
 	echo "Event created successfully";
 	header('Location: https://simpleplanner.herokuapp.com');
