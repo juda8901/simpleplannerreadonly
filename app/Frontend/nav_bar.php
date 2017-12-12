@@ -5,7 +5,7 @@
   <a href="Frontend/login.php" class="w3-bar-item w3-right w3-button w3-hover-white" id="login">Log In</a>
   <a href="https://simpleplanner.herokuapp.com/Backend/logout.php" class="w3-bar-item w3-right w3-button w3-hover-white" id="logout">Log Out</a>
   <a onclick="document.getElementById('sign_up').style.display='block'" class=" w3-bar-item w3-right w3-button w3-hover-white" id="reg">Sign Up</a>
-  <a onclick="<?php if($valid){	echo "document.getElementById('create_group').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" class=" w3-bar-item w3-right w3-button w3-hover-red" style="color: red;" id="group">Create a Group</a>
+  <a onclick="<?php if($valid){	echo "document.getElementById('create_group').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" class=" w3-bar-item w3-right w3-button w3-hover-red" style="color: #F64060;" id="group">Create a Group</a>
 </div>
 
 
