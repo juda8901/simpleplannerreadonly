@@ -389,7 +389,20 @@ width: 100%;
 					<div id="map"></div>
 					<hr>
 					<!-- Scripts for Google Map -->
-					
+					<script>
+						function initMap() {
+							var Boulder = {lat: 40.027443, lng: -105.25174};
+							var map = new google.maps.Map(document.getElementById('map'), {
+								zoom: 4,
+								center: Boulder
+							});
+							var marker = new google.maps.Marker({
+								position: Boulder,
+								map: map
+							});
+						}
+					</script>
+					<div id="map"></div>
     <script>
       function initMap() {
 
@@ -511,7 +524,7 @@ width: 100%;
         // Create a map object, and include the MapTypeId to add
         // to the map type control.
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {{lat: 40.027443, lng: -105.25174},
+          center: {lat: 55.647, lng: 37.581},
           zoom: 11,
           mapTypeControlOptions: {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
