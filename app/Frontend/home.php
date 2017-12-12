@@ -128,7 +128,7 @@ input[type=text]:focus {
 		<header><h2>
 
 	<form>
-	  <input type="text" name="search-criteria" placeholder="Search..">
+	  <input type="text" name="search-criteria" placeholder="Search.." value="search" >
 	</form>
 			
 
@@ -145,11 +145,8 @@ input[type=text]:focus {
 				});
 			});
 			</script>
-			<hr style= "clear: both;
-				    display: block;
-				    position: relative;
-				    z-index: 10;
-				    margin-top: -1px;">
+
+			<hr >
 
 
 			<!-- Create Event Button -->
