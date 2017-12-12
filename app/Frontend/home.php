@@ -29,6 +29,16 @@ if($valid) $id=$_SESSION['id'];
 	}
 
 </style>
+<style>
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+}
+</style>
 </head>
 <body>
 	<!-- Navigation Bar -->
@@ -128,6 +138,8 @@ if($valid) $id=$_SESSION['id'];
 		<button type="submit" style="width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75;padding: 0; margin: 0;"></i></button>
 	</form>
 	</div>
+
+	<div class="sticky">I am sticky!</div>
 
 
 	
