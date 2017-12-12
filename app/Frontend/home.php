@@ -144,10 +144,10 @@ width: 100%;
 			});
 			</script>
 			<hr style= "clear: both;
-			display: block;
-			position: relative;
-			z-index: 10;
-			margin-top: -1px;">
+				    display: block;
+				    position: relative;
+				    z-index: 10;
+				    margin-top: -1px;">
 
 
 
@@ -303,8 +303,8 @@ width: 100%;
 				</div>
 			</div>
 
-			<!-- Event Cards -->
-			<div style = "background-color: #fafafa">
+				<!-- Event Cards -->
+				<div style = "background-color: #fafafa"> 
 				<header><h1>
 					<?php
 					if($valid){
@@ -338,14 +338,14 @@ width: 100%;
 						if ($result->num_rows > 0) {
 							// output data of each row
 							$i=0;
-
+							
 							while($row = $result->fetch_assoc()) {
 								$startDate = $row['event_start_date_time'];
 								$startTime = $row['event_start_time'];
 								$endDate = $row['event_end_date_time'];
 								$endTime = $row['event_end_time'];
 								$title = $row["event_title"];
-
+								
 								date_default_timezone_set('America/Denver');
 								$currentdate = date('m/d/Y', time());
 								$time = strtotime($endDate);
@@ -353,14 +353,14 @@ width: 100%;
 								if($eventend < $currentdate){
 									continue;
 								}
-
+								
 								if (empty($title) || $title==""){
 									$title = "No Title";
 								}
 								if(($i % 4)==0 && $i!=0){
 									echo "</div><div class='w3-row' style='margin: auto;'>";
 								}
-								echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><div id='card' style='width: 100%; height: 30%;'><span>" . $title. "</span></div><div style='height: 50%; overflow: hidden;'><p>" . $row["event_location"]. "</p><p>" . $startTime;
+								echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
 								if($startTime!=$endTime){
 									echo " - " . $endTime;
 								}
@@ -368,7 +368,8 @@ width: 100%;
 								if($startDate!=$endDate){
 									echo " - " . $endDate;
 								}
-								echo "</p><p>" . $row["event_description"]."</p></div><button style='width: 40%; margin-right: 7.5%; margin-top: 5%;'>View</button><button style='width: 40%;'>Join</button>";
+								echo "</p><p>" . $row["event_tags"];
+								echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
 								$i++;
 							}
 						} else {
@@ -379,155 +380,152 @@ width: 100%;
 						?>
 					</div>
 				</div>
-				<hr>
-				<script src="jquery.min.js"></script>
-				<script src="jquery.textfill.min.js"></script>
-				<script>$('#card').textfill({});</script>
+
+					<hr>
 
 
+					<!-- Google Map -->
+					<h1>Events Happening Nearby</h1>
+					<div id="map"></div>
 
-				<!-- Google Map -->
-				<h1>Events Happening Nearby</h1>
-				<div id="map"></div>
+					<!-- Scripts for Google Map -->
+    <script>
+      function initMap() {
 
-				<!-- Scripts for Google Map -->
-				<script>
-				function initMap() {
+        // Create a new StyledMapType object, passing it an array of styles,
+        // and the name to be displayed on the map type control.
+        var styledMapType = new google.maps.StyledMapType(
+            [
+              {elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
+              {elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
+              {elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
+              {
+                featureType: 'administrative',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#c9b2a6'}]
+              },
+              {
+                featureType: 'administrative.land_parcel',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#dcd2be'}]
+              },
+              {
+                featureType: 'administrative.land_parcel',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#ae9e90'}]
+              },
+              {
+                featureType: 'landscape.natural',
+                elementType: 'geometry',
+                stylers: [{color: '#dfd2ae'}]
+              },
+              {
+                featureType: 'poi',
+                elementType: 'geometry',
+                stylers: [{color: '#dfd2ae'}]
+              },
+              {
+                featureType: 'poi',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#93817c'}]
+              },
+              {
+                featureType: 'poi.park',
+                elementType: 'geometry.fill',
+                stylers: [{color: '#a5b076'}]
+              },
+              {
+                featureType: 'poi.park',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#447530'}]
+              },
+              {
+                featureType: 'road',
+                elementType: 'geometry',
+                stylers: [{color: '#f5f1e6'}]
+              },
+              {
+                featureType: 'road.arterial',
+                elementType: 'geometry',
+                stylers: [{color: '#fdfcf8'}]
+              },
+              {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{color: '#f8c967'}]
+              },
+              {
+                featureType: 'road.highway',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#e9bc62'}]
+              },
+              {
+                featureType: 'road.highway.controlled_access',
+                elementType: 'geometry',
+                stylers: [{color: '#e98d58'}]
+              },
+              {
+                featureType: 'road.highway.controlled_access',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#db8555'}]
+              },
+              {
+                featureType: 'road.local',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#806b63'}]
+              },
+              {
+                featureType: 'transit.line',
+                elementType: 'geometry',
+                stylers: [{color: '#dfd2ae'}]
+              },
+              {
+                featureType: 'transit.line',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#8f7d77'}]
+              },
+              {
+                featureType: 'transit.line',
+                elementType: 'labels.text.stroke',
+                stylers: [{color: '#ebe3cd'}]
+              },
+              {
+                featureType: 'transit.station',
+                elementType: 'geometry',
+                stylers: [{color: '#dfd2ae'}]
+              },
+              {
+                featureType: 'water',
+                elementType: 'geometry.fill',
+                stylers: [{color: '#b9d3c2'}]
+              },
+              {
+                featureType: 'water',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#92998d'}]
+              }
+            ],
+            {name: 'Styled Map'});
 
-					// Create a new StyledMapType object, passing it an array of styles,
-					// and the name to be displayed on the map type control.
-					var styledMapType = new google.maps.StyledMapType(
-						[
-							{elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
-							{elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
-							{elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
-							{
-								featureType: 'administrative',
-								elementType: 'geometry.stroke',
-								stylers: [{color: '#c9b2a6'}]
-							},
-							{
-								featureType: 'administrative.land_parcel',
-								elementType: 'geometry.stroke',
-								stylers: [{color: '#dcd2be'}]
-							},
-							{
-								featureType: 'administrative.land_parcel',
-								elementType: 'labels.text.fill',
-								stylers: [{color: '#ae9e90'}]
-							},
-							{
-								featureType: 'landscape.natural',
-								elementType: 'geometry',
-								stylers: [{color: '#dfd2ae'}]
-							},
-							{
-								featureType: 'poi',
-								elementType: 'geometry',
-								stylers: [{color: '#dfd2ae'}]
-							},
-							{
-								featureType: 'poi',
-								elementType: 'labels.text.fill',
-								stylers: [{color: '#93817c'}]
-							},
-							{
-								featureType: 'poi.park',
-								elementType: 'geometry.fill',
-								stylers: [{color: '#a5b076'}]
-							},
-							{
-								featureType: 'poi.park',
-								elementType: 'labels.text.fill',
-								stylers: [{color: '#447530'}]
-							},
-							{
-								featureType: 'road',
-								elementType: 'geometry',
-								stylers: [{color: '#f5f1e6'}]
-							},
-							{
-								featureType: 'road.arterial',
-								elementType: 'geometry',
-								stylers: [{color: '#fdfcf8'}]
-							},
-							{
-								featureType: 'road.highway',
-								elementType: 'geometry',
-								stylers: [{color: '#f8c967'}]
-							},
-							{
-								featureType: 'road.highway',
-								elementType: 'geometry.stroke',
-								stylers: [{color: '#e9bc62'}]
-							},
-							{
-								featureType: 'road.highway.controlled_access',
-								elementType: 'geometry',
-								stylers: [{color: '#e98d58'}]
-							},
-							{
-								featureType: 'road.highway.controlled_access',
-								elementType: 'geometry.stroke',
-								stylers: [{color: '#db8555'}]
-							},
-							{
-								featureType: 'road.local',
-								elementType: 'labels.text.fill',
-								stylers: [{color: '#806b63'}]
-							},
-							{
-								featureType: 'transit.line',
-								elementType: 'geometry',
-								stylers: [{color: '#dfd2ae'}]
-							},
-							{
-								featureType: 'transit.line',
-								elementType: 'labels.text.fill',
-								stylers: [{color: '#8f7d77'}]
-							},
-							{
-								featureType: 'transit.line',
-								elementType: 'labels.text.stroke',
-								stylers: [{color: '#ebe3cd'}]
-							},
-							{
-								featureType: 'transit.station',
-								elementType: 'geometry',
-								stylers: [{color: '#dfd2ae'}]
-							},
-							{
-								featureType: 'water',
-								elementType: 'geometry.fill',
-								stylers: [{color: '#b9d3c2'}]
-							},
-							{
-								featureType: 'water',
-								elementType: 'labels.text.fill',
-								stylers: [{color: '#92998d'}]
-							}
-						],
-						{name: 'Styled Map'});
+        // Create a map object, and include the MapTypeId to add
+        // to the map type control.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 55.647, lng: 37.581},
+          zoom: 11,
+          mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+                    'styled_map']
+          }
+        });
 
-						// Create a map object, and include the MapTypeId to add
-						// to the map type control.
-						var map = new google.maps.Map(document.getElementById('map'), {
-							center: {lat: 55.647, lng: 37.581},
-							zoom: 11,
-							mapTypeControlOptions: {
-								mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
-								'styled_map']
-							}
-						});
-
-						//Associate the styled map with the MapTypeId and set it to display.
-						map.mapTypes.set('styled_map', styledMapType);
-						map.setMapTypeId('styled_map');
-					}
-					</script>
-					<script async defer
-					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&signed_in=true&libraries=places&callback=initialize">
-					</script>
+        //Associate the styled map with the MapTypeId and set it to display.
+        map.mapTypes.set('styled_map', styledMapType);
+        map.setMapTypeId('styled_map');
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&signed_in=true&libraries=places&callback=initialize">
+    </script>
 
 
 					<!-- Footer -->
