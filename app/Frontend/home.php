@@ -35,7 +35,12 @@ if($valid) $id=$_SESSION['id'];
 
 <!-- <div class="homepage-hero-module"> -->
     <div class="video-container">
-    	<header class="w3-theme" id="Header">
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+            <source src="https://simpleplanner.herokuapp.com/Frontend/Up.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="https://simpleplanner.herokuapp.com/Frontend/Up.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+        <header class="w3-theme" id="Header">
 		<h1 style="color: #F64060;">Simpleplanner</h1>
 		<h2>
 			<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#2e3e48;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
@@ -44,11 +49,6 @@ if($valid) $id=$_SESSION['id'];
 		</h2>
 
 	</header>
-        <div class="filter"></div>
-        <video autoplay loop class="fillWidth">
-            <source src="https://simpleplanner.herokuapp.com/Frontend/Up.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
-            <source src="https://simpleplanner.herokuapp.com/Frontend/Up.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
-        </video>
     </div>
 <!-- </div> -->
 
