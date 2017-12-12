@@ -409,7 +409,7 @@ if($valid) $id=$_SESSION['id'];
 					if($valid){
 						echo "Your Events";
 					} else {
-						echo "All Events";
+						echo "Popular Events";
 					}
 					?>
 				</h1></header>
