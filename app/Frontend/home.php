@@ -368,16 +368,16 @@ input[type=text]:focus {
 								if(($i % 4)==0 && $i!=0){
 									echo "</div><div class='w3-row' style='margin: auto;'>";
 								}
-								echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%; display: -webkit-box;-webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
+								echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%; display: flex;'><header><h1 id='event_card-text'>" . $title. "</h1></header><p id='event_card-text'>" . $row["event_location"]. "</p><p id='event_card-text'>" . $startTime;
 								if($startTime!=$endTime){
 									echo " - " . $endTime;
 								}
-								echo  "</p><p>" . $startDate;
+								echo  "</p><p id='event_card-text'>" . $startDate;
 								if($startDate!=$endDate){
 									echo " - " . $endDate;
 								}
-								echo "</p><p>" . $row["event_tags"];
-								echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
+								echo "</p><p id='event_card-text'>" . $row["event_tags"];
+								echo "</p><p id='event_card-text'>" . $row["event_description"]. "</p><button>Contact</button></div>";
 								$i++;
 							}
 						} else {
