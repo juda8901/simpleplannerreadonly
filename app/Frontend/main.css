@@ -21,6 +21,7 @@ body {
 }
 
 #Header {
+  padding-top: 50px;
 	margin: auto;
 	width: 60%;
   color: white;

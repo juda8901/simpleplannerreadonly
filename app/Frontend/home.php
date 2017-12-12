@@ -38,7 +38,7 @@ width: 100%;
 
 	<!-- Header -->
 	<header class="w3-theme" id="Header">
-		<h1>Simpleplanner</h1>
+		<h1 style="color: #F64060;">Simpleplanner</h1>
 		<h2>
 			<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#2e3e48;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
 				<span class="wrap"></span>
@@ -123,8 +123,8 @@ width: 100%;
 
 	<!-- search bar -->
 	<div id="search_bar" style="width: 100%; text-align: center;">
-		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: x-large; padding: 0; margin: 0;"/>
-		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: 30px; height: 30px; padding: 0; margin:0px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIcon2.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75; padding: 0; margin: 0;"></i></button>
+		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: large; padding: 0; margin: 0;"/>
+		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIcon2.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75;padding: 0; margin: 0;"></i></button>
 		<header><h2>
 			<!-- Create Event Button -->
 			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button></h2></header>
@@ -132,18 +132,18 @@ width: 100%;
 
 			<!-- search script -->
 			<script type="text/javascript">
-			$('.w3-row').hide();
+			$('.w3-card').hide();
 			$('#search').click(function(){
-				$('.w3-row').hide();
+				$('.w3-card').hide();
 				var s = $('#search-criteria').val();
-				$('.w3-row').each(function(){
+				$('.w3-card').each(function(){
 					if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
 						$(this).show();
 					}
 				});
 			});
 			</script>
-			<hr>
+			<hr style= "border:none;">
 
 
 			<!-- Modal for Create Event -->
@@ -324,9 +324,9 @@ width: 100%;
 							die("Connection failed: " . $conn->connect_error);
 						}
 
-						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events;";
+						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_is_hidden=0;";
 						if($valid){
-							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_host_account_id='$id';";
+							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_host_account_id='$id' OR event_is_hidden=0;";
 						}
 						$result = $conn->query($sql);
 
@@ -383,7 +383,7 @@ width: 100%;
 					function initMap() {
 						var Boulder = {lat: 40.027443, lng: -105.25174};
 						var map = new google.maps.Map(document.getElementById('map'), {
-							zoom: 4,
+							zoom: 13,
 							center: Boulder
 						});
 						var marker = new google.maps.Marker({
