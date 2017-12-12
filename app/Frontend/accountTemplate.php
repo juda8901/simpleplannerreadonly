@@ -16,7 +16,6 @@ if($valid) $id=$_SESSION['id'];
     body, html {
         height: 100%;
         margin: 0;
-        font-family: Arial;
     }
 
     /* Style tab links */
@@ -356,68 +355,67 @@ width: 100%;
           ?>
         </h1></header>
         <div id="all_events" class="tabcontent">
-        <div id="all_events" class="tabcontent">
            <div class="w3-container" style="width: 85%; margin: auto;">
-        <div class='w3-row' style=' margin: auto;'>
-          <?php
-          $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-          $server = $url["host"];
-          $username = $url["user"];
-          $password = $url["pass"];
-          $db = substr($url["path"], 1);
-          // Create connection
-          $conn = new mysqli($server, $username, $password, $db);
-          // Check connection
-          if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-          }
-          if(isset($_SESSION['user_id'])){
-            $sessionID=$_SESSION['user_id'];
-            $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
-          }
-          else{
-            $sql = "";
-            // echo '<script type="text/javascript">
-            // alert("You must log in first");
-            // window.location = "login.php";
-            // </script>';
-          }
-          $result = $conn->query($sql);
-          if ($result->num_rows > 0) {
-            // output data of each row
-            $i=0;
-            while($row = $result->fetch_assoc()) {
-              $tempStamp = strtotime($row['event_start_date_time']);
-              $startTime = date('g:i A', $tempStamp);
-              $startDate = date('m/d',$tempStamp);
-              $tempStamp = strtotime($row['event_end_date_time']);
-              $endTime = date('g:i A',$tempStamp);
-              $endDate = date('m/d',$tempStamp);
-              $title = $row["event_title"];
-              if (empty($title) || $title==""){
-                $title = "No Title";
-              }
-              if(($i % 4)==0 && $i!=0){
-                echo "</div><div class='w3-row' style='margin: auto;'>";
-              }
-              echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
-              if($startTime!=$endTime){
-                echo "-" . $endTime;
-              }
-              echo  "</p><p>" . $startDate;
-              if($startDate!=$endDate){
-                echo "-" . $endDate;
-              }
-              echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
-              $i++;
+            <div class='w3-row' style=' margin: auto;'>
+            <?php
+            $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+            $server = $url["host"];
+            $username = $url["user"];
+            $password = $url["pass"];
+            $db = substr($url["path"], 1);
+            // Create connection
+            $conn = new mysqli($server, $username, $password, $db);
+            // Check connection
+            if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
             }
-          } else {
-            echo "0 results";
-          }
-          echo "</div>";
-          $conn->close();
-          ?>
-        </div>
+            if(isset($_SESSION['user_id'])){
+              $sessionID=$_SESSION['user_id'];
+              $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
+            }
+            else{
+              $sql = "";
+              // echo '<script type="text/javascript">
+              // alert("You must log in first");
+              // window.location = "login.php";
+              // </script>';
+            }
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+              // output data of each row
+              $i=0;
+              while($row = $result->fetch_assoc()) {
+                $tempStamp = strtotime($row['event_start_date_time']);
+                $startTime = date('g:i A', $tempStamp);
+                $startDate = date('m/d',$tempStamp);
+                $tempStamp = strtotime($row['event_end_date_time']);
+                $endTime = date('g:i A',$tempStamp);
+                $endDate = date('m/d',$tempStamp);
+                $title = $row["event_title"];
+                if (empty($title) || $title==""){
+                  $title = "No Title";
+                }
+                if(($i % 4)==0 && $i!=0){
+                  echo "</div><div class='w3-row' style='margin: auto;'>";
+                }
+                echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
+                if($startTime!=$endTime){
+                  echo "-" . $endTime;
+                }
+                echo  "</p><p>" . $startDate;
+                if($startDate!=$endDate){
+                  echo "-" . $endDate;
+                }
+                echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
+                $i++;
+              }
+            } else {
+              echo "0 results";
+            }
+            echo "</div>";
+            $conn->close();
+            ?>
+          </div>
       </div>
       <hr>
       <div id="current_events" class="tabcontent">
