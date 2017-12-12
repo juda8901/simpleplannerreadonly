@@ -245,7 +245,12 @@ if($valid) $id=$_SESSION['id'];
 			});
 			</script>
 
-	<hr >
+	<hr   style="display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; >
 
 
 			
@@ -481,7 +486,7 @@ if($valid) $id=$_SESSION['id'];
 				</div>
 
 					<hr>
-				
+
 
 					<!-- Google Map -->
 					<h1>Events Happening Nearby</h1>
