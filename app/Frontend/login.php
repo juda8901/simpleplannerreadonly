@@ -68,7 +68,7 @@ if($_SESSION['logged_in']){
 	}
 	</style>
 </head>
-<body>
+<body style= "background-color:#fafafa;">
 	<!-- Top Buttons -->
 	<?php require 'nav_bar.php'; ?>
 	<script>document.getElementById('nav_title').style.display='unset';</script>
