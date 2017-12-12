@@ -123,11 +123,13 @@ if($valid) $id=$_SESSION['id'];
 
 	<!-- search bar -->
 	<div style="background-color: grey;">
+		<form>
 	<div id="search_bar" style="width: 100%; text-align: center;">
 		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: large; padding: 0; margin: 0;"/>
 		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75;padding: 0; margin: 0;"></i></button>
 	</div>
 
+</form>
 				</div>
 
 	
