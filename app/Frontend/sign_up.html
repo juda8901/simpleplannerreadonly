@@ -95,18 +95,18 @@ v_pw.onkeyup = function(){
     match.classList.add("invalid");
   }
 }
-// pw.onfocus = function() {
-//   document.getElementById("eRequirements").style.display = "block";
-// }
-// Checks if correct email format
-// em.onkeyup = function(){
-//   var validEmail = /^[A-Z0-9._%+-]+@[A-Z]{2,}$/g;
-//   if(em.value.match(validEmail)){
-//     eVerify.classList.remove("invalid");
-//     eVerify.classList.add("valid");
-//   } else {
-//     eVerify.classList.remove("valid");
-//     eVerify.classList.add("invalid");
-//   }
-// }
+ em.onfocus = function() {
+   document.getElementById("eRequirements").style.display = "block";
+ }
+ //Checks if correct email format
+ em.onkeyup = function(){
+   var validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,4}$/g;
+   if(em.value.match(validEmail)){
+     eVerify.classList.remove("invalid");
+     eVerify.classList.add("valid");
+   } else {
+     eVerify.classList.remove("valid");
+     eVerify.classList.add("invalid");
+   }
+ }
 </script>
