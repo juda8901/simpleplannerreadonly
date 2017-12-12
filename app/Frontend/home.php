@@ -220,7 +220,7 @@ if($valid) $id=$_SESSION['id'];
 <body>
 
 	<!-- search bar -->
-	<div style ="position: -webkit-sticky; position: sticky; top: 39px; background-color: white;">
+	<div style ="position: -webkit-sticky; position: sticky; top: 37px; background-color: white;">
 	<form id="search_bar" style="width: 100%; text-align: center;" onsubmit="return false">
 		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" >
 		<button type="submit" style="background: transparent; border: none !important; width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="padding: 0; margin: 0;"></i></button>
