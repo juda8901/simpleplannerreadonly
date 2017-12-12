@@ -452,9 +452,6 @@ width: 100%;
 					//from Google: https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
 					</script>
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&signed_in=true&libraries=places&callback=initialize" async defer></script>
-					
-					<hr>
-					<hr>
 
 
 					<!-- Footer -->
