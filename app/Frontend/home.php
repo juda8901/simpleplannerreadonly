@@ -389,11 +389,13 @@ width: 100%;
 					<div id="map"></div>
 
 					<!-- Scripts for Google Map -->
-					<script>
-					function initMap() {
-						
-						 var styledMapType = new google.maps.StyledMapType(
-				  [
+    <script>
+      function initMap() {
+
+        // Create a new StyledMapType object, passing it an array of styles,
+        // and the name to be displayed on the map type control.
+        var styledMapType = new google.maps.StyledMapType(
+            [
               {elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
               {elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
               {elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
@@ -508,7 +510,7 @@ width: 100%;
         // Create a map object, and include the MapTypeId to add
         // to the map type control.
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.027443, lng: -105.25174},
+          center: {lat: 55.647, lng: 37.581},
           zoom: 11,
           mapTypeControlOptions: {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
