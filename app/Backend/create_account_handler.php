@@ -19,6 +19,6 @@ if($conn->query($insert)!=TRUE){
 	echo "Error: ".$insert."<br>".$conn->error;
 }
 $conn->close();
-header('Location: https://simpleplanner.herokuapp.com/Frontend/login');
+header('Location: https://simpleplanner.herokuapp.com');
 die();
 ?>
