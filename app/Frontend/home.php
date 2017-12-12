@@ -35,7 +35,6 @@ if($valid) $id=$_SESSION['id'];
 
  
 
-<body>
 	<!-- Navigation Bar -->
 	<?php require 'nav_bar.php'; ?>
 	<br><br>
@@ -206,6 +205,8 @@ if($valid) $id=$_SESSION['id'];
 	};
 	</script>
 	<hr style="margin: 0;">
+
+<body>
 
 	<!-- search bar -->
 	<div style ="position: -webkit-sticky; position: sticky; top: 40px; background-color: grey;">
