@@ -338,13 +338,22 @@ width: 100%;
 						if ($result->num_rows > 0) {
 							// output data of each row
 							$i=0;
+							
 							while($row = $result->fetch_assoc()) {
 								$startDate = $row['event_start_date_time'];
 								$startTime = $row['event_start_time'];
 								$endDate = $row['event_end_date_time'];
 								$endTime = $row['event_end_time'];
-
 								$title = $row["event_title"];
+								
+								date_default_timezone_set('America/Denver');
+								$currentdate = date('m/d/Y', time());
+								$time = strtotime($startTime);
+								$eventstart = date('m/d/Y',$time);
+								if($eventstart < $currentdate){
+									break;
+								}
+								
 								if (empty($title) || $title==""){
 									$title = "No Title";
 								}
