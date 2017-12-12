@@ -102,12 +102,12 @@ body {
 }
 
 
-/*.homepage-hero-module {
+.homepage-hero-module {
     border-right: none;
     border-left: none;
     position: relative;
 }
-*/
+
 .no-video .video-container video,
 .touch .video-container video {
     display: none;
