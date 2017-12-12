@@ -32,13 +32,8 @@ if($valid) $id=$_SESSION['id'];
 
 </style>
 </head>
-<body>
-	<!-- Navigation Bar -->
-	<?php require 'nav_bar.php'; ?>
-	<br><br>
 
-
-<div class="homepage-hero-module">
+<!-- <div class="homepage-hero-module"> -->
     <div class="video-container">
     	<header class="w3-theme" id="Header">
 		<h1 style="color: #F64060;">Simpleplanner</h1>
@@ -55,7 +50,15 @@ if($valid) $id=$_SESSION['id'];
             <source src="https://simpleplanner.herokuapp.com/Frontend/Up.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
         </video>
     </div>
-</div>
+<!-- </div> -->
+
+<body>
+	<!-- Navigation Bar -->
+	<?php require 'nav_bar.php'; ?>
+	<br><br>
+
+
+
 
 	<!-- Header -->
 	
