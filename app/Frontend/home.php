@@ -143,7 +143,7 @@ width: 100%;
 				});
 			});
 			</script>
-			<hr no shade>
+			<hr style= "border: 0 none;"">
 
 
 			<!-- Modal for Create Event -->
