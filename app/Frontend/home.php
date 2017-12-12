@@ -374,7 +374,7 @@ width: 100%;
 					<div id="map"></div>
 
 					<!-- Scripts for Google Map -->
-					<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initialize" defer></script>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&signed_in=true&libraries=places&callback=initialize" async defer></script>
 					<script>
 					function initialize() {
 						initMap();
