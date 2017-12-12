@@ -389,20 +389,7 @@ width: 100%;
 					<div id="map"></div>
 					<hr>
 					<!-- Scripts for Google Map -->
-					<script>
-						function initMap() {
-							var Boulder = {lat: 40.027443, lng: -105.25174};
-							var map = new google.maps.Map(document.getElementById('map'), {
-								zoom: 4,
-								center: Boulder
-							});
-							var marker = new google.maps.Marker({
-								position: Boulder,
-								map: map
-							});
-						}
-					</script>
-					<div id="map"></div>
+				
     <script>
       function initMap() {
 
