@@ -23,9 +23,8 @@ if($valid) $id=$_SESSION['id'];
 	    background-repeat: no-repeat;
 	    margin: 0 auto;
 	    max-width: 800px;
-	    padding-top: 10px;
 	    position: relative;
-	    width: 95%;
+	    width: 80%;
 	}
 
 </style>
@@ -136,7 +135,7 @@ div.sticky {
 	<div style ="position: -webkit-sticky; position: sticky; top: 40px; background-color: grey;">
 	<form id="search_bar" style="width: 100%; text-align: center;" onsubmit="return false">
 		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" >
-		<button type="submit" style="width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75;padding: 0; margin: 0;"></i></button>
+		<button type="submit" style="width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="padding: 0; margin: 0;"></i></button>
 	</input>
 	</form>
 	</div>
