@@ -290,7 +290,7 @@ input[type=text]:focus {
 									<label>End Time </label>
 								</div>
 								<div class="w3-section">
-									<input class="w3-input" name="Location" type="text" required>
+									<input class="w3-input" name="Location" placeholder="Enter an address" type="text" required>
 									<label>Location </label>
 								</div>
 								<div class="w3-section">
@@ -365,7 +365,7 @@ input[type=text]:focus {
 								if(($i % 4)==0 && $i!=0){
 									echo "</div><div class='w3-row' style='margin: auto;'>";
 								}
-								echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
+								echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%; overflow:hidden;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
 								if($startTime!=$endTime){
 									echo " - " . $endTime;
 								}
