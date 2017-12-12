@@ -1,5 +1,5 @@
 #map {
-       height: 400px;
+       height: 100%;
        width: 100%;
        position: relative;
        margin-bottom: 80px;
@@ -23,7 +23,7 @@ body {
 #Header {
   padding-top: 40px;
   padding-bottom: 10px
-	margin: auto;
+	margin:;
 	width: 60%;
   color: white;
 }
