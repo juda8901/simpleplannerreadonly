@@ -10,7 +10,7 @@ if($valid) $id=$_SESSION['id'];
 	<title>Simpleplanner - Home</title>
 	<?php require 'header.html'; ?>
 	<style>
-	input[type=text] {
+	input[type=search] {
 		background-color: #e6ecf0;
 		border: 0;
 		border-radius: 6px;
@@ -45,36 +45,35 @@ if($valid) $id=$_SESSION['id'];
 
 </style>
 </head>
+<body>
+	<!-- Navigation Bar -->
+	<?php require 'nav_bar.php'; ?>
+	<br><br>
 
 
-
-<!-- Navigation Bar -->
-<?php require 'nav_bar.php'; ?>
-<br><br>
-
-
-<!-- Header -->
-<div class="homepage-hero-module">
-	<div class="video-container">
-		<div class="title-container" ></div>
-		<div class="filter"></div>
-		<header class="w3-theme" id="Header">
-			<h1 style="color: #f13a59;">Simpleplanner</h1>
-			<h2>
-				<a class="typewrite" style="text-decoration: none; font-size: 25px; color:#212C33; background-color: rgba(FF,FF,FF,0.2);" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
-					<span class="wrap"></span>
-				</a>
-			</h2>
-		</header>
-		<video autoplay loop class="fillWidth">
-			<source src="https://simpleplanner.herokuapp.com/Frontend/We-Work-We-Wait.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
-			<source src="https://simpleplanner.herokuapp.com/Frontend/We-Work-We-Wait.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
-		</video>
-		<!--<div class="poster hidden">
-		<img src="https://simpleplanner.herokuapp.com/Frontend/Up.jpg" alt="">
-	</div> -->
+	<!-- Header -->
+	<div class="homepage-hero-module">
+		<div class="video-container">
+			<div class="title-container" ></div>
+			<div class="filter"></div>
+			<header class="w3-theme" id="Header">
+				<h1 style="color: #f13a59;">Simpleplanner</h1>
+				<h2>
+					<a class="typewrite" style="text-decoration: none; font-size: 25px; color:#212C33; background-color: rgba(FF,FF,FF,0.2);" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
+						<span class="wrap"></span>
+					</a>
+				</h2>
+			</header>
+			<video autoplay loop class="fillWidth">
+				<source src="https://simpleplanner.herokuapp.com/Frontend/We-Work-We-Wait.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+				<source src="https://simpleplanner.herokuapp.com/Frontend/We-Work-We-Wait.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+			</video>
+			<!--<div class="poster hidden">
+			<img src="https://simpleplanner.herokuapp.com/Frontend/Up.jpg" alt="">
+		</div> -->
+	</div>
 </div>
-</div>
+<br>
 <!--
 <script >
 $( document ).ready(function() {
@@ -227,16 +226,14 @@ window.onload = function() {
 };
 </script>
 
-<br>
 
-<body>
 <!-- search bar -->
 <div style ="position: -webkit-sticky; position: sticky; top: 37px; background-color: white;">
-		<form id="search_bar" style="width: 100%; text-align: center;" onsubmit="return false">
-			<input type="search" placeholder="  Search for events or clubs" name="search-criteria" id="search-criteria" >
-			<button type="submit" style="background: transparent; border: none !important; width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"></button>
-		</input>
-	</form>
+	<form id="search_bar" style="width: 100%; text-align: center;" onsubmit="return false">
+		<input type="search" placeholder="  Search for events or clubs" name="search-criteria" id="search-criteria" >
+		<button type="submit" style="background: transparent; border: none !important; width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"></button>
+	</input>
+</form>
 </div>
 
 
@@ -489,7 +486,7 @@ $('#search').click(function(){
 					echo "</p>
 					<p>".$row["event_description"]."</p>
 					</div>
-					<button style='width: 40%; margin-right: 7.5%; margin-top: 5%;' class='w3-btn w3-red'>View</button><button style='width: 40%;' class='w3-btn w3-red'>Join</button></div>";
+					<button style='width: 40%; margin: 5%;' class='w3-btn w3-red'>View</button><button style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Join</button></div>";
 					$i++;
 				}
 			} else {
@@ -499,155 +496,161 @@ $('#search').click(function(){
 			?>
 		</div>
 	</div>
-<!-- <script src="jquery.min.js"></script>
-<script src="jquery.textfill.min.js"></script>
-<script>$(function(){$('#card_title').textfill({});});</script> -->
-<hr style="display: block; height: 0px; border: 0; border-top: 1px solid #ccc; margin:0;padding: 0;" >
-
-
-<!-- Google Map -->
-<h1 style="padding-left: 15;">Events Happening Nearby</h1>
-<div id="map"></div>
-<hr>
-<!-- Scripts for Google Map -->
-<script>
-function initMap() {
-	// Create a new StyledMapType object, passing it an array of styles,
-	// and the name to be displayed on the map type control.
-	var styledMapType = new google.maps.StyledMapType(
-		[
-			{elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
-			{elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
-			{elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
-			{
-				featureType: 'administrative',
-				elementType: 'geometry.stroke',
-				stylers: [{color: '#c9b2a6'}]
-			},
-			{
-				featureType: 'administrative.land_parcel',
-				elementType: 'geometry.stroke',
-				stylers: [{color: '#dcd2be'}]
-			},
-			{
-				featureType: 'administrative.land_parcel',
-				elementType: 'labels.text.fill',
-				stylers: [{color: '#ae9e90'}]
-			},
-			{
-				featureType: 'landscape.natural',
-				elementType: 'geometry',
-				stylers: [{color: '#dfd2ae'}]
-			},
-			{
-				featureType: 'poi',
-				elementType: 'geometry',
-				stylers: [{color: '#dfd2ae'}]
-			},
-			{
-				featureType: 'poi',
-				elementType: 'labels.text.fill',
-				stylers: [{color: '#93817c'}]
-			},
-			{
-				featureType: 'poi.park',
-				elementType: 'geometry.fill',
-				stylers: [{color: '#a5b076'}]
-			},
-			{
-				featureType: 'poi.park',
-				elementType: 'labels.text.fill',
-				stylers: [{color: '#447530'}]
-			},
-			{
-				featureType: 'road',
-				elementType: 'geometry',
-				stylers: [{color: '#f5f1e6'}]
-			},
-			{
-				featureType: 'road.arterial',
-				elementType: 'geometry',
-				stylers: [{color: '#fdfcf8'}]
-			},
-			{
-				featureType: 'road.highway',
-				elementType: 'geometry',
-				stylers: [{color: '#f8c967'}]
-			},
-			{
-				featureType: 'road.highway',
-				elementType: 'geometry.stroke',
-				stylers: [{color: '#e9bc62'}]
-			},
-			{
-				featureType: 'road.highway.controlled_access',
-				elementType: 'geometry',
-				stylers: [{color: '#e98d58'}]
-			},
-			{
-				featureType: 'road.highway.controlled_access',
-				elementType: 'geometry.stroke',
-				stylers: [{color: '#db8555'}]
-			},
-			{
-				featureType: 'road.local',
-				elementType: 'labels.text.fill',
-				stylers: [{color: '#806b63'}]
-			},
-			{
-				featureType: 'transit.line',
-				elementType: 'geometry',
-				stylers: [{color: '#dfd2ae'}]
-			},
-			{
-				featureType: 'transit.line',
-				elementType: 'labels.text.fill',
-				stylers: [{color: '#8f7d77'}]
-			},
-			{
-				featureType: 'transit.line',
-				elementType: 'labels.text.stroke',
-				stylers: [{color: '#ebe3cd'}]
-			},
-			{
-				featureType: 'transit.station',
-				elementType: 'geometry',
-				stylers: [{color: '#dfd2ae'}]
-			},
-			{
-				featureType: 'water',
-				elementType: 'geometry.fill',
-				stylers: [{color: '#b9d3c2'}]
-			},
-			{
-				featureType: 'water',
-				elementType: 'labels.text.fill',
-				stylers: [{color: '#92998d'}]
-			}
-		],
-		{name: 'Styled Map'});
-
-		// Create a map object, and include the MapTypeId to add
-		// to the map type control.
-		var map = new google.maps.Map(document.getElementById('map'), {
-			center: {lat: 40.027443, lng: -105.25174},
-			zoom: 12,
-			mapTypeControlOptions: {
-				mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
-				'styled_map']
-			}
+	<script src="jquery.min.js"></script>
+	<script src="jquery.textfill.min.js"></script>
+	<script>
+	$(function() {
+		$("#card_title").textfill({
+			maxFontPixels: 36
 		});
-
-		//Associate the styled map with the MapTypeId and set it to display.
-		map.mapTypes.set('styled_map', styledMapType);
-		map.setMapTypeId('styled_map');
-	}
+	});
 	</script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
+	<hr style="display: block; height: 0px; border: 0; border-top: 1px solid #ccc; margin:0;padding: 0;" >
+
+
+	<!-- Google Map -->
+	<h1 style="padding-left: 15;">Events Happening Nearby</h1>
+	<div id="map"></div>
+	<hr>
+	<!-- Scripts for Google Map -->
+	<script>
+	function initMap() {
+		// Create a new StyledMapType object, passing it an array of styles,
+		// and the name to be displayed on the map type control.
+		var styledMapType = new google.maps.StyledMapType(
+			[
+				{elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
+				{elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
+				{elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
+				{
+					featureType: 'administrative',
+					elementType: 'geometry.stroke',
+					stylers: [{color: '#c9b2a6'}]
+				},
+				{
+					featureType: 'administrative.land_parcel',
+					elementType: 'geometry.stroke',
+					stylers: [{color: '#dcd2be'}]
+				},
+				{
+					featureType: 'administrative.land_parcel',
+					elementType: 'labels.text.fill',
+					stylers: [{color: '#ae9e90'}]
+				},
+				{
+					featureType: 'landscape.natural',
+					elementType: 'geometry',
+					stylers: [{color: '#dfd2ae'}]
+				},
+				{
+					featureType: 'poi',
+					elementType: 'geometry',
+					stylers: [{color: '#dfd2ae'}]
+				},
+				{
+					featureType: 'poi',
+					elementType: 'labels.text.fill',
+					stylers: [{color: '#93817c'}]
+				},
+				{
+					featureType: 'poi.park',
+					elementType: 'geometry.fill',
+					stylers: [{color: '#a5b076'}]
+				},
+				{
+					featureType: 'poi.park',
+					elementType: 'labels.text.fill',
+					stylers: [{color: '#447530'}]
+				},
+				{
+					featureType: 'road',
+					elementType: 'geometry',
+					stylers: [{color: '#f5f1e6'}]
+				},
+				{
+					featureType: 'road.arterial',
+					elementType: 'geometry',
+					stylers: [{color: '#fdfcf8'}]
+				},
+				{
+					featureType: 'road.highway',
+					elementType: 'geometry',
+					stylers: [{color: '#f8c967'}]
+				},
+				{
+					featureType: 'road.highway',
+					elementType: 'geometry.stroke',
+					stylers: [{color: '#e9bc62'}]
+				},
+				{
+					featureType: 'road.highway.controlled_access',
+					elementType: 'geometry',
+					stylers: [{color: '#e98d58'}]
+				},
+				{
+					featureType: 'road.highway.controlled_access',
+					elementType: 'geometry.stroke',
+					stylers: [{color: '#db8555'}]
+				},
+				{
+					featureType: 'road.local',
+					elementType: 'labels.text.fill',
+					stylers: [{color: '#806b63'}]
+				},
+				{
+					featureType: 'transit.line',
+					elementType: 'geometry',
+					stylers: [{color: '#dfd2ae'}]
+				},
+				{
+					featureType: 'transit.line',
+					elementType: 'labels.text.fill',
+					stylers: [{color: '#8f7d77'}]
+				},
+				{
+					featureType: 'transit.line',
+					elementType: 'labels.text.stroke',
+					stylers: [{color: '#ebe3cd'}]
+				},
+				{
+					featureType: 'transit.station',
+					elementType: 'geometry',
+					stylers: [{color: '#dfd2ae'}]
+				},
+				{
+					featureType: 'water',
+					elementType: 'geometry.fill',
+					stylers: [{color: '#b9d3c2'}]
+				},
+				{
+					featureType: 'water',
+					elementType: 'labels.text.fill',
+					stylers: [{color: '#92998d'}]
+				}
+			],
+			{name: 'Styled Map'});
+
+			// Create a map object, and include the MapTypeId to add
+			// to the map type control.
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 40.027443, lng: -105.25174},
+				zoom: 12,
+				mapTypeControlOptions: {
+					mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+					'styled_map']
+				}
+			});
+
+			//Associate the styled map with the MapTypeId and set it to display.
+			map.mapTypes.set('styled_map', styledMapType);
+			map.setMapTypeId('styled_map');
+		}
+		</script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
 
 
 
-	<!-- Footer -->
-	<?php require 'footer.html'; ?>
-</body>
-</html>
+		<!-- Footer -->
+		<?php require 'footer.html'; ?>
+	</body>
+	</html>
