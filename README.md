@@ -1,4 +1,4 @@
-# [Simpleplanner](simpleplanner.herokuapp.com)
+# [Simpleplanner](https://simpleplanner.herokuapp.com)
 ## A Web Application to help Boulder residents create, manage, and attend nearby events.
 
 
