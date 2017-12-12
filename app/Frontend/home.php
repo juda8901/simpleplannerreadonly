@@ -481,10 +481,7 @@ if($valid) $id=$_SESSION['id'];
 				</div>
 
 					<hr>
-					<div>
-			<!-- Create Event Button -->
-			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button></h2></header>
-		</div>
+				
 
 					<!-- Google Map -->
 					<h1>Events Happening Nearby</h1>
@@ -629,7 +626,10 @@ if($valid) $id=$_SESSION['id'];
 					<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
 					<hr>
 
-
+	<div>
+			<!-- Create Event Button -->
+			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button></h2></header>
+		</div>
 					<!-- Footer -->
 					<?php require 'footer.html'; ?>
 
