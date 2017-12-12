@@ -7,19 +7,10 @@
     height: -webkit-fill-available;
 ">Public Event</p>
     </div>
-    <div style="
-    height: 50%;
-    overflow: hidden;
-">
+    <div style="height: 50%; overflow: hidden;">
     <p>None</p><p>12:00 AM</p><p>12/12/2017 - 12/15/2017</p>
     <p>Test</p>
     <p>Test of features</p>
     </div>
-    <button style="
-    width: 40%;
-    margin-right: 7.5%;
-    margin-top: 5%;
-">View</button><button style="
-    width: 40%;
-">Join</button>
+    <button style="width: 40%; margin-right: 7.5%; margin-top: 5%;">View</button><button style="width: 40%;">Join</button>
 </div>
