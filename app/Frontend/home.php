@@ -45,9 +45,12 @@ if($valid) $id=$_SESSION['id'];
     		<h3 > sdfsdfsdfsdfs </h3>
     	</div>
         <div class="filter"></div>
+        <h3 > sdfsdfsdfsdfs </h3>
         <video autoplay loop class="fillWidth">
+        	<h3 > sdfsdfsdfsdfs </h3>
             <source src="https://simpleplanner.herokuapp.com/Frontend/Up.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
             <source src="https://simpleplanner.herokuapp.com/Frontend/Up.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <h3 > sdfsdfsdfsdfs </h3>
         </video>
         <!--<div class="poster hidden">
             <img src="https://simpleplanner.herokuapp.com/Frontend/Up.jpg" alt="">
