@@ -382,7 +382,7 @@ div.sticky {
 									echo " - " . $endDate;
 								}
 								echo "</p><p>" . $row["event_tags"];
-								echo "</p><p>" . $row["event_description"]. "</p><button class='w3-btn'>Join</button></div>";
+								echo "</p><p>" . $row["event_description"]. "</p><button class='w3-btn w3-orange'>Join</button></div>";
 								$i++;
 							}
 						} else {
