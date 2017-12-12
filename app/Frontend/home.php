@@ -132,11 +132,11 @@ width: 100%;
 
 			<!-- search script -->
 			<script type="text/javascript">
-			$('.w3-row').hide();
+			$('.w3-card').hide();
 			$('#search').click(function(){
-				$('.w3-row').hide();
+				$('.w3-card').hide();
 				var s = $('#search-criteria').val();
-				$('.w3-row').each(function(){
+				$('.w3-card').each(function(){
 					if($(this).text().toUpperCase().indexOf(s.toUpperCase()) != -1){
 						$(this).show();
 					}
