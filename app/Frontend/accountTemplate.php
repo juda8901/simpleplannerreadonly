@@ -287,10 +287,10 @@ body, html {
           }
           else{
             $sql = "";
-            echo '<script type="text/javascript">
-            alert("You must log in first");
-            window.location = "login.php";
-            </script>';
+            // echo '<script type="text/javascript">
+            // alert("You must log in first");
+            // window.location = "login.php";
+            // </script>';
           }
           $result = $conn->query($sql);
           if ($result->num_rows > 0) {
