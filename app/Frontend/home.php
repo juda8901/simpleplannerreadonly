@@ -21,7 +21,9 @@ if($valid) $id=$_SESSION['id'];
 	    box-sizing: border-box;
 	    background-image: url('searchicon.png');
 	    background-repeat: no-repeat;
-	    margin: 0 auto;
+	    margin: auto;
+	    left-margin: 10px;
+
 	    max-width: 800px;
 	    padding-top: 10px;
 	    position: relative;
@@ -36,6 +38,19 @@ if($valid) $id=$_SESSION['id'];
 	<br><br>
 
 
+<div class="homepage-hero-module">
+    <div class="video-container">
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+            <source src="https://simpleplanner.herokuapp.com/Frontend/up.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="https://simpleplanner.herokuapp.com/Frontend/up.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+        <div class="poster hidden">
+            <img src="https://simpleplanner.herokuapp.com/Frontend/up.jpg" alt="">
+        </div>
+    </div>
+</div>
+
 	<!-- Header -->
 	<header class="w3-theme" id="Header">
 		<h1 style="color: #F64060;">Simpleplanner</h1>
@@ -44,6 +59,7 @@ if($valid) $id=$_SESSION['id'];
 				<span class="wrap"></span>
 			</a>
 		</h2>
+
 	</header>
 
 	<!-- Scripts for Header -->
@@ -119,20 +135,20 @@ if($valid) $id=$_SESSION['id'];
 		document.body.appendChild(css);
 	};
 	</script>
-	<hr>
+	<hr style="margin: 0;">
 
 	<!-- search bar -->
-	<div style ="position: -webkit-sticky; position: sticky; top: 0; background-color: grey;">
+	<div style ="position: -webkit-sticky; position: sticky; top: 40px; background-color: grey;">
 	<form id="search_bar" style="width: 100%; text-align: center;" onsubmit="return false">
-		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: large; padding: 0; margin: 0;"/>
-		<button type="submit" style="width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75;padding: 0; margin: 0;"></i></button>
+		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" >
+		<button type="submit" style="background: transparent; border: none !important; width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="padding: 0; margin: 0;"></i></button>
+	</input>
 	</form>
 	</div>
 
-
 	
 
-			<!-- search script -->
+			<!-- search scriptstyle="width: 40%; border-radius: 30px; font-size: large; padding: 0; margin: 0;" -->
 			<script type="text/javascript">
 			$('.w3-card').hide();
 			$('#search').click(function(){
@@ -146,7 +162,7 @@ if($valid) $id=$_SESSION['id'];
 			});
 			</script>
 
-			<hr >
+	<hr style="margin: 0;">
 
 
 			<!-- Create Event Button -->
@@ -531,5 +547,70 @@ if($valid) $id=$_SESSION['id'];
 
 					<!-- Footer -->
 					<?php require 'footer.html'; ?>
+
+					<script >
+					$( document ).ready(function() {
+
+					    scaleVideoContainer();
+
+					    initBannerVideoSize('.video-container .poster img');
+					    initBannerVideoSize('.video-container .filter');
+					    initBannerVideoSize('.video-container video');
+
+					    $(window).on('resize', function() {
+					        scaleVideoContainer();
+					        scaleBannerVideoSize('.video-container .poster img');
+					        scaleBannerVideoSize('.video-container .filter');
+					        scaleBannerVideoSize('.video-container video');
+					    });
+
+					});
+
+					function scaleVideoContainer() {
+
+					    var height = $(window).height() + 5;
+					    var unitHeight = parseInt(height) + 'px';
+					    $('.homepage-hero-module').css('height',unitHeight);
+
+					}
+
+					function initBannerVideoSize(element){
+
+					    $(element).each(function(){
+					        $(this).data('height', $(this).height());
+					        $(this).data('width', $(this).width());
+					    });
+
+					    scaleBannerVideoSize(element);
+
+					}
+
+					function scaleBannerVideoSize(element){
+
+					    var windowWidth = $(window).width(),
+					    windowHeight = $(window).height() + 5,
+					    videoWidth,
+					    videoHeight;
+
+					    // console.log(windowHeight);
+
+					    $(element).each(function(){
+					        var videoAspectRatio = $(this).data('height')/$(this).data('width');
+
+					        $(this).width(windowWidth);
+
+					        if(windowWidth < 1000){
+					            videoHeight = windowHeight;
+					            videoWidth = videoHeight / videoAspectRatio;
+					            $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
+
+					            $(this).width(videoWidth).height(videoHeight);
+					        }
+
+					        $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
+
+					    });
+					}
+					</script>
 				</body>
 				</html>
