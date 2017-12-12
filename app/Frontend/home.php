@@ -9,26 +9,6 @@ if($valid) $id=$_SESSION['id'];
 <head>
 	<title>Simpleplanner - Home</title>
 	<?php require 'header.html'; ?>
-	<!-- <style>
-	input[type=text] {
-	width: 130px;
-	box-sizing: border-box;
-	border: 2px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-	background-color: white;
-	background-image: url('searchicon.png');
-	background-position: 10px 10px;
-	background-repeat: no-repeat;
-	padding: 12px 20px 12px 40px;
-	-webkit-transition: width 0.4s ease-in-out;
-	transition: width 0.4s ease-in-out;
-}
-
-input[type=text]:focus {
-width: 100%;
-}
-</style> -->
 </head>
 <body>
 	<!-- Navigation Bar -->
@@ -151,7 +131,7 @@ width: 100%;
 			<!-- Create Event Button -->
 			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button></h2></header>
 			</div>
-			
+
 			<!-- Modal for Create Event -->
 			<div id="create_event" class="w3-modal">
 				<div class="w3-modal-content w3-card-1 w3-animate-top">
