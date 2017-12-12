@@ -1,29 +1,5 @@
 <?php
 session_start();
-
-$logged_in=false;
-$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
-$server=$url["host"];
-$username=$url["user"];
-$password=$url["pass"];
-$db=substr($url["path"], 1);
-$conn=new mysqli($server, $username, $password, $db);
-if ($conn->connect_error) {
-  die("<p>Connection failed: " . $conn->connect_error."</p>");
-}
-$name=$_SESSION['username'];
-$pass=$_SESSION['password'];
-$id=$_SESSION['id'];
-$query="SELECT * FROM accounts WHERE account_email='$name' AND account_password='$pass' AND account_id='$id';";
-$result=$conn->query($query);
-if($result->num_rows==1){
-  $logged_in=true;
-} else {
-  $conn->close();
-  // header('Location: https://simpleplanner.herokuapp.com/Frontend/login.php');
-  die();
-}
-$conn->close();
 ?>
 
 <html>
