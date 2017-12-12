@@ -480,7 +480,7 @@ if($valid) $id=$_SESSION['id'];
 					</div>
 				</div>
 
-					<hr>
+					<hr style="display: block; height: 0px; border: 0; border-top: 1px solid #ccc; margin:0;padding: 0;" >
 
 
 					<!-- Google Map -->
