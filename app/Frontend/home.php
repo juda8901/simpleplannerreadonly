@@ -215,7 +215,6 @@ if($valid) $id=$_SESSION['id'];
 		document.body.appendChild(css);
 	};
 	</script>
-	<hr >
 
 <body>
 
