@@ -346,14 +346,6 @@ width: 100%;
 								$endTime = $row['event_end_time'];
 								$title = $row["event_title"];
 								
-								date_default_timezone_set('America/Denver');
-								$currentdate = date('m/d/Y', time());
-								$time = strtotime($endDate);
-								$eventend = date('m/d/Y',$time);
-								if($eventend < $currentdate){
-									continue;
-								}
-								
 								if (empty($title) || $title==""){
 									$title = "No Title";
 								}
