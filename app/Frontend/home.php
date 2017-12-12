@@ -410,7 +410,7 @@ if($valid) $id=$_SESSION['id'];
 
 				<!-- Event Cards -->
 				<div style = "background-color: #fafafa"> 
-				<header><h1>
+				<header style="left-margin: 15;"><h1>
 					<?php
 					if($valid){
 						echo "Your Events";
