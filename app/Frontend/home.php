@@ -29,6 +29,14 @@ if($valid) $id=$_SESSION['id'];
 		position: relative;
 		width: 95%;
 	}
+	.containOverflow{
+		 overflow:hidden;
+		 white-space: nowrap;
+
+	}
+	.containOverflow h1{
+		text-overflow: ellipsis;
+	}
 
 </style>
 </head>
