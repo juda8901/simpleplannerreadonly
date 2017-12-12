@@ -73,27 +73,27 @@
 					echo "</p>
 					<p class='card_contents'>".$row["event_description"]."</p>
 					</div>
-					<button action='document.getElementById('".$eventID."').style.display='block'' style='width: 40%; margin: 5%;' class='w3-btn w3-red'>View</button><button action='/Backend/join_event_handler.php' style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Join</button></div>";
+					<button action='document.getElementById('.$eventID.').style.display='block'' style='width: 40%; margin: 5%;' class='w3-btn w3-red'>View</button><button action='/Backend/join_event_handler.php' style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Join</button></div>";
 					$i++;
 
 					// Modal
-					// echo "
-					// <div id='".$eventID."' class='w3-modal' style='margin:0;'>
-					// <div class='w3-modal-content w3-card-1 w3-animate-top'>
-					// <header class='w3-container w3-card w3-round w3-theme-l1'>
-					// <span onclick='document.getElementById('create_event').style.display='none''
-					// class='w3-button w3-display-topright'>×</span>
-					// <div class='w3-center'>
-					// <h2>".$title."</h2>
-					// <p>""</p><label>Where: </label>
-					// <p>".$startDate." - ".$endDate."</p><label>When: </label>
-					// <p>at ".$startTime." - ".$endTime"</p>
-					// <p>".$row['event_description']."</p><label>Description: </label>
-					// </div>
-					// <button action='document.getElementById('".$eventID."').style.display='block'' style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Close</button><button action='/Backend/join_event_handler.php' style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Join</button>
-					// </header>
-					// </div>
-					// </div>";
+					echo "
+					<div id='.$eventID.' class='w3-modal' style='margin:0;'>
+					<div class='w3-modal-content w3-card-1 w3-animate-top'>
+					<header class='w3-container w3-card w3-round w3-theme-l1'>
+					<span onclick='document.getElementById('create_event').style.display='none''
+					class='w3-button w3-display-topright'>×</span>
+					<div class='w3-center'>
+					<h2>".$title."</h2>
+					<p>""</p><label>Where: </label>
+					<p>".$startDate." - ".$endDate."</p><label>When: </label>
+					<p>at ".$startTime." - ".$endTime"</p>
+					<p>".$row['event_description']."</p><label>Description: </label>
+					</div>
+					<button action='document.getElementById('.$eventID.').style.display='block'' style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Close</button><button action='/Backend/join_event_handler.php' style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Join</button>
+					</header>
+					</div>
+					</div>";
 				}
 				echo "</div>";
 			} else {
