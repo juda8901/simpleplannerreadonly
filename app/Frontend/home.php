@@ -11,18 +11,14 @@ if($valid) $id=$_SESSION['id'];
 	<?php require 'header.html'; ?>
 	<style> 
 input[type=text] {
-    width: 130px;
+    background-color: #e6ecf0;
+    border: 0;
+    border-radius: 6px;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('searchicon.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+    font-size: 14px;
+    padding: 10px 25px 10px 45px;
+    width: 100%;
 }
 
 input[type=text]:focus {
