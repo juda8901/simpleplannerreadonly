@@ -216,6 +216,8 @@ if($valid) $id=$_SESSION['id'];
 	};
 	</script>
 
+	<br>
+
 <body>
 
 	<!-- search bar -->
