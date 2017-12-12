@@ -512,7 +512,7 @@ width: 100%;
         // to the map type control.
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 40.027443, lng: -105.25174},
-          zoom: 11,
+          zoom: 12,
           mapTypeControlOptions: {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
                     'styled_map']
