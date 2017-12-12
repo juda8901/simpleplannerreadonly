@@ -478,3 +478,4 @@ width: 100%;
           <?php require 'footer.html'; ?>
         </body>
         </html>
+
