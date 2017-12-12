@@ -38,7 +38,7 @@ width: 100%;
 
 	<!-- Header -->
 	<header class="w3-theme" id="Header">
-		<h1>Simpleplanner</h1>
+		<h1 style="color: #F64060;">Simpleplanner</h1>
 		<h2>
 			<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#2e3e48;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
 				<span class="wrap"></span>
@@ -143,7 +143,7 @@ width: 100%;
 				});
 			});
 			</script>
-			<hr style= "margin-bottom: 0;">
+			<hr style= "border:none;">
 
 
 			<!-- Modal for Create Event -->
