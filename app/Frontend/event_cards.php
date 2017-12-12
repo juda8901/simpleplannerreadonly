@@ -56,7 +56,7 @@
           }
           echo "<div class='w3-center w3-col w3-card w3-blue-grey event_card' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'>
           <div style='width: 100%; height: 30%;' class='card_title'><span>".$title."</span></div>
-          <div style='height: 50%; overflow: hidden;'>
+          <div style='height: 53%; overflow: hidden;'>
           <p>".$row["event_location"]."</p>
           <p>".$startTime;
           if($startTime!=$endTime){
@@ -96,7 +96,8 @@
   <script src="jquery.min.js"></script>
   <script src="jquery.textfill.min.js"></script>
   <script>
-  $(document).ready(function() {
-    $('.card_title').textfill({ maxFontPixels: 36 });
-  });
+  var elements = document.getElementsByClassName('typewrite');
+	for (var i=0; i<elements.length; i++) {
+		elements[i].textfill({ maxFontPixels: 36 });
+	}
   </script>
