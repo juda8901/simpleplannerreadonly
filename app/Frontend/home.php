@@ -299,6 +299,7 @@ width: 100%;
 			</div>
 
 				<!-- Event Cards -->
+				<div style = "background-color: #fafafa"> 
 				<header><h1>
 					<?php
 					if($valid){
@@ -365,6 +366,7 @@ width: 100%;
 						$conn->close();
 						?>
 					</div>
+				</div>
 
 					<hr>
 
