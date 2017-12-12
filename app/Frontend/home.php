@@ -284,7 +284,7 @@ width: 100%;
 									</select>
 									<label>End Time </label>
 								</div>
-								<div class="w3-section" id="locationField">
+								<div class="w3-section">
 									<input class="w3-input" name="Location" type="text" required>
 									<label>Location </label>
 								</div>
