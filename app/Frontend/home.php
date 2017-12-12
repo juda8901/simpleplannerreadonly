@@ -309,7 +309,6 @@ width: 100%;
 					}
 					?>
 				</h1></header>
-				<br>
 				<div class="w3-container" style="width: 85%; margin: auto;">
 					<div class='w3-row' style='margin: auto;'>
 						<?php
