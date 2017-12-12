@@ -74,6 +74,7 @@ body {
     -moz-border-radius:5px;
     border-radius:5px;
 }
+<<<<<<< HEAD
 .wrap {
     position:relative;
     padding:5px 6px 6px 7px; /* readjust in jsfiddle*/
@@ -103,3 +104,9 @@ body {
 }
 
 
+=======
+
+input[type=text]:focus {
+width: 100%;
+}
+>>>>>>> 8e3d5a1bc29e23339e520fcc5a210d2fa2a354be
