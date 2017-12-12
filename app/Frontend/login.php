@@ -30,8 +30,8 @@ if(isset($_POST['submit'])){
 	$conn->close();
 }
 if($_SESSION['logged_in']){
-	// echo "<script type=text/javascript>window.location('<https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php>";
-	header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
+	echo "<script type=text/javascript>window.location('https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php')</script";
+	//header('Location: https://simpleplanner.herokuapp.com/Frontend/accountTemplate.php');
 	die();
 }
 ?>
