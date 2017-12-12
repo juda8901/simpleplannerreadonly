@@ -1,4 +1,4 @@
-<div class="w3-bar w3-white w3-top">
+<div class="w3-bar w3-white w3-top" style= "box-shadow: 10px 10px ">
   <a href="https://simpleplanner.herokuapp.com" class="w3-bar-item w3-left w3-button w3-hover-blue-grey"><img src="https://simpleplanner.herokuapp.com/Frontend/images/treeLogo.png" style="width: 30px; height: 30px;"></a>
 <div class="w3-bar w3-white w3-top">
   <a href="https://simpleplanner.herokuapp.com" class="w3-bar-item w3-left w3-button w3-hover-blue-grey"><img src="https://simpleplanner.herokuapp.com/Frontend/images/treeLogo.png" style="width: 20px; height: 20px;"><span id="nav_title" style="display: none;">  Simpleplanner</span></a>
