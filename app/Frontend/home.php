@@ -329,9 +329,9 @@ width: 100%;
 							die("Connection failed: " . $conn->connect_error);
 						}
 
-						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_is_hidden=0;";
+						$sql = "SELECT DISTINCT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_is_hidden=0;";
 						if($valid){
-							$sql = "SELECT DISTINCT events.event_title, events.event_description, events.event_location, events.event_start_date_time, events.event_end_date_time, events.event_start_time, events.event_end_time, events.event_tags FROM events INNER JOIN event_guests WHERE events.event_host_account_id='$id' OR events.event_is_hidden=0 OR event_guests.account_id='$id';";
+							$sql = "SELECT DISTINCT events.event_title, events.event_description, events.event_location, events.event_start_date_time, events.event_end_date_time, events.event_start_time, events.event_end_time, events.event_tags FROM events INNER JOIN event_guests WHERE events.event_host_account_id='$id' OR events.event_is_hidden=0 OR (event_guests.account_id='$id' AND event_guests.event_id=events.event_id);";
 						}
 						$result = $conn->query($sql);
 
