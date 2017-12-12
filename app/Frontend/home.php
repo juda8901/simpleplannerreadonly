@@ -31,11 +31,10 @@ if($valid) $id=$_SESSION['id'];
 	}
 	.containOverflow{
 		 overflow:hidden; 
-		 white-space: nowrap; 
-
-	}
-	.containOverflow h1{
-		text-overflow: ellipsis;
+		 white-space: nowrap;
+		 width: 100%;
+		 display:block;
+		 text-overflow: ellipsis;
 	}
 
 </style>
