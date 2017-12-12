@@ -124,7 +124,7 @@ width: 100%;
 	<!-- search bar -->
 	<div id="search_bar" style="width: 100%; text-align: center;">
 		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: x-large; padding: 0; margin: 0;"/>
-		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: auto; height: auto; padding: 0; margin:0px;" id="search" value="search"><i class="fa fa-search" style="zoom: 1.75; padding: 0; margin: 0; margin-bottom: 5;"></i></button>
+		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: auto; height: auto; padding: 0; margin:0px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchicon.png" style="width: 25px; height: 25px;"><i class="fa fa-search" style="zoom: 1.75; padding: 0; margin: 0; margin-bottom: 5;"></i></button>
 		<header><h2>or Create a New Event
 			<!-- Create Event Button -->
 			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button></h2></header>
