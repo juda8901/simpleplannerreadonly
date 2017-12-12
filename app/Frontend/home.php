@@ -46,7 +46,7 @@ if($valid) $id=$_SESSION['id'];
             <source src="https://simpleplanner.herokuapp.com/Frontend/up.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
         </video>
         <div class="poster hidden">
-            <img src="https://simpleplanner.herokuapp.com/Frontend/images/treeLogo.png" alt="">
+            <img src="https://simpleplanner.herokuapp.com/Frontend/up.jpg" alt="">
         </div>
     </div>
 </div>
