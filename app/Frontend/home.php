@@ -60,7 +60,7 @@ if($valid) $id=$_SESSION['id'];
 		<header class="w3-theme" id="Header">
 			<h1 style="color: #f13a59;">Simpleplanner</h1>
 			<h2>
-				<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#212C33; backgroundColor: rgba(255,255,255,0.4);" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
+				<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#212C33; background-color: rgba(255,255,255,0.4);" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
 					<span class="wrap"></span>
 				</a>
 			</h2>
