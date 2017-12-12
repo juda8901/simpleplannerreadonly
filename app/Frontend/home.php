@@ -406,8 +406,10 @@ width: 100%;
 						// Create the autocomplete object, restricting the search to geographical
 						// location types.
 						autocomplete = new google.maps.places.Autocomplete(
-							/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-							{types: ['geocode']});
+							/** @type {!HTMLInputElement} */
+							(document.getElementById('autocomplete')), {
+								types: ['geocode']
+							});
 
 						// When the user selects an address from the dropdown, populate the address
 						// fields in the form.
@@ -417,6 +419,22 @@ width: 100%;
 					function fillInAddress() {
 						// Get the place details from the autocomplete object.
 						var place = autocomplete.getPlace();
+						if (place.geometry.viewport) {
+							map.fitBounds(place.geometry.viewport);
+						} else {
+							map.setCenter(place.geometry.location);
+							map.setZoom(17); // Why 17? Because it looks good.
+						}
+						if (!marker) {
+							marker = new google.maps.Marker({
+							map: map,
+							anchorPoint: new google.maps.Point(0, -29)
+							});
+						} else marker.setMap(null);
+						marker.setOptions({
+							position: place.geometry.location,
+							map: map
+						});
 
 						for (var component in componentForm) {
 							document.getElementById(component).value = '';
