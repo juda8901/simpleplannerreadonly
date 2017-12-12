@@ -75,6 +75,7 @@
           <button style='width: 40%; margin: 5%;' class='w3-btn w3-red'>View</button><button style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Join</button></div>";
           $i++;
         }
+        echo "</div>";
       } else {
         echo "0 results";
       }
