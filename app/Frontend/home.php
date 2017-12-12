@@ -222,9 +222,7 @@ $('#search').click(function(){
 </div>
 <hr style="display: block; height: 0px; border: 0; border-bottom: 1px solid #ccc; margin:0;padding: 0;" >
     
-    <br>
-	<br>
-	<br>
+
 
 <!-- Modal for Create Event -->
 <?php require 'create_event.html'; ?>
@@ -234,6 +232,11 @@ $('#search').click(function(){
 <?php require 'event_cards.php'; ?>
 <hr style="display: block; height: 0px; border: 0; border-top: 1px solid #ccc; margin:0; padding: 0;" >
 
+<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	
 	
 		<!-- Footer -->
