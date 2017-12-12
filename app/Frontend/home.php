@@ -630,8 +630,7 @@ if($valid) $id=$_SESSION['id'];
       }
   		</script>
 					<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
-					<hr>
-					<br><br><br>
+					
 
 	
 					<!-- Footer -->
