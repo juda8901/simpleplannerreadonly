@@ -324,9 +324,9 @@ width: 100%;
 							die("Connection failed: " . $conn->connect_error);
 						}
 
-						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events;";
+						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_is_hidden=0;";
 						if($valid){
-							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_host_account_id='$id';";
+							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_host_account_id='$id' OR event_is_hidden=0;";
 						}
 						$result = $conn->query($sql);
 
