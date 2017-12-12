@@ -9,6 +9,41 @@ if($valid) $id=$_SESSION['id'];
 <head>
   <title>Simpleplanner - Home</title>
   <?php require 'header.html'; ?>
+  <style>
+    * {box-sizing: border-box}
+
+    /* Set height of body and the document to 100% */
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial;
+    }
+
+    /* Style tab links */
+    .tablink {
+        background-color: #555;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 25%;
+    }
+
+    .tablink:hover {
+        background-color: #777;
+    }
+
+    /* Style the tab content (and add height:100% for full page content) */
+    .tabcontent {
+        color: white;
+        display: none;
+        padding: 100px 20px;
+        height: 100%;
+    }
+</style>
   <!-- <style>
   input[type=text] {
   width: 130px;
@@ -303,6 +338,12 @@ width: 100%;
         </div>
       </div>
 
+       <button class="tablink" onclick="openTab('current_events', this, 'red') id="defaultOpen"">Current</button>
+        <button class="tablink" onclick="opeTab('past_events', this, 'green')">Past</button>
+        <button class="tablink" onclick="openTab('all_events', this, 'blue')">All</button>
+        <button class="tablink" onclick="openTab('create_events', this, 'orange')">Yours</button>
+
+
         <!-- Event Cards -->
         <div style = "background-color: #fafafa"> 
         <header><h1>
@@ -314,72 +355,82 @@ width: 100%;
           }
           ?>
         </h1></header>
-        <div class="w3-container" style="width: 85%; margin: auto;">
-          <div class='w3-row' style='margin: auto;'>
-            <?php
-            $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-            $server = $url["host"];
-            $username = $url["user"];
-            $password = $url["pass"];
-            $db = substr($url["path"], 1);
-            // Create connection
-            $conn = new mysqli($server, $username, $password, $db);
-            // Check connection
-            if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-            }
-
-            $sql = "SELECT DISTINCT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_is_hidden=0;";
-            if($valid){
-              $sql = "SELECT DISTINCT events.event_title, events.event_description, events.event_location, events.event_start_date_time, events.event_end_date_time, events.event_start_time, events.event_end_time, events.event_tags FROM events INNER JOIN event_guests WHERE events.event_host_account_id='$id' OR events.event_is_hidden=0 OR (event_guests.account_id='$id' AND event_guests.event_id=events.event_id);";
-            }
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-              // output data of each row
-              $i=0;
-              
-              while($row = $result->fetch_assoc()) {
-                $startDate = $row['event_start_date_time'];
-                $startTime = $row['event_start_time'];
-                $endDate = $row['event_end_date_time'];
-                $endTime = $row['event_end_time'];
-                $title = $row["event_title"];
-                
-                date_default_timezone_set('America/Denver');
-                $currentdate = date('m/d/Y', time());
-                $time = strtotime($endDate);
-                $eventend = date('m/d/Y',$time);
-                if($eventend < $currentdate){
-                  continue;
-                }
-                
-                if (empty($title) || $title==""){
-                  $title = "No Title";
-                }
-                if(($i % 4)==0 && $i!=0){
-                  echo "</div><div class='w3-row' style='margin: auto;'>";
-                }
-                echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
-                if($startTime!=$endTime){
-                  echo " - " . $endTime;
-                }
-                echo  "</p><p>" . $startDate;
-                if($startDate!=$endDate){
-                  echo " - " . $endDate;
-                }
-                echo "</p><p>" . $row["event_tags"];
-                echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
-                $i++;
+        <div id="all_events" class="tabcontent">
+        <div id="all_events" class="tabcontent">
+           <div class="w3-container" style="width: 85%; margin: auto;">
+        <div class='w3-row' style=' margin: auto;'>
+          <?php
+          $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+          $server = $url["host"];
+          $username = $url["user"];
+          $password = $url["pass"];
+          $db = substr($url["path"], 1);
+          // Create connection
+          $conn = new mysqli($server, $username, $password, $db);
+          // Check connection
+          if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+          }
+          if(isset($_SESSION['user_id'])){
+            $sessionID=$_SESSION['user_id'];
+            $sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time FROM events WHERE event_id IN (SELECT event_id FROM events_guests WHERE account_id='$sessionID') as my_events";
+          }
+          else{
+            $sql = "";
+            // echo '<script type="text/javascript">
+            // alert("You must log in first");
+            // window.location = "login.php";
+            // </script>';
+          }
+          $result = $conn->query($sql);
+          if ($result->num_rows > 0) {
+            // output data of each row
+            $i=0;
+            while($row = $result->fetch_assoc()) {
+              $tempStamp = strtotime($row['event_start_date_time']);
+              $startTime = date('g:i A', $tempStamp);
+              $startDate = date('m/d',$tempStamp);
+              $tempStamp = strtotime($row['event_end_date_time']);
+              $endTime = date('g:i A',$tempStamp);
+              $endDate = date('m/d',$tempStamp);
+              $title = $row["event_title"];
+              if (empty($title) || $title==""){
+                $title = "No Title";
               }
-            } else {
-              echo "0 results";
+              if(($i % 4)==0 && $i!=0){
+                echo "</div><div class='w3-row' style='margin: auto;'>";
+              }
+              echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
+              if($startTime!=$endTime){
+                echo "-" . $endTime;
+              }
+              echo  "</p><p>" . $startDate;
+              if($startDate!=$endDate){
+                echo "-" . $endDate;
+              }
+              echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
+              $i++;
             }
-            echo "</div>";
-            $conn->close();
-            ?>
-          </div>
+          } else {
+            echo "0 results";
+          }
+          echo "</div>";
+          $conn->close();
+          ?>
         </div>
+      </div>
+      <hr>
+      <div id="current_events" class="tabcontent">
+
+      </div>
+
+      <div id="past_events" class="tabcontent">
+
+      </div>
+
+      <div id="create_events" class="tabcontent">
+
+      </div>
 
           <hr>
 
@@ -404,7 +455,24 @@ width: 100%;
           </script>
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
           <hr>
+          <script>
+                function openTab(pageName,elmnt,color) {
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("tabcontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("tablink");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].style.backgroundColor = "";
+                    }
+                    document.getElementById(pageName).style.display = "block";
+                    elmnt.style.backgroundColor = color;
 
+                }
+                // Get the element with id="defaultOpen" and click on it
+                document.getElementById("defaultOpen").click();
+              </script>
 
           <!-- Footer -->
           <?php require 'footer.html'; ?>
