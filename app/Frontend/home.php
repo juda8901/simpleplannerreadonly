@@ -9,34 +9,128 @@ if($valid) $id=$_SESSION['id'];
 <head>
 	<title>Simpleplanner - Home</title>
 	<?php require 'header.html'; ?>
-	<!-- <style>
+	<style> 
 	input[type=text] {
-	width: 130px;
-	box-sizing: border-box;
-	border: 2px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-	background-color: white;
-	background-image: url('searchicon.png');
-	background-position: 10px 10px;
-	background-repeat: no-repeat;
-	padding: 12px 20px 12px 40px;
-	-webkit-transition: width 0.4s ease-in-out;
-	transition: width 0.4s ease-in-out;
-}
+	    background-color: #e6ecf0;
+	    border: 0;
+	    border-radius: 6px;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	    font-size: 14px;
+	    width: 130px;
+	    box-sizing: border-box;
+	    background-image: url('searchicon.png');
+	    background-repeat: no-repeat;
+	    margin: auto;
+	    left-margin: 10px;
 
-input[type=text]:focus {
-width: 100%;
-}
-</style> -->
+	    max-width: 800px;
+	    padding-top: 10px;
+	    position: relative;
+	    width: 95%;
+	}
+
+</style>
 </head>
-<body>
+
+ 
+
 	<!-- Navigation Bar -->
 	<?php require 'nav_bar.php'; ?>
 	<br><br>
 
+	<div class="homepage-hero-module">
+    <div class="video-container">
+    	<div class="title-container" >
+    	</div>
+        <div class="filter"></div>
+        <header class="w3-theme" id="Header">
+		<h1 style="color: #f13a59;">Simpleplanner</h1>
+		<h2>
+			<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#2e3e48;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
+				<span class="wrap"></span>
+			</a>
+		</h2>
 
-	<!-- Header -->
+	</header>
+        <video autoplay loop class="fillWidth">
+            <source src="https://simpleplanner.herokuapp.com/Frontend/We-Work-We-Wait.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="https://simpleplanner.herokuapp.com/Frontend/We-Work-We-Wait.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+        <!--<div class="poster hidden">
+            <img src="https://simpleplanner.herokuapp.com/Frontend/Up.jpg" alt="">
+        </div> -->
+        
+    </div>
+</div>
+<!--
+<script >
+					$( document ).ready(function() {
+
+					    scaleVideoContainer();
+
+					    initBannerVideoSize('.video-container .poster img');
+					    initBannerVideoSize('.video-container .filter');
+					    initBannerVideoSize('.video-container video');
+
+					    $(window).on('resize', function() {
+					        scaleVideoContainer();
+					        scaleBannerVideoSize('.video-container .poster img');
+					        scaleBannerVideoSize('.video-container .filter');
+					        scaleBannerVideoSize('.video-container video');
+					    });
+
+					});
+
+					function scaleVideoContainer() {
+
+					    var height = $(window).height() + 5;
+					    var unitHeight = parseInt(height) + 'px';
+					    $('.homepage-hero-module').css('height',unitHeight);
+
+					}
+
+					function initBannerVideoSize(element){
+
+					    $(element).each(function(){
+					        $(this).data('height', $(this).height());
+					        $(this).data('width', $(this).width());
+					    });
+
+					    scaleBannerVideoSize(element);
+
+					}
+
+					function scaleBannerVideoSize(element){
+
+					    var windowWidth = $(window).width(),
+					    windowHeight = $(window).height() + 5,
+					    videoWidth,
+					    videoHeight;
+
+					    // console.log(windowHeight);
+
+					    $(element).each(function(){
+					        var videoAspectRatio = $(this).data('height')/$(this).data('width');
+
+					        $(this).width(windowWidth);
+
+					        if(windowWidth < 1000){
+					            videoHeight = windowHeight;
+					            videoWidth = videoHeight / videoAspectRatio;
+					            $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
+
+					            $(this).width(videoWidth).height(videoHeight);
+					        }
+
+					        $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
+
+					    });
+					}
+					</script> -->
+
+
+	<!-- Header 
 	<header class="w3-theme" id="Header">
 		<h1 style="color: #F64060;">Simpleplanner</h1>
 		<h2>
@@ -44,7 +138,9 @@ width: 100%;
 				<span class="wrap"></span>
 			</a>
 		</h2>
-	</header>
+
+	</header>-->
+	
 
 	<!-- Scripts for Header -->
 	<script type="text/javascript">
@@ -119,16 +215,23 @@ width: 100%;
 		document.body.appendChild(css);
 	};
 	</script>
-	<hr>
+
+	<br>
+
+<body>
 
 	<!-- search bar -->
-	<div id="search_bar" style="width: 100%; text-align: center;">
-		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: large; padding: 0; margin: 0;"/>
-		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75;padding: 0; margin: 0;"></i></button>
-		<header><h2>
-			
+	<div style ="position: -webkit-sticky; position: sticky; top: 37px; background-color: white;">
+	<form id="search_bar" style="width: 100%; text-align: center;" onsubmit="return false">
+		<input type="text" placeholder="  Search for events or clubs" name="search-criteria" id="search-criteria" >
+		<button type="submit" style="background: transparent; border: none !important; width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="padding: 0; margin: 0;"></i></button>
+	</input>
+	</form>
+	</div>
 
-			<!-- search script -->
+	
+
+			<!-- search scriptstyle="width: 40%; border-radius: 30px; font-size: large; padding: 0; margin: 0;" -->
 			<script type="text/javascript">
 			$('.w3-card').hide();
 			$('#search').click(function(){
@@ -141,19 +244,20 @@ width: 100%;
 				});
 			});
 			</script>
-			<hr style= "clear: both;
-				    display: block;
-				    position: relative;
-				    z-index: 10;
-				    margin-top: -1px;">
-
 
 			<!-- Create Event Button -->
-			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button></h2></header>
-			</div>
+			<div>
+			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button>
+		</div>
+
+	<hr style="display: block; height: 0px; border: 0; border-bottom: 1px solid #ccc; margin:0;padding: 0;" >
+
+
 			
+			
+
 			<!-- Modal for Create Event -->
-			<div id="create_event" class="w3-modal">
+			<div id="create_event" class="w3-modal" style="margin:0;">
 				<div class="w3-modal-content w3-card-1 w3-animate-top">
 					<header class="w3-container w3-card w3-round w3-theme-l1">
 						<span onclick="document.getElementById('create_event').style.display='none'"
@@ -286,7 +390,7 @@ width: 100%;
 									<label>End Time </label>
 								</div>
 								<div class="w3-section">
-									<input class="w3-input" name="Location" type="text" required>
+									<input class="w3-input" name="Location" placeholder="Enter an address" type="text" required>
 									<label>Location </label>
 								</div>
 								<div class="w3-section">
@@ -306,12 +410,12 @@ width: 100%;
 
 				<!-- Event Cards -->
 				<div style = "background-color: #fafafa"> 
-				<header><h1>
+				<header style="padding-left: 15;"><h1>
 					<?php
 					if($valid){
 						echo "Your Events";
 					} else {
-						echo "All Events";
+						echo "Popular Events";
 					}
 					?>
 				</h1></header>
@@ -370,7 +474,7 @@ width: 100%;
 									echo " - " . $endDate;
 								}
 								echo "</p><p>" . $row["event_tags"];
-								echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
+								echo "</p><p>" . $row["event_description"]. "</p><button class='w3-btn w3-red'>Join</button></div>";
 								$i++;
 							}
 						} else {
@@ -382,11 +486,11 @@ width: 100%;
 					</div>
 				</div>
 
-					<hr>
+					<hr style="display: block; height: 0px; border: 0; border-top: 1px solid #ccc; margin:0;padding: 0;" >
 
 
 					<!-- Google Map -->
-					<h1>Events Happening Nearby</h1>
+					<h1 style="padding-left: 15;">Events Happening Nearby</h1>
 					<div id="map"></div>
 					<hr>
 					<!-- Scripts for Google Map -->
@@ -526,10 +630,12 @@ width: 100%;
       }
   		</script>
 					<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap"></script>
-					<hr>
+					
 
-
+	
 					<!-- Footer -->
 					<?php require 'footer.html'; ?>
+
+					
 				</body>
 				</html>
