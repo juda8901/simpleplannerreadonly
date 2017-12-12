@@ -143,7 +143,7 @@ width: 100%;
 				});
 			});
 			</script>
-			<hr style= "border: 0 none;"">
+			<hr style= "margin-bottom: 0;">
 
 
 			<!-- Modal for Create Event -->
