@@ -31,12 +31,12 @@ if($valid) $id=$_SESSION['id'];
 </style>
 <style>
 div.sticky {
-	margin-top: 20px;
+	margin-top: 50px;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   padding: 5px;
-  background-color: #cae8ca;
+  background-color: #blue;
   border: 2px solid #4CAF50;
 }
 </style>
