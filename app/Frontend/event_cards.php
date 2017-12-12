@@ -57,20 +57,20 @@
           echo "<div class='w3-center w3-col w3-card w3-blue-grey event_card'>
           <h1 class='card_title'>".$title."</h1>
           <div style='height: 68%; overflow: hidden; box-shadow: inset 0px -10px 0.5px rgba(0,0,8,0.12);'>
-          <p class='card_contents>".$row["event_location"]."</p>
-          <p class='card_contents>".$startDate;
+          <p class='card_contents'>".$row["event_location"]."</p>
+          <p class='card_contents'>".$startDate;
           if($startDate!=$endDate){
             echo " - ".$endDate;
           }
           echo  "</p>
-          <p class='card_contents>".$startTime;
+          <p class='card_contents'>".$startTime;
           if($startTime!=$endTime){
             echo " - ".$endTime;
           }
           echo "</p>
-          <p class='card_contents>".$row["event_tags"];
+          <p class='card_contents'>".$row["event_tags"];
           echo "</p>
-          <p class='card_contents>".$row["event_description"]."</p>
+          <p class='card_contents'>".$row["event_description"]."</p>
           </div>
           <button style='width: 40%; margin: 5%;' class='w3-btn w3-red'>View</button><button style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Join</button></div>";
           $i++;
