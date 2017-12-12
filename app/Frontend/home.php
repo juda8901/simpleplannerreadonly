@@ -52,7 +52,7 @@ if($valid) $id=$_SESSION['id'];
 
 	<!-- Header -->
 	<div class="homepage-hero-module" style="margin-top: 40px;">
-		<div class="video-container">
+		<div class="video-container" style="z-index: -1;">
 			<div class="title-container" ></div>
 			<div class="filter"></div>
 			<header class="w3-theme" id="Header">
