@@ -416,6 +416,7 @@ width: 100%;
             $conn->close();
             ?>
           </div>
+        </div>
       </div>
       <hr>
       <div id="current_events" class="tabcontent">
