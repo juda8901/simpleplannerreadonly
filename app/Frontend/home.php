@@ -130,7 +130,7 @@ if($valid) $id=$_SESSION['id'];
 					</script> -->
 
 
-	<!-- Header -->
+	<!-- Header 
 	<header class="w3-theme" id="Header">
 		<h1 style="color: #F64060;">Simpleplanner</h1>
 		<h2>
@@ -139,7 +139,7 @@ if($valid) $id=$_SESSION['id'];
 			</a>
 		</h2>
 
-	</header>
+	</header>-->
 	
 
 	<!-- Scripts for Header -->
