@@ -122,13 +122,12 @@ if($valid) $id=$_SESSION['id'];
 	<hr>
 
 	<!-- search bar -->
-	<form id="search_bar" style="width: 100%; text-align: center; display: block; margin-top: 0em" onsubmit="return false">
 	<div class="wrap left rounded" style="background-color: grey;">
-	
+	<form id="search_bar" style="width: 100%; text-align: center;" onsubmit="return false">
 		<input type="text" class="search left rounded" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: large; padding: 0; margin: 0;"/>
-		<button type="submit" class="go left rounded" style="color: #aab8c2; font-size: 20px;height: 22px; left: 15px; padding-left: 1px; position: absolute; top: 7px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" ><i class="fa fa-search" style="zoom: 1.75;padding: 0; margin: 0;"></i></button>
-	</div>
+		<button type="submit" class="go left rounded" style="width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75;padding: 0; margin: 0;"></i></button>
 	</form>
+	</div>
 
 
 	
@@ -362,7 +361,7 @@ if($valid) $id=$_SESSION['id'];
 								if(($i % 4)==0 && $i!=0){
 									echo "</div><div class='w3-row' style='margin: auto;'>";
 								}
-								echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%; overflow: scroll;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
+								echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%; display: -webkit-box;-webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
 								if($startTime!=$endTime){
 									echo " - " . $endTime;
 								}
