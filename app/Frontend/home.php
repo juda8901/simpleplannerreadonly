@@ -383,7 +383,7 @@ width: 100%;
 					function initMap() {
 						var Boulder = {lat: 40.027443, lng: -105.25174};
 						var map = new google.maps.Map(document.getElementById('map'), {
-							zoom: 4,
+							zoom: 13,
 							center: Boulder
 						});
 						var marker = new google.maps.Marker({
