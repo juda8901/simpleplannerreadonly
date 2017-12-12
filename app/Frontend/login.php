@@ -43,6 +43,7 @@ if($_SESSION['logged_in']){
 	<style>
 	button:hover {
 		opacity: 0.8;
+		color: red;
 	}
 	.cancelbtn {
 		width: auto;
