@@ -410,7 +410,7 @@ if($valid) $id=$_SESSION['id'];
 
 				<!-- Event Cards -->
 				<div style = "background-color: #fafafa"> 
-				<header style="left-margin: 15;"><h1>
+				<header style="padding-left: 15;"><h1>
 					<?php
 					if($valid){
 						echo "Your Events";
@@ -490,7 +490,7 @@ if($valid) $id=$_SESSION['id'];
 
 
 					<!-- Google Map -->
-					<h1>Events Happening Nearby</h1>
+					<h1 style="padding-left: 15;">Events Happening Nearby</h1>
 					<div id="map"></div>
 					<hr>
 					<!-- Scripts for Google Map -->
