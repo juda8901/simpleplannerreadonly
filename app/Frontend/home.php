@@ -361,7 +361,7 @@ width: 100%;
 								
 								date_default_timezone_set('America/Denver');
 								$currentdate = date('m/d/Y', time());
-								$time = strtotime($startTime);
+								$time = strtotime($startDate);
 								$eventstart = date('m/d/Y',$time);
 								if($eventstart < $currentdate){
 									break;
