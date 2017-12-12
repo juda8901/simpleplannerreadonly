@@ -369,7 +369,7 @@ if($valid) $id=$_SESSION['id'];
 									echo " - " . $endDate;
 								}
 								echo "</p><p>" . $row["event_tags"];
-								echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
+								echo "</p><p>" . $row["event_description"]. "</p><button class='w3-btn'>Join</button></div>";
 								$i++;
 							}
 						} else {
