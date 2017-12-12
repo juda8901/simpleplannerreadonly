@@ -123,6 +123,7 @@ input[type=text]:focus {
 	<hr>
 
 	<!-- search bar -->
+	<div style="background-color: grey;">
 	<div id="search_bar" style="width: 100%; text-align: center;">
 		<input type="text" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: large; padding: 0; margin: 0;"/>
 		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75;padding: 0; margin: 0;"></i></button>
@@ -131,7 +132,7 @@ input[type=text]:focus {
 	<form>
 	  <input type="text" name="search-criteria" placeholder="Search.." id="search">
 	</form>
-			
+	
 
 			<!-- search script -->
 			<script type="text/javascript">
@@ -146,13 +147,13 @@ input[type=text]:focus {
 				});
 			});
 			</script>
+			</div>
 
 			<hr >
 
 
 			<!-- Create Event Button -->
 			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button></h2></header>
-			</div>
 
 			<!-- Modal for Create Event -->
 			<div id="create_event" class="w3-modal">
