@@ -128,7 +128,7 @@ input[type=text]:focus {
 		<header><h2>
 
 	<form>
-	  <input type="text" name="search" placeholder="Search..">
+	  <input type="text" name="search-criteria" placeholder="Search..">
 	</form>
 			
 
