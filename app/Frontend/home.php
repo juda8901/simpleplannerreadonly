@@ -326,7 +326,6 @@ width: 100%;
 
 						$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events;";
 						if($valid){
-							echo "<p>".$id."<br>".$_SESSION['id']."<br>".$_SESSION['username']."<br>".$_SESSION['password']."</p>";
 							$sql = "SELECT event_title, event_description, event_location, event_start_date_time, event_end_date_time, event_start_time, event_end_time, event_tags FROM events WHERE event_host_account_id='$id';";
 						}
 						$result = $conn->query($sql);
