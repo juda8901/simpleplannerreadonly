@@ -20,7 +20,7 @@ if($result->num_rows==1){
   $logged_in=true;
 } else {
   $conn->close();
-  header('Location: https://simpleplanner.herokuapp.com/Frontend/login.php');
+  // header('Location: https://simpleplanner.herokuapp.com/Frontend/login.php');
   die();
 }
 $conn->close();
