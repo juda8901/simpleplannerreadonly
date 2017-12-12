@@ -73,7 +73,7 @@
 					echo "</p>
 					<p class='card_contents'>".$row["event_description"]."</p>
 					</div>
-					<button "/*action='document.getElementById('.$eventID.').style.display='block'*/" style='width: 40%; margin: 5%;' class='w3-btn w3-red'>View</button><button "/*action='/Backend/join_event_handler.php'*/" style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Join</button></div>";
+					<button style='width: 40%; margin: 5%;' class='w3-btn w3-red'>View</button><button style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Join</button></div>";
 					$i++;
 
 					// Modal
