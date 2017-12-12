@@ -21,14 +21,11 @@ input[type=text] {
     box-sizing: border-box;
     background-image: url('searchicon.png');
     background-repeat: no-repeat;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
     margin: 0 auto;
     max-width: 800px;
     padding-top: 10px;
     position: relative;
     width: 95%;
-    text-align: center;
 }
 }
 
