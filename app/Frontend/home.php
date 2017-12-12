@@ -124,7 +124,7 @@ if($valid) $id=$_SESSION['id'];
 	<header class="w3-theme" id="Header">
 		<h1 style="color: #F64060;">Simpleplanner</h1>
 		<h2>
-			<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#2e3e48;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
+			<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:white;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
 				<span class="wrap"></span>
 			</a>
 		</h2>
