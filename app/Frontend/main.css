@@ -102,11 +102,12 @@ body {
 }
 
 
-.homepage-hero-module {
+/*.homepage-hero-module {
     border-right: none;
     border-left: none;
     position: relative;
 }
+*/
 .no-video .video-container video,
 .touch .video-container video {
     display: none;
@@ -137,7 +138,7 @@ body {
 }
 .video-container video {
     position: absolute;
-    z-index: 0;
+    z-index: -1;
     bottom: 0;
 }
 .video-container video.fillWidth {
