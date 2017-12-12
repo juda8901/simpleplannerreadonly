@@ -45,9 +45,9 @@ if($valid) $id=$_SESSION['id'];
     	</div>
         <div class="filter"></div>
         <header class="w3-theme" id="Header">
-		<h1 style="color: #2e3e48;">Simpleplanner</h1>
+		<h1 style="color: #f13a59;">Simpleplanner</h1>
 		<h2>
-			<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#f13a59;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
+			<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#white;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
 				<span class="wrap"></span>
 			</a>
 		</h2>
