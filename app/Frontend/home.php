@@ -217,10 +217,11 @@ $('#search').click(function(){
 
 <!-- Create Event Button -->
 <div>
-	<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" style="color: red; margin: 15px; padding-left: 20px; padding-right: 20px; box-shadow: 5px 5px rgba(0,0,0,.2);" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>">+ Create Event</button>
+	<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" style="color: red; margin: 15px; padding-left: 20px; padding-right: 20px; box-shadow: 5px 5px 5px 0px rgba(0,0,0,.2);" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>">+ Create Event</button>
 	</div>
 </div>
 <hr style="display: block; height: 0px; border: 0; border-bottom: 1px solid #ccc; margin:0;padding: 0;" >
+    
 
 
 <!-- Modal for Create Event -->
@@ -231,8 +232,14 @@ $('#search').click(function(){
 <?php require 'event_cards.php'; ?>
 <hr style="display: block; height: 0px; border: 0; border-top: 1px solid #ccc; margin:0; padding: 0;" >
 
-
-<!-- Footer -->
-<?php require 'footer.html'; ?>
-</body>
-</html>
+<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	
+		<!-- Footer -->
+		<?php require 'footer.html'; ?>
+	</body>
+	</html>

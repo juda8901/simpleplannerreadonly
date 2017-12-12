@@ -89,7 +89,7 @@ if($_SESSION['logged_in']){
 
 				<input type="password" placeholder="Password" name="psw" style="width: 100%; padding: 8px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; box-sizing: border-box; border-radius: 12px;" required>
 
-				<input type="submit" name="submit" class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" style="width :40%; font-weight: 650; color: red; margin: 20px; box-shadow: 5px 5px rgba(0,0,0,.2);" value="Login"/>
+				<input type="submit" name="submit" class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" style="width :40%; font-weight: 650; color: red; margin: 20px;  box-shadow: 5px 5px 5px 0px rgba(0,0,0,.2);" value="Login"/>
 
 				<div style="display: none;"><input id="remember" type="checkbox" checked="checked" style="float: left;"><span><a onclick="document.getElementById('remember').checked=!document.getElementById('remember').checked" class="w3-left w3-hover-light-grey"> Remember me </a></span></div>
 				<br>

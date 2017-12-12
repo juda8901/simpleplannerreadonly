@@ -56,7 +56,7 @@
           }
           echo "<div class='w3-center w3-col w3-card w3-blue-grey event_card'>
           <h1 class='card_title'>".$title."</h1>
-          <div style='height: 68%; overflow: hidden; box-shadow: inset 0px -10px 0.5px rgba(0,0,8,0.12);'>
+          <div style='height: 68%; overflow: hidden; box-shadow: inset 0px -15px 10px -5px rgba(0,0,0,0.12);'>
           <p class='card_contents'>".$row["event_location"]."</p>
           <p class='card_contents'>".$startDate;
           if($startDate!=$endDate){
