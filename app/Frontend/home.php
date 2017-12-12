@@ -131,7 +131,7 @@ div.sticky {
 		document.body.appendChild(css);
 	};
 	</script>
-	<hr>
+	<hr style="margin: 0;">
 
 	<!-- search bar -->
 	<div style ="position: -webkit-sticky; position: sticky; top: 40px; background-color: grey;">
@@ -158,7 +158,7 @@ div.sticky {
 			});
 			</script>
 
-			<hr >
+	<hr style="margin: 0;">
 
 
 			<!-- Create Event Button -->
