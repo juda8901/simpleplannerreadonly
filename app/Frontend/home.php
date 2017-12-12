@@ -37,7 +37,7 @@ width: 100%;
 
 
 	<!-- Header -->
-	<header class="w3-theme" id="Header">
+	<header class="w3-theme" id="Header" style="width: 60%;">
 		<h1 style="color: #F64060;">Simpleplanner</h1>
 		<h2>
 			<a href="" class="typewrite" style="text-decoration: none; font-size: 25px; color:#2e3e48;" data-type='[ "Planning made simple.", "Change the world.", "Flawlessly connect with others." ]'>
