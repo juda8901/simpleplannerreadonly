@@ -44,9 +44,9 @@ v_pw.onfocus = function() {
   document.getElementById("requirements").style.display = "block";
 }
  //When the user clicks outside of the password field, hide the message box
- pw.onblur = function() {
+ /*pw.onblur = function() {
    document.getElementById("requirements").style.display = "none";
- }
+ }*/
  When the user starts to type something inside the password field
 pw.onkeyup = function() {
   // Validate lowercase letters
@@ -98,9 +98,9 @@ v_pw.onkeyup = function(){
  em.onfocus = function() {
    document.getElementById("eRequirements").style.display = "block";
  }
- em.onblur = function() {
+ /*em.onblur = function() {
    document.getElementById("eRequirements").style.display = "none";
- }
+ }*/
  //Checks if correct email format
  em.onkeyup = function(){
    var validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,4}$/g;
