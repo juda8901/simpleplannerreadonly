@@ -204,7 +204,7 @@ if($valid) $id=$_SESSION['id'];
 		document.body.appendChild(css);
 	};
 	</script>
-	<hr style="margin: 0;">
+	<hr >
 
 <body>
 
