@@ -496,7 +496,7 @@ $('#search').click(function(){
 						echo "</p>
 						<p>".$row["event_description"]."</p>
 						</div>
-						<button style='width: 40%; margin-right: 7.5%; margin-top: 5%;' class='w3-btn w3-red'>View</button><button style='width: 40%;' class='w3-btn w3-red'>Join</button>";
+						<button style='width: 40%; margin-right: 7.5%; margin-top: 5%;' class='w3-btn w3-red'>View</button><button style='width: 40%;' class='w3-btn w3-red'>Join</button></div>";
 						$i++;
 					}
 				} else {
