@@ -285,7 +285,7 @@ width: 100%;
 									<label>End Time </label>
 								</div>
 								<div class="w3-section" id="locationField">
-									<input class="w3-input" name="Location" id="autocomplete" placeholder="Enter the address" onFocus="geolocate()" type="text" required>
+									<input class="w3-input" name="Location" type="text" required>
 									<label>Location </label>
 								</div>
 								<div class="w3-section">
