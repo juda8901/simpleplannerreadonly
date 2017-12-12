@@ -500,8 +500,10 @@ width: 100%;
             {name: 'Styled Map'});
 						var Boulder = {lat: 40.027443, lng: -105.25174};
 						var map = new google.maps.Map(document.getElementById('map'), {
-							zoom: 11,
+							zoom: 12,
 							center: Boulder
+							  map.mapTypes.set('styled_map', styledMapType);
+        				map.setMapTypeId('styled_map');
 						});
 						var marker = new google.maps.Marker({
 							position: Boulder,
