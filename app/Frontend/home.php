@@ -127,7 +127,7 @@ width: 100%;
 		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: 30px; height: 30px; padding: 0; margin:0px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchicon.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75; padding: 0; margin: 0;"></i></button>
 		<header><h2>
 			<!-- Create Event Button -->
-			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="width: 100%; margin: 15px; padding-left: 20px; padding-right: 25px;">+ Create Event</button></h2></header>
+			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-light-grey w3-blue-grey" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button></h2></header>
 			</div>
 
 			<!-- search script -->
