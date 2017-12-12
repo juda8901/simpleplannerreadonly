@@ -267,6 +267,10 @@ $('#search').click(function(){
 
 	<hr style="display: block; height: 0px; border: 0; border-top: 1px solid #ccc; margin:0;padding: 0;" >
 
+	<br>
+	<br>
+	<br>
+	
 		<!-- Footer -->
 		<?php require 'footer.html'; ?>
 	</body>
