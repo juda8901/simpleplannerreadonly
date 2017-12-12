@@ -10,28 +10,24 @@ if($valid) $id=$_SESSION['id'];
 	<title>Simpleplanner - Home</title>
 	<?php require 'header.html'; ?>
 	<style> 
-input[type=text] {
-    background-color: #e6ecf0;
-    border: 0;
-    border-radius: 6px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    font-size: 14px;
-    width: 130px;
-    box-sizing: border-box;
-    background-image: url('searchicon.png');
-    background-repeat: no-repeat;
-    margin: 0 auto;
-    max-width: 800px;
-    padding-top: 10px;
-    position: relative;
-    width: 95%;
-}
-}
+	input[type=text] {
+	    background-color: #e6ecf0;
+	    border: 0;
+	    border-radius: 6px;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	    font-size: 14px;
+	    width: 130px;
+	    box-sizing: border-box;
+	    background-image: url('searchicon.png');
+	    background-repeat: no-repeat;
+	    margin: 0 auto;
+	    max-width: 800px;
+	    padding-top: 10px;
+	    position: relative;
+	    width: 95%;
+	}
 
-input[type=text]:focus {
-    width: 100%;
-}
 </style>
 </head>
 <body>
@@ -132,9 +128,6 @@ input[type=text]:focus {
 		<button type="submit" class="w3-button w3-hover-blue-grey" style="width: 30px; height: 30px; padding: 0; margin:0px; margin-bottom: 10px;" id="search" value="search"><img src="https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png" style="width: 30px; height: 30px;"><i class="fa fa-search" style="zoom: 1.75;padding: 0; margin: 0;"></i></button>
 	</div>
 
-	<form>
-	  <input type="text" name="search-criteria" placeholder="Search.." id="search">
-	</form>
 				</div>
 
 	
