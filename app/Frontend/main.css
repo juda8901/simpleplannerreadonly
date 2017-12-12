@@ -88,11 +88,3 @@ input[type=text]:focus {
 input[type=text]:focus {
 width: 100%;
 }
-
-#event_card-text {
-    -ms-text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
