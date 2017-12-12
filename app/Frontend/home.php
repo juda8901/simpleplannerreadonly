@@ -122,7 +122,7 @@ if($valid) $id=$_SESSION['id'];
 	<hr>
 
 	<!-- search bar -->
-	<form id="search_bar" style="width: 100%; text-align: center;" onsubmit="return false">
+	<form id="search_bar" style="width: 100%; text-align: center; display: block; margin-top: 0em" onsubmit="return false">
 	<div class="wrap left rounded" style="background-color: grey;">
 	
 		<input type="text" class="search left rounded" placeholder="  Search for an event..." name="search-criteria" id="search-criteria" style="width: 40%; border-radius: 30px; font-size: large; padding: 0; margin: 0;"/>
