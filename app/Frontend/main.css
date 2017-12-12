@@ -13,8 +13,7 @@ body {
 
 #LogInButtons {
 	color: #2e3e48;
-	position: -webkit-sticky; /* Safari */
-    position: sticky;
+    position: fixed;
     top: 0%;
     background-color: white;
   	padding: 7px;
