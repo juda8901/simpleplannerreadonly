@@ -1,4 +1,30 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+$logged_in=false;
+$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+$server=$url["host"];
+$username=$url["user"];
+$password=$url["pass"];
+$db=substr($url["path"], 1);
+$conn=new mysqli($server, $username, $password, $db);
+if ($conn->connect_error) {
+  die("<p>Connection failed: " . $conn->connect_error."</p>");
+}
+$name=$_SESSION['username'];
+$pass=$_SESSION['password'];
+$id=$_SESSION['id'];
+$query="SELECT * FROM accounts WHERE account_email='$name' AND account_password='$pass' AND account_id='$id';";
+$result=$conn->query($query);
+if($result->num_rows==1){
+  $logged_in=true;
+} else {
+  $conn->close();
+  header('Location: https://simpleplanner.herokuapp.com/Frontend/login.php');
+  die();
+}
+$conn->close();
+?>
 
 <html>
 <head>
@@ -20,13 +46,13 @@
       </a>
     </h2>
   </header>
+
   <!-- Scripts for Header -->
   <script type="text/javascript">
   // Rotating text
   (function() {
     var quotes = $(".quotes");
     var quoteIndex = -1;
-
     function showNextQuote() {
       ++quoteIndex;
       quotes.eq(quoteIndex % quotes.length)
@@ -34,10 +60,8 @@
       .delay(2000)
       .fadeOut(2000, showNextQuote);
     }
-
     showNextQuote();
   })();
-
   var TxtType = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
@@ -47,7 +71,6 @@
     this.tick();
     this.isDeleting = false;
   };
-
   TxtType.prototype.tick = function() {
     var i = this.loopNum % this.toRotate.length;
     var fullTxt = this.toRotate[i];
@@ -56,13 +79,10 @@
     } else {
       this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
-
     this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
     var that = this;
     var delta = 200 - Math.random() * 100;
-
     if (this.isDeleting) { delta /= 2; }
-
     if (!this.isDeleting && this.txt === fullTxt) {
       delta = this.period;
       this.isDeleting = true;
@@ -71,12 +91,10 @@
       this.loopNum++;
       delta = 500;
     }
-
     setTimeout(function() {
       that.tick();
     }, delta);
   };
-
   window.onload = function() {
     var elements = document.getElementsByClassName('typewrite');
     for (var i=0; i<elements.length; i++) {
@@ -158,28 +176,23 @@
     country: 'long_name',
     postal_code: 'short_name'
   };
-
   function initAutocomplete() {
     // Create the autocomplete object, restricting the search to geographical
     // location types.
     autocomplete = new google.maps.places.Autocomplete(
       /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
       {types: ['geocode']});
-
       // When the user selects an address from the dropdown, populate the address
       // fields in the form.
       autocomplete.addListener('place_changed', fillInAddress);
     }
-
     function fillInAddress() {
       // Get the place details from the autocomplete object.
       var place = autocomplete.getPlace();
-
       for (var component in componentForm) {
         document.getElementById(component).value = '';
         document.getElementById(component).disabled = false;
       }
-
       // Get each component of the address from the place details
       // and fill the corresponding field on the form.
       for (var i = 0; i < place.address_components.length; i++) {
@@ -190,7 +203,6 @@
         }
       }
     }
-
     // Bias the autocomplete object to the user's geographical location,
     // as supplied by the browser's 'navigator.geolocation' object.
     function geolocate() {
@@ -235,14 +247,12 @@
         }
         else{
           $sql = "";
-            echo '<script type="text/javascript"> 
-            alert("You must log in first");
-            window.location = "login.php";
-            </script>';
-            
+          echo '<script type="text/javascript">
+          alert("You must log in first");
+          window.location = "login.php";
+          </script>';
         }
         $result = $conn->query($sql);
-
         if ($result->num_rows > 0) {
           // output data of each row
           $i=0;
@@ -250,12 +260,9 @@
             $tempStamp = strtotime($row['event_start_date_time']);
             $startTime = date('g:i A', $tempStamp);
             $startDate = date('m/d',$tempStamp);
-
-
             $tempStamp = strtotime($row['event_end_date_time']);
             $endTime = date('g:i A',$tempStamp);
             $endDate = date('m/d',$tempStamp);
-
             $title = $row["event_title"];
             if (empty($title) || $title==""){
               $title = "No Title";
