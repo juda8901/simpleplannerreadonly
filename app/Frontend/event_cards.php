@@ -54,38 +54,28 @@
           if(($i % 4)==0 && $i!=0){
             echo "</div><div class='w3-row' style='margin: auto;'>";
           }
-          echo "<div class='w3-center w3-col w3-card w3-blue-grey event_card' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'>
-          <div style='width: 100%; height: 30%;' class='card_title'><span>".$title."</span></div>
-          <div style='height: 53%; overflow: hidden;'>
-          <p>".$row["event_location"]."</p>
-          <p>".$startTime;
-          if($startTime!=$endTime){
-            echo " - ".$endTime;
-          }
-          echo  "</p>
-          <p>".$startDate;
+          echo "<div class='w3-center w3-col w3-card w3-blue-grey event_card'>
+          <h1 class='card_title'>".$title."</h1>
+          <div style='height: 68%; overflow: hidden; box-shadow: inset 0px -10px 0.5px rgba(0,0,8,0.12);'>
+          <p class='card_contents'>".$row["event_location"]."</p>
+          <p class='card_contents'>".$startDate;
           if($startDate!=$endDate){
             echo " - ".$endDate;
           }
+          echo  "</p>
+          <p class='card_contents'>".$startTime;
+          if($startTime!=$endTime){
+            echo " - ".$endTime;
+          }
           echo "</p>
-          <p>".$row["event_tags"];
+          <p class='card_contents'>".$row["event_tags"];
           echo "</p>
-          <p>".$row["event_description"]."</p>
+          <p class='card_contents'>".$row["event_description"]."</p>
           </div>
           <button style='width: 40%; margin: 5%;' class='w3-btn w3-red'>View</button><button style='width: 40%; margin: 5%;' class='w3-btn w3-red'>Join</button></div>";
-
-          // echo "<div class='w3-center w3-col w3-card w3-blue-grey' style='margin: 10px; padding: 10px; height: 45%; width: 23%;'><header><h1>" . $title. "</h1></header><p>" . $row["event_location"]. "</p><p>" . $startTime;
-          // if($startTime!=$endTime){
-          //   echo " - " . $endTime;
-          // }
-          // echo  "</p><p>" . $startDate;
-          // if($startDate!=$endDate){
-          //   echo " - " . $endDate;
-          // }
-          // echo "</p><p>" . $row["event_tags"];
-          // echo "</p><p>" . $row["event_description"]. "</p><button>Contact</button></div>";
           $i++;
         }
+        echo "</div>";
       } else {
         echo "0 results";
       }
@@ -93,11 +83,3 @@
       ?>
     </div>
   </div>
-  <script src="jquery.min.js"></script>
-  <script src="jquery.textfill.min.js"></script>
-  <script>
-  var elements = document.getElementsByClassName('typewrite');
-	for (var i=0; i<elements.length; i++) {
-		elements[i].textfill({ maxFontPixels: 36 });
-	}
-  </script>
