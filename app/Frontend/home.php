@@ -245,7 +245,7 @@ if($valid) $id=$_SESSION['id'];
 			});
 			</script>
 
-	<hr style="display: block; height: 0px; border: 0; border-top: 1px solid #ccc; margin:0;padding: 0;" >
+	<hr style="display: block; height: 0px; border: 0; border-bottom: 1px solid #ccc; margin:0;padding: 0;" >
 
 
 			
