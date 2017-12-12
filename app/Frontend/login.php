@@ -2,7 +2,7 @@
 if(!isset($_SESSION)) session_start();
 
 $error="";
-$valid=$_SESSION['logged_in']===true;
+// $valid=$_SESSION['logged_in']===true;
 if(isset($_POST['submit'])){
 	$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 	$server=$url["host"];
@@ -25,15 +25,15 @@ if(isset($_POST['submit'])){
 		while($row=$result->fetch_assoc()) {
 			$_SESSION['id']=(int)$row['account_id'];
 			$_SESSION['logged_in']=true;
-			$error="<p>Session User ID: ".$_SESSION['id']."</p>";
+			$error="<p>".session_save_path()."</p>";
 		}
 	}
 	$conn->close();
 }
-if($_SESSION['logged_in']){
-	header('Location: https://simpleplanner.herokuapp.com');
-	die();
-}
+// if($_SESSION['logged_in']){
+// 	header('Location: https://simpleplanner.herokuapp.com');
+// 	die();
+// }
 ?>
 
 <html>
