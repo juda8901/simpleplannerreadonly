@@ -42,6 +42,9 @@ if($valid) $id=$_SESSION['id'];
         padding: 100px 20px;
         height: 100%;
     }
+    footer{
+      bottom:0;
+    }
 </style>
   <!-- <style>
   input[type=text] {
@@ -337,7 +340,7 @@ width: 100%;
         </div>
       </div>
 
-       <button class="tablink" onclick="openTab('current_events', this, 'red') id="defaultOpen"">Current</button>
+       <button class="tablink" onclick="openTab('current_events', this, 'red')" id="defaultOpen">Current</button>
         <button class="tablink" onclick="opeTab('past_events', this, 'green')">Past</button>
         <button class="tablink" onclick="openTab('all_events', this, 'blue')">All</button>
         <button class="tablink" onclick="openTab('create_events', this, 'orange')">Yours</button>
