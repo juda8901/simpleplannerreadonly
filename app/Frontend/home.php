@@ -23,8 +23,9 @@ if($valid) $id=$_SESSION['id'];
 	    background-repeat: no-repeat;
 	    margin: 0 auto;
 	    max-width: 800px;
+	    padding-top: 10px;
 	    position: relative;
-	    width: 80%;
+	    width: 95%;
 	}
 
 </style>
