@@ -22,6 +22,7 @@ if($valid) $id=$_SESSION['id'];
 	    background-image: url('searchicon.png');
 	    background-repeat: no-repeat;
 	    margin: 0 auto;
+	    left-margin: 10px;
 	    max-width: 800px;
 	    padding-top: 10px;
 	    position: relative;
