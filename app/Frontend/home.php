@@ -502,9 +502,7 @@ width: 100%;
 						var map = new google.maps.Map(document.getElementById('map'), {
 							zoom: 12,
 							center: Boulder
-							  map.mapTypes.set('styled_map', styledMapType);
-        				map.setMapTypeId('styled_map');
-						});
+							  
 						var marker = new google.maps.Marker({
 							position: Boulder,
 							map: map
