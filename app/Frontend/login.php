@@ -82,7 +82,7 @@ if($_SESSION['logged_in']){
 			<h1 style="float:left; margin:10px 10px 10px 20px;"> Login </h1>
 			<br>
 			<br>
-			<div class="container" style="background-color:white;">
+			<div class="container">
 				<p style="color: red; display: none;" id="error">Incorrect username or password. If you don't have an account click <u><a onclick="document.getElementById('sign_up').style.display='block'">here</a></u>.</p>
 
 				<input type="text" placeholder="Email" name="uname" style="width: 100%; padding: 8px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; box-sizing: border-box; border-radius: 12px;" required>
