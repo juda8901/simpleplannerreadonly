@@ -28,6 +28,7 @@ input[type=text] {
     padding-top: 10px;
     position: relative;
     width: 95%;
+    text-align: center;
 }
 }
 
