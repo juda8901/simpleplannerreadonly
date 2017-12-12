@@ -44,6 +44,19 @@ width: 100%;
 				<span class="wrap"></span>
 			</a>
 		</h2>
+		<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
 	</header>
 
 	<!-- Scripts for Header -->
@@ -348,7 +361,7 @@ width: 100%;
 								
 								date_default_timezone_set('America/Denver');
 								$currentdate = date('m/d/Y', time());
-								$time = strtotime($startTime);
+								$time = strtotime($startDate);
 								$eventstart = date('m/d/Y',$time);
 								if($eventstart < $currentdate){
 									break;
@@ -390,83 +403,140 @@ width: 100%;
 
 					<!-- Scripts for Google Map -->
 					<script>
-					function initialize() {
-						initMap();
-						initAutoComplete();
-					}
 					function initMap() {
-						var Boulder = {lat: 40.027443, lng: -105.25174};
-						var map = new google.maps.Map(document.getElementById('map'), {
-							zoom: 12,
-							center: Boulder
-							  
-						var marker = new google.maps.Marker({
-							position: Boulder,
-							map: map
-						});
-					}
-					var placeSearch, autocomplete;
-					var componentForm = {
-						street_number: 'short_name',
-						route: 'long_name',
-						locality: 'long_name',
-						administrative_area_level_1: 'short_name',
-						country: 'long_name',
-						postal_code: 'short_name'
-					};
+						
+						 var styledMapType = new google.maps.StyledMapType(
+            [
+              {elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
+              {elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
+              {elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
+              {
+                featureType: 'administrative',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#c9b2a6'}]
+              },
+              {
+                featureType: 'administrative.land_parcel',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#dcd2be'}]
+              },
+              {
+                featureType: 'administrative.land_parcel',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#ae9e90'}]
+              },
+              {
+                featureType: 'landscape.natural',
+                elementType: 'geometry',
+                stylers: [{color: '#dfd2ae'}]
+              },
+              {
+                featureType: 'poi',
+                elementType: 'geometry',
+                stylers: [{color: '#dfd2ae'}]
+              },
+              {
+                featureType: 'poi',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#93817c'}]
+              },
+              {
+                featureType: 'poi.park',
+                elementType: 'geometry.fill',
+                stylers: [{color: '#a5b076'}]
+              },
+              {
+                featureType: 'poi.park',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#447530'}]
+              },
+              {
+                featureType: 'road',
+                elementType: 'geometry',
+                stylers: [{color: '#f5f1e6'}]
+              },
+              {
+                featureType: 'road.arterial',
+                elementType: 'geometry',
+                stylers: [{color: '#fdfcf8'}]
+              },
+              {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{color: '#f8c967'}]
+              },
+              {
+                featureType: 'road.highway',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#e9bc62'}]
+              },
+              {
+                featureType: 'road.highway.controlled_access',
+                elementType: 'geometry',
+                stylers: [{color: '#e98d58'}]
+              },
+              {
+                featureType: 'road.highway.controlled_access',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#db8555'}]
+              },
+              {
+                featureType: 'road.local',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#806b63'}]
+              },
+              {
+                featureType: 'transit.line',
+                elementType: 'geometry',
+                stylers: [{color: '#dfd2ae'}]
+              },
+              {
+                featureType: 'transit.line',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#8f7d77'}]
+              },
+              {
+                featureType: 'transit.line',
+                elementType: 'labels.text.stroke',
+                stylers: [{color: '#ebe3cd'}]
+              },
+              {
+                featureType: 'transit.station',
+                elementType: 'geometry',
+                stylers: [{color: '#dfd2ae'}]
+              },
+              {
+                featureType: 'water',
+                elementType: 'geometry.fill',
+                stylers: [{color: '#b9d3c2'}]
+              },
+              {
+                featureType: 'water',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#92998d'}]
+              }
+            ],
+            {name: 'Styled Map'});
 
-					function initAutocomplete() {
-						// Create the autocomplete object, restricting the search to geographical
-						// location types.
-						autocomplete = new google.maps.places.Autocomplete(
-							/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-							{types: ['geocode']});
+        // Create a map object, and include the MapTypeId to add
+        // to the map type control.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.027443, lng: -105.25174},
+          zoom: 11,
+          mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+                    'styled_map']
+          }
+        });
 
-						// When the user selects an address from the dropdown, populate the address
-						// fields in the form.
-						autocomplete.addListener('place_changed', fillInAddress);
-					}
-
-					function fillInAddress() {
-						// Get the place details from the autocomplete object.
-						var place = autocomplete.getPlace();
-
-						for (var component in componentForm) {
-							document.getElementById(component).value = '';
-							document.getElementById(component).disabled = false;
-						}
-
-						// Get each component of the address from the place details
-						// and fill the corresponding field on the form.
-						for (var i = 0; i < place.address_components.length; i++) {
-							var addressType = place.address_components[i].types[0];
-							if (componentForm[addressType]) {
-								var val = place.address_components[i][componentForm[addressType]];
-								document.getElementById(addressType).value = val;
-							}
-						}
-					}
-
-					// Bias the autocomplete object to the user's geographical location,
-					// as supplied by the browser's 'navigator.geolocation' object.
-					function geolocate() {
-						if (navigator.geolocation) {
-							navigator.geolocation.getCurrentPosition(function(position) {
-								var geolocation = {
-									lat: position.coords.latitude,
-									lng: position.coords.longitude
-								};
-								var circle = new google.maps.Circle({
-									center: geolocation,
-									radius: position.coords.accuracy
-								});
-								autocomplete.setBounds(circle.getBounds());
-							});
-						}
-					}
-					//from Google: https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-					</script>
-					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&signed_in=true&libraries=places&callback=initialize" async defer></script>
+        //Associate the styled map with the MapTypeId and set it to display.
+        map.mapTypes.set('styled_map', styledMapType);
+        map.setMapTypeId('styled_map');
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&signed_in=true&libraries=places&callback=initialize">
+    </script>
 
 
 					<!-- Footer -->
