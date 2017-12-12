@@ -1,4 +1,4 @@
-<div class="w3-bar w3-white w3-top" >
+<div class="w3-bar w3-white w3-top" style ="position:absolute; top:0; left:0; z-index:1;">
   <a href="https://simpleplanner.herokuapp.com" class=" w3-left"><img src="https://simpleplanner.herokuapp.com/Frontend/images/treeLogo.png" style="margin-top: 5px; margin-left: 5px; width: 30px; height: 30px;"></a>
   <a href="Frontend/login.php" class="w3-bar-item w3-right w3-button w3-hover-white" id="login">Log In</a>
   <a href="https://simpleplanner.herokuapp.com/Backend/logout.php"  id="logout">Log Out</a>
