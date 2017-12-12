@@ -248,8 +248,7 @@ if($valid) $id=$_SESSION['id'];
 	<hr >
 
 
-			<!-- Create Event Button -->
-			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button></h2></header>
+			
 
 			<!-- Modal for Create Event -->
 			<div id="create_event" class="w3-modal">
@@ -482,7 +481,10 @@ if($valid) $id=$_SESSION['id'];
 				</div>
 
 					<hr>
-
+					<div>
+			<!-- Create Event Button -->
+			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button></h2></header>
+		</div>
 
 					<!-- Google Map -->
 					<h1>Events Happening Nearby</h1>
