@@ -9,41 +9,6 @@ if($valid) $id=$_SESSION['id'];
 <head>
 	<title>Simpleplanner - Home</title>
 	<?php require 'header.html'; ?>
-	<style>
-	input[type=search] {
-		background-color: #e6ecf0;
-		border: 0;
-		border-radius: 6px;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-		font-size: 14px;
-		width: 130px;
-		box-sizing: border-box;
-		background-image: url('searchicon.png');
-		background-repeat: no-repeat;
-		margin: auto;
-		left-margin: 10px;
-
-		max-width: 800px;
-		padding-top: 10px;
-		position: relative;
-		width: 95%;
-	}
-	.containOverflow{
-
-		overflow:hidden;
-		white-space: nowrap;
-		width: 100%;
-		display:block;
-		text-overflow: ellipsis;
-
-		overflow:hidden;
-		white-space: nowrap;
-
-	}
-
-
-</style>
 </head>
 <body>
 	<!-- Navigation Bar -->
@@ -252,7 +217,7 @@ $('#search').click(function(){
 
 <!-- Create Event Button -->
 <div>
-	<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button>
+	<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" style="color: red; margin: 15px; padding-left: 20px; padding-right: 20px; box-shadow: 5px 5px rgba(0,0,0,.2);" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>">+ Create Event</button>
 	</div>
 </div>
 <hr style="display: block; height: 0px; border: 0; border-bottom: 1px solid #ccc; margin:0;padding: 0;" >
