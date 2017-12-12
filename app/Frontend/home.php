@@ -34,7 +34,7 @@ div.sticky {
 	margin-top: 50px;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 50px;
   padding: 5px;
   background-color: #blue;
   border: 2px solid #4CAF50;
