@@ -20,7 +20,7 @@ input[type=text] {
     padding: 10px 25px 10px 45px;
     width: 130px;
     box-sizing: border-box;
-    background-image: url('searchicon.png');
+    background-image: url('https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png');
     background-repeat: no-repeat;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
