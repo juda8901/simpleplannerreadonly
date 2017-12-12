@@ -522,9 +522,7 @@ width: 100%;
         map.setMapTypeId('styled_map');
       }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLsFEUG5AKf3-PEgQryg5RxPsQdD89dsI&signed_in=true&libraries=places&callback=initialize">
-    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKE8pn4aOs2nsQ8pkn9vxxLJQu6KYI90&callback=initMap">
 
 
 					<!-- Footer -->
