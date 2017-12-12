@@ -1,7 +1,8 @@
 {
   "require": {
     "silex/silex": "^2.2",
-    "monolog/monolog": "^1.23"
+    "monolog/monolog": "^1.23",
+"ext-memcached":"*"
   },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
