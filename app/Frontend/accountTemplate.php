@@ -43,7 +43,6 @@ if($valid) $id=$_SESSION['id'];
         height: 100%;
     }
     footer{
-      position:fixed;
       bottom:0;
     }
 </style>
