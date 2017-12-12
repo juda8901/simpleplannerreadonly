@@ -247,7 +247,10 @@ if($valid) $id=$_SESSION['id'];
 
 	<hr style="display: block; height: 0px; border: 0; border-bottom: 1px solid #ccc; margin:0;padding: 0;" >
 
-
+<div>
+			<!-- Create Event Button -->
+			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button>
+		</div>
 			
 
 			<!-- Modal for Create Event -->
@@ -627,10 +630,7 @@ if($valid) $id=$_SESSION['id'];
 					<hr>
 					<br><br><br>
 
-	<div>
-			<!-- Create Event Button -->
-			<button class="w3-btn w3-round-xxlarge w3-xlarge w3-hover-red" onclick="<?php if($valid){	echo "document.getElementById('create_event').style.display='block'";} else {	echo "alert('You must log in first');window.location = 'https://simpleplanner.herokuapp.com/Frontend/login.php';";} ?>" style="color: red;margin: 15px; padding-left: 20px; padding-right: 20px;">+ Create Event</button>
-		</div>
+	
 					<!-- Footer -->
 					<?php require 'footer.html'; ?>
 
