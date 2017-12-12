@@ -20,7 +20,7 @@ input[type=text] {
     padding: 10px 25px 10px 45px;
     width: 130px;
     box-sizing: border-box;
-    background-image: url('https://simpleplanner.herokuapp.com/Frontend/images/searchIconRed.png');
+    background-image: url('searchicon.png');
     background-repeat: no-repeat;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
@@ -132,6 +132,8 @@ input[type=text]:focus {
 	<form>
 	  <input type="text" name="search-criteria" placeholder="Search.." id="search">
 	</form>
+				</div>
+
 	
 
 			<!-- search script -->
@@ -147,7 +149,6 @@ input[type=text]:focus {
 				});
 			});
 			</script>
-			</div>
 
 			<hr >
 
